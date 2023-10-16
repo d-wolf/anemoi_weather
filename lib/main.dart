@@ -1,4 +1,6 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/remote_data_source.dart';
+import 'package:anemoi_weather/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -6,20 +8,26 @@ Future<void> main() async {
   final rds = RemoteDataSource();
 
   final data = await rds.getForecast(52.5200, 13.4050, current: [
-    CurrentOptions.temperature2m,
-    CurrentOptions.windspeed_10m,
+    CurrentQueryParameters.temperature2m,
+    CurrentQueryParameters.windspeed_10m,
+    CurrentQueryParameters.relativehumidity_2m,
+    CurrentQueryParameters.weathercode,
   ], hourly: [
-    CurrentOptions.temperature2m,
-    CurrentOptions.windspeed_10m,
+    HourlyQueryParameters.temperature2m,
+    HourlyQueryParameters.windspeed_10m,
+    HourlyQueryParameters.relativehumidity_2m,
+    HourlyQueryParameters.weathercode,
   ]);
 
-  debugPrint('${data.toJson()}');
-
-  runApp(const MyApp());
+  runApp(MyApp(
+    fc: data,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Forecast fc;
+
+  const MyApp({required this.fc, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Container(),
+      home: Scaffold(
+          appBar: AppBar(),
+          body: Icon(Constants.wmoIconMap[fc.current!.weathercode])),
     );
   }
 }

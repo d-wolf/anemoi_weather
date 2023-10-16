@@ -5,12 +5,18 @@ class Hourly {
   List<double> temperature2M;
   List<int> relativehumidity2M;
   List<double> windspeed10M;
+  List<int> weathercode;
+  List<int> rain;
+  List<int> snowfall;
 
   Hourly({
     required this.time,
     this.temperature2M = const [],
     this.relativehumidity2M = const [],
     this.windspeed10M = const [],
+    this.weathercode = const [],
+    this.rain = const [],
+    this.snowfall = const [],
   });
 
   factory Hourly.fromJson(Map<String, dynamic> json) {
@@ -28,6 +34,12 @@ class Hourly {
       windspeed10M: json.containsKey('windspeed_10m')
           ? List<double>.from(json['windspeed_10m'])
           : [],
+      weathercode: json.containsKey('weathercode')
+          ? List<int>.from(json['weathercode'])
+          : [],
+      rain: json.containsKey('rain') ? List<int>.from(json['rain']) : [],
+      snowfall:
+          json.containsKey('snowfall') ? List<int>.from(json['snowfall']) : [],
     );
   }
 
@@ -49,6 +61,18 @@ class Hourly {
       map['windspeed_10m'] = jsonEncode(windspeed10M);
     }
 
+    if (weathercode.isNotEmpty) {
+      map['weathercode'] = jsonEncode(weathercode);
+    }
+
+    if (rain.isNotEmpty) {
+      map['rain'] = jsonEncode(rain);
+    }
+
+    if (snowfall.isNotEmpty) {
+      map['snowfall'] = jsonEncode(snowfall);
+    }
+
     return map;
   }
 }
@@ -58,12 +82,18 @@ class HourlyUnits {
   String? temperature2M;
   String? relativehumidity2M;
   String? windspeed10M;
+  String? weathercode;
+  String? rain;
+  String? snowfall;
 
   HourlyUnits({
     required this.time,
     this.temperature2M,
     this.relativehumidity2M,
     this.windspeed10M,
+    this.weathercode,
+    this.rain,
+    this.snowfall,
   });
 
   factory HourlyUnits.fromJson(Map<String, dynamic> json) {
@@ -78,6 +108,12 @@ class HourlyUnits {
       windspeed10M: json.containsKey('windspeed_10m')
           ? json['windspeed_10m'] as String
           : null,
+      weathercode: json.containsKey('weathercode')
+          ? json['weathercode'] as String
+          : null,
+      rain: json.containsKey('rain') ? json['rain'] as String : null,
+      snowfall:
+          json.containsKey('snowfall') ? json['snowfall'] as String : null,
     );
   }
 
@@ -96,6 +132,18 @@ class HourlyUnits {
 
     if (windspeed10M != null) {
       map['windspeed_10m'] = windspeed10M!;
+    }
+
+    if (weathercode != null) {
+      map['weathercode'] = weathercode!;
+    }
+
+    if (rain != null) {
+      map['rain'] = rain!;
+    }
+
+    if (snowfall != null) {
+      map['snowfall'] = snowfall!;
     }
 
     return map;

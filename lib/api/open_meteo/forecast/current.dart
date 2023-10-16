@@ -1,6 +1,3 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/daily.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly.dart';
-
 class Current {
   final DateTime time;
   final int interval;

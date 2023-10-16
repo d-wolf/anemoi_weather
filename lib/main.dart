@@ -9,15 +9,15 @@ Future<void> main() async {
   final rds = RemoteDataSource();
 
   final data = await rds.getForecast(52.5200, 13.4050, current: [
-    CurrentQueryParameters.temperature2m,
-    CurrentQueryParameters.windspeed_10m,
-    CurrentQueryParameters.relativehumidity_2m,
+    CurrentQueryParameters.temperature2M,
+    CurrentQueryParameters.windspeed10M,
+    CurrentQueryParameters.relativehumidity2M,
     CurrentQueryParameters.weathercode,
     CurrentQueryParameters.precipitation,
   ], hourly: [
-    HourlyQueryParameters.temperature2m,
-    HourlyQueryParameters.windspeed_10m,
-    HourlyQueryParameters.relativehumidity_2m,
+    HourlyQueryParameters.temperature2M,
+    HourlyQueryParameters.windspeed10M,
+    HourlyQueryParameters.relativehumidity2M,
     HourlyQueryParameters.weathercode,
     HourlyQueryParameters.precipitation,
     HourlyQueryParameters.precipitationProbability,

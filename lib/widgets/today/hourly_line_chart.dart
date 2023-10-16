@@ -20,8 +20,10 @@ class HourlyLineChart extends StatelessWidget {
     this.color = Colors.lightBlue,
     this.intervalY = 1.0,
     super.key,
-  }) : spots = List.generate(time.length,
-            (index) => FlSpot(time[index].hour.toDouble(), values[index]));
+  }) : spots = List.generate(
+            time.length,
+            (index) => FlSpot(
+                time[index].millisecondsSinceEpoch.toDouble(), values[index]));
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +68,13 @@ class HourlyLineChart extends StatelessWidget {
             sideTitles: SideTitles(
               showTitles: true,
               reservedSize: 36,
-              interval: 4,
+              interval: 4 * 1000 * 3600,
             ),
           ),
           topTitles: const AxisTitles(),
         ),
-        minX: 0,
-        maxX: 23,
+        // minX: 0,
+        // maxX: 23,
         minY: _minY(spots).toDouble(),
         maxY: _maxY(spots).toDouble(),
         gridData: FlGridData(

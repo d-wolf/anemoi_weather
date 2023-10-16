@@ -5,7 +5,7 @@ class Current {
   final int? relativehumidity2M;
   final double? apparentTemperature;
   final bool? isDay;
-  final int? precipitation;
+  final double? precipitation;
   final int? rain;
   final int? showers;
   final int? snowfall;
@@ -53,7 +53,7 @@ class Current {
           : null,
       isDay: json.containsKey('is_day') ? (json['is_day'] as int) == 1 : null,
       precipitation: json.containsKey('precipitation')
-          ? json['precipitation'] as int
+          ? json['precipitation'] as double
           : null,
       rain: json.containsKey('rain') ? json['rain'] as int : null,
       showers: json.containsKey('showers') ? json['showers'] as int : null,

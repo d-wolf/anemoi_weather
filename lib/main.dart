@@ -1,6 +1,7 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/remote_data_source.dart';
-import 'package:anemoi_weather/constants/constants.dart';
+import 'package:anemoi_weather/pages/home.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -12,11 +13,14 @@ Future<void> main() async {
     CurrentQueryParameters.windspeed_10m,
     CurrentQueryParameters.relativehumidity_2m,
     CurrentQueryParameters.weathercode,
+    CurrentQueryParameters.precipitation,
   ], hourly: [
     HourlyQueryParameters.temperature2m,
     HourlyQueryParameters.windspeed_10m,
     HourlyQueryParameters.relativehumidity_2m,
     HourlyQueryParameters.weathercode,
+    HourlyQueryParameters.precipitation,
+    HourlyQueryParameters.precipitationProbability,
   ]);
 
   runApp(MyApp(
@@ -34,12 +38,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.indigo, brightness: Brightness.dark),
         useMaterial3: true,
       ),
-      home: Scaffold(
-          appBar: AppBar(),
-          body: Icon(Constants.wmoIconMap[fc.current!.weathercode])),
+      home: HomePage(
+        forecast: fc,
+      ),
     );
   }
 }

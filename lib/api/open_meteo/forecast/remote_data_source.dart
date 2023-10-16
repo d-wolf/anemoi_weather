@@ -35,9 +35,7 @@ class RemoteDataSource {
     final url = Uri.https(baseUrl, endpoint, queryParams);
     final response = await http.get(url);
     Map<String, dynamic> map = jsonDecode(response.body);
-    debugPrint(map.toString());
     final forecast = Forecast.fromJson(map);
-    debugPrint(forecast.hourly!.time.toString());
     return forecast;
   }
 }

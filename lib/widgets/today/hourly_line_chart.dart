@@ -27,11 +27,6 @@ class HourlyLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('xxxxxxxx');
-    // debugPrint(spots
-    //     .map((e) => DateTime.fromMillisecondsSinceEpoch(e.x.toInt()))
-    //     .toList()
-    //     .toString());
     return LineChart(
       LineChartData(
         lineTouchData: const LineTouchData(
@@ -63,10 +58,7 @@ class HourlyLineChart extends StatelessWidget {
                 getTitlesWidget: (value, meta) {
                   final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt());
                   final hour = dt.hour;
-                  debugPrint(dt.toString());
                   final text = hour % 4 == 0 ? dt.hour.toString() : '';
-                  debugPrint('labelpainter');
-                  debugPrint(dt.toString());
                   return SideTitleWidget(
                     axisSide: meta.axisSide,
                     child: Text(text),

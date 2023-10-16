@@ -19,7 +19,7 @@ class TodayTabWidget extends StatefulWidget {
 
 class _TodayTabWidgetState extends State<TodayTabWidget> {
   final cardHeight = 350.0;
-  final smallCardHeight = 120.0;
+  final smallCardSize = 120.0;
   final smallTileAnimateNextDuration = const Duration(milliseconds: 100);
 
   final _smallTileScrollController = ScrollController();
@@ -93,7 +93,7 @@ class _TodayTabWidgetState extends State<TodayTabWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppStyle.spaceMedium),
           child: SizedBox(
-            height: smallCardHeight,
+            height: smallCardSize,
             child: Row(
               children: [
                 IconButton(
@@ -101,7 +101,7 @@ class _TodayTabWidgetState extends State<TodayTabWidget> {
                   onPressed: () {
                     _smallTileScrollController.animateTo(
                         _smallTileScrollController.position.pixels -
-                            (smallCardHeight * 2),
+                            smallCardSize,
                         duration: smallTileAnimateNextDuration,
                         curve: Curves.linear);
                   },
@@ -115,8 +115,8 @@ class _TodayTabWidgetState extends State<TodayTabWidget> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return SizedBox(
-                          width: smallCardHeight,
-                          height: smallCardHeight,
+                          width: smallCardSize,
+                          height: smallCardSize,
                           child: Card(
                             child: Padding(
                               padding: AppStyle.insetsMedium,
@@ -146,7 +146,7 @@ class _TodayTabWidgetState extends State<TodayTabWidget> {
                   onPressed: () {
                     _smallTileScrollController.animateTo(
                         _smallTileScrollController.position.pixels +
-                            (smallCardHeight * 2),
+                            smallCardSize,
                         duration: smallTileAnimateNextDuration,
                         curve: Curves.linear);
                   },

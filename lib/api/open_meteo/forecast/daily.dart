@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
+
 class Daily {
   final List<DateTime> time;
   final List<int> weathercode;
@@ -53,62 +55,75 @@ class Daily {
           .map(
               (e) => DateTime.fromMillisecondsSinceEpoch(e * 1000, isUtc: true))
           .toList(),
-      temperature2MMax: json.containsKey('temperature_2m_max')
-          ? List<double>.from(json['temperature_2m_max'])
+      temperature2MMax: json.containsKey(DailyParameters.temperature2MMax.value)
+          ? List<double>.from(json[DailyParameters.temperature2MMax.value])
           : [],
-      temperature2MMin: json.containsKey('temperature_2m_min')
-          ? List<double>.from(json['temperature_2m_min'])
+      temperature2MMin: json.containsKey(DailyParameters.temperature2MMin.value)
+          ? List<double>.from(json[DailyParameters.temperature2MMin.value])
           : [],
-      apparentTemperatureMax: json.containsKey('apparent_temperature_max')
-          ? List<double>.from(json['apparent_temperature_max'])
-          : [],
-      apparentTemperatureMin: json.containsKey('apparent_temperature_min')
-          ? List<double>.from(json['apparent_temperature_min'])
-          : [],
-      sunrise:
-          json.containsKey('sunrise') ? List<String>.from(json['sunrise']) : [],
-      sunset:
-          json.containsKey('sunset') ? List<String>.from(json['sunset']) : [],
-      uvIndexMax: json.containsKey('uv_index_max')
-          ? List<double>.from(json['uv_index_max'])
-          : [],
-      uvIndexClearSkyMax: json.containsKey('uv_index_clear_sky_max')
-          ? List<double>.from(json['uv_index_clear_sky_max'])
-          : [],
-      precipitationSum: json.containsKey('precipitation_sum')
-          ? List<double>.from(json['precipitation_sum'])
-          : [],
-      rainSum: json.containsKey('rain_sum')
-          ? List<double>.from(json['rain_sum'])
-          : [],
-      showersSum: json.containsKey('showers_sum')
-          ? List<int>.from(json['showers_sum'])
-          : [],
-      snowfallSum: json.containsKey('snowfall_sum')
-          ? List<double>.from(json['snowfall_sum'])
-          : [],
-      precipitationHours: json.containsKey('precipitation_hours')
-          ? List<int>.from(json['precipitation_hours'])
-          : [],
-      precipitationProbabilityMax:
-          json.containsKey('precipitation_probability_max')
-              ? List<int>.from(json['precipitation_probability_max'])
+      apparentTemperatureMax:
+          json.containsKey(DailyParameters.apparentTemperatureMax.value)
+              ? List<double>.from(
+                  json[DailyParameters.apparentTemperatureMax.value])
               : [],
-      windspeed10MMax: json.containsKey('windspeed_10m_max')
-          ? List<double>.from(json['windspeed_10m_max'])
+      apparentTemperatureMin:
+          json.containsKey(DailyParameters.apparentTemperatureMin.value)
+              ? List<double>.from(
+                  json[DailyParameters.apparentTemperatureMin.value])
+              : [],
+      sunrise: json.containsKey(DailyParameters.sunrise.value)
+          ? List<String>.from(json[DailyParameters.sunrise.value])
           : [],
-      windgusts10MMax: json.containsKey('windgusts_10m_max')
-          ? List<double>.from(json['windgusts_10m_max'])
+      sunset: json.containsKey(DailyParameters.sunset.value)
+          ? List<String>.from(json[DailyParameters.sunset.value])
           : [],
-      winddirection10MDominant: json.containsKey('winddirection_10m_dominant')
-          ? List<int>.from(json['winddirection_10m_dominant'])
+      uvIndexMax: json.containsKey(DailyParameters.uvIndexMax.value)
+          ? List<double>.from(json[DailyParameters.uvIndexMax.value])
           : [],
-      shortwaveRadiationSum: json.containsKey('shortwave_radiation_sum')
-          ? List<double>.from(json['shortwave_radiation_sum'])
+      uvIndexClearSkyMax: json
+              .containsKey(DailyParameters.uvIndexClearSkyMax.value)
+          ? List<double>.from(json[DailyParameters.uvIndexClearSkyMax.value])
           : [],
-      et0FaoEvapotranspiration: json.containsKey('et0_fao_evapotranspiration')
-          ? List<double>.from(json['et0_fao_evapotranspiration'])
+      precipitationSum: json.containsKey(DailyParameters.precipitationSum.value)
+          ? List<double>.from(json[DailyParameters.precipitationSum.value])
           : [],
+      rainSum: json.containsKey(DailyParameters.rainSum.value)
+          ? List<double>.from(json[DailyParameters.rainSum.value])
+          : [],
+      showersSum: json.containsKey(DailyParameters.showersSum.value)
+          ? List<int>.from(json[DailyParameters.showersSum.value])
+          : [],
+      snowfallSum: json.containsKey(DailyParameters.snowfallSum.value)
+          ? List<double>.from(json[DailyParameters.snowfallSum.value])
+          : [],
+      precipitationHours:
+          json.containsKey(DailyParameters.precipitationHours.value)
+              ? List<int>.from(json[DailyParameters.precipitationHours.value])
+              : [],
+      precipitationProbabilityMax:
+          json.containsKey(DailyParameters.precipitationProbabilityMax.value)
+              ? List<int>.from(
+                  json[DailyParameters.precipitationProbabilityMax.value])
+              : [],
+      windspeed10MMax: json.containsKey(DailyParameters.windspeed10MMax.value)
+          ? List<double>.from(json[DailyParameters.windspeed10MMax.value])
+          : [],
+      windgusts10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
+          ? List<double>.from(json[DailyParameters.windgusts10MMax.value])
+          : [],
+      winddirection10MDominant: json
+              .containsKey(DailyParameters.winddirection10MDominant.value)
+          ? List<int>.from(json[DailyParameters.winddirection10MDominant.value])
+          : [],
+      shortwaveRadiationSum: json
+              .containsKey(DailyParameters.shortwaveRadiationSum.value)
+          ? List<double>.from(json[DailyParameters.shortwaveRadiationSum.value])
+          : [],
+      et0FaoEvapotranspiration:
+          json.containsKey(DailyParameters.et0FaoEvapotranspiration.value)
+              ? List<double>.from(
+                  json[DailyParameters.et0FaoEvapotranspiration.value])
+              : [],
     );
   }
 
@@ -119,80 +134,94 @@ class Daily {
     };
 
     if (temperature2MMax.isNotEmpty) {
-      map['temperature_2m_max'] = jsonEncode(temperature2MMax);
+      map[DailyParameters.temperature2MMax.value] =
+          jsonEncode(temperature2MMax);
     }
 
     if (temperature2MMin.isNotEmpty) {
-      map['temperature_2m_min'] = jsonEncode(temperature2MMin);
+      map[DailyParameters.temperature2MMin.value] =
+          jsonEncode(temperature2MMin);
     }
 
     if (apparentTemperatureMax.isNotEmpty) {
-      map['apparent_temperature_max'] = jsonEncode(apparentTemperatureMax);
+      map[DailyParameters.apparentTemperatureMax.value] =
+          jsonEncode(apparentTemperatureMax);
     }
 
     if (apparentTemperatureMin.isNotEmpty) {
-      map['apparent_temperature_min'] = jsonEncode(apparentTemperatureMin);
+      map[DailyParameters.apparentTemperatureMin.value] =
+          jsonEncode(apparentTemperatureMin);
     }
 
     if (sunrise.isNotEmpty) {
-      map['sunrise'] = jsonEncode(sunrise);
+      map[DailyParameters.sunrise.value] = jsonEncode(sunrise);
+    }
+
+    if (sunrise.isNotEmpty) {
+      map[DailyParameters.sunrise.value] = jsonEncode(sunrise);
     }
 
     if (sunset.isNotEmpty) {
-      map['sunset'] = jsonEncode(sunset);
-    }
-
-    if (sunset.isNotEmpty) {
-      map['sunset'] = jsonEncode(sunset);
+      map[DailyParameters.sunset.value] = jsonEncode(sunset);
     }
 
     if (uvIndexMax.isNotEmpty) {
-      map['uv_index_max'] = jsonEncode(uvIndexMax);
+      map[DailyParameters.uvIndexMax.value] = jsonEncode(uvIndexMax);
     }
 
     if (uvIndexClearSkyMax.isNotEmpty) {
-      map['uv_index_clear_sky_max'] = jsonEncode(uvIndexClearSkyMax);
+      map[DailyParameters.uvIndexClearSkyMax.value] =
+          jsonEncode(uvIndexClearSkyMax);
     }
 
     if (precipitationSum.isNotEmpty) {
-      map['precipitation_sum'] = jsonEncode(precipitationSum);
+      map[DailyParameters.precipitationSum.value] =
+          jsonEncode(precipitationSum);
     }
 
     if (rainSum.isNotEmpty) {
-      map['rain_sum'] = jsonEncode(rainSum);
+      map[DailyParameters.rainSum.value] = jsonEncode(rainSum);
     }
 
     if (showersSum.isNotEmpty) {
-      map['showers_sum'] = jsonEncode(showersSum);
+      map[DailyParameters.showersSum.value] = jsonEncode(showersSum);
     }
 
     if (snowfallSum.isNotEmpty) {
-      map['snowfall_sum'] = jsonEncode(snowfallSum);
+      map[DailyParameters.snowfallSum.value] = jsonEncode(snowfallSum);
     }
 
     if (precipitationHours.isNotEmpty) {
-      map['precipitation_hours'] = jsonEncode(precipitationHours);
+      map[DailyParameters.precipitationHours.value] =
+          jsonEncode(precipitationHours);
     }
 
     if (precipitationProbabilityMax.isNotEmpty) {
-      map['precipitation_probability_max'] =
+      map[DailyParameters.precipitationProbabilityMax.value] =
           jsonEncode(precipitationProbabilityMax);
     }
 
     if (windspeed10MMax.isNotEmpty) {
-      map['windspeed_10m_max'] = jsonEncode(windspeed10MMax);
+      map[DailyParameters.windspeed10MMax.value] = jsonEncode(windspeed10MMax);
     }
 
     if (windgusts10MMax.isNotEmpty) {
-      map['windgusts_10m_max'] = jsonEncode(windgusts10MMax);
+      map[DailyParameters.windgusts10MMax.value] = jsonEncode(windgusts10MMax);
     }
 
     if (winddirection10MDominant.isNotEmpty) {
-      map['winddirection_10m_dominant'] = jsonEncode(winddirection10MDominant);
+      map[DailyParameters.winddirection10MDominant.value] =
+          jsonEncode(winddirection10MDominant);
     }
 
-    if (winddirection10MDominant.isNotEmpty) {
-      map['winddirection_10m_dominant'] = jsonEncode(winddirection10MDominant);
+    if (shortwaveRadiationSum.isNotEmpty) {
+      map[DailyParameters.shortwaveRadiationSum.value] =
+          jsonEncode(shortwaveRadiationSum);
+    }
+
+    if (et0FaoEvapotranspiration.isNotEmpty) {
+      map[DailyParameters.et0FaoEvapotranspiration.value] =
+          jsonEncode(et0FaoEvapotranspiration);
     }
 
     return map;
@@ -249,58 +278,71 @@ class DailyUnits {
   factory DailyUnits.fromJson(Map<String, dynamic> json) {
     return DailyUnits(
       time: json['time'] as String,
-      temperature2MMax: json.containsKey('temperature_2m_max')
-          ? json['temperature_2m_max'] as String
+      temperature2MMax: json.containsKey(DailyParameters.temperature2MMax.value)
+          ? json[DailyParameters.temperature2MMax.value] as String
           : null,
-      temperature2MMin: json.containsKey('temperature_2m_min')
-          ? json['temperature_2m_min'] as String
+      temperature2MMin: json.containsKey(DailyParameters.temperature2MMin.value)
+          ? json[DailyParameters.temperature2MMin.value] as String
           : null,
-      apparentTemperatureMax: json.containsKey('apparent_temperature_max')
-          ? json['apparent_temperature_max'] as String
-          : null,
-      apparentTemperatureMin: json.containsKey('apparent_temperature_min')
-          ? json['apparent_temperature_min'] as String
-          : null,
-      sunrise: json.containsKey('sunrise') ? json['sunrise'] as String : null,
-      sunset: json.containsKey('sunset') ? json['sunset'] as String : null,
-      uvIndexMax: json.containsKey('uv_index_max')
-          ? json['uv_index_max'] as String
-          : null,
-      uvIndexClearSkyMax: json.containsKey('uv_index_clear_sky_max')
-          ? json['uv_index_clear_sky_max'] as String
-          : null,
-      precipitationSum: json.containsKey('precipitation_sum')
-          ? json['precipitation_sum'] as String
-          : null,
-      rainSum: json.containsKey('rain_sum') ? json['rain_sum'] as String : null,
-      showersSum: json.containsKey('showers_sum')
-          ? json['showers_sum'] as String
-          : null,
-      snowfallSum: json.containsKey('snowfall_sum')
-          ? json['snowfall_sum'] as String
-          : null,
-      precipitationHours: json.containsKey('precipitation_hours')
-          ? json['precipitation_hours'] as String
-          : null,
-      precipitationProbabilityMax:
-          json.containsKey('precipitation_probability_max')
-              ? json['precipitation_probability_max'] as String
+      apparentTemperatureMax:
+          json.containsKey(DailyParameters.apparentTemperatureMax.value)
+              ? json[DailyParameters.apparentTemperatureMax.value] as String
               : null,
-      windspeed10MMax: json.containsKey('windspeed_10m_max')
-          ? json['windspeed_10m_max'] as String
+      apparentTemperatureMin:
+          json.containsKey(DailyParameters.apparentTemperatureMin.value)
+              ? json[DailyParameters.apparentTemperatureMin.value] as String
+              : null,
+      sunrise: json.containsKey(DailyParameters.sunrise.value)
+          ? json[DailyParameters.sunrise.value] as String
           : null,
-      windgusts10MMax: json.containsKey('windgusts_10m_max')
-          ? json['windgusts_10m_max'] as String
+      sunset: json.containsKey(DailyParameters.sunset.value)
+          ? json[DailyParameters.sunset.value] as String
           : null,
-      winddirection10MDominant: json.containsKey('winddirection_10m_dominant')
-          ? json['winddirection_10m_dominant'] as String
+      uvIndexMax: json.containsKey(DailyParameters.uvIndexMax.value)
+          ? json[DailyParameters.uvIndexMax.value] as String
           : null,
-      shortwaveRadiationSum: json.containsKey('shortwave_radiation_sum')
-          ? json['shortwave_radiation_sum'] as String
+      uvIndexClearSkyMax:
+          json.containsKey(DailyParameters.uvIndexClearSkyMax.value)
+              ? json[DailyParameters.uvIndexClearSkyMax.value] as String
+              : null,
+      precipitationSum: json.containsKey(DailyParameters.precipitationSum.value)
+          ? json[DailyParameters.precipitationSum.value] as String
           : null,
-      et0FaoEvapotranspiration: json.containsKey('et0_fao_evapotranspiration')
-          ? json['et0_fao_evapotranspiration'] as String
+      rainSum: json.containsKey(DailyParameters.rainSum.value)
+          ? json[DailyParameters.rainSum.value] as String
           : null,
+      showersSum: json.containsKey(DailyParameters.showersSum.value)
+          ? json[DailyParameters.showersSum.value] as String
+          : null,
+      snowfallSum: json.containsKey(DailyParameters.snowfallSum.value)
+          ? json[DailyParameters.snowfallSum.value] as String
+          : null,
+      precipitationHours:
+          json.containsKey(DailyParameters.precipitationHours.value)
+              ? json[DailyParameters.precipitationHours.value] as String
+              : null,
+      precipitationProbabilityMax: json
+              .containsKey(DailyParameters.precipitationProbabilityMax.value)
+          ? json[DailyParameters.precipitationProbabilityMax.value] as String
+          : null,
+      windspeed10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
+          ? json[DailyParameters.windgusts10MMax.value] as String
+          : null,
+      windgusts10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
+          ? json[DailyParameters.windgusts10MMax.value] as String
+          : null,
+      winddirection10MDominant:
+          json.containsKey(DailyParameters.winddirection10MDominant.value)
+              ? json[DailyParameters.winddirection10MDominant.value] as String
+              : null,
+      shortwaveRadiationSum:
+          json.containsKey(DailyParameters.shortwaveRadiationSum.value)
+              ? json[DailyParameters.shortwaveRadiationSum.value] as String
+              : null,
+      et0FaoEvapotranspiration:
+          json.containsKey(DailyParameters.et0FaoEvapotranspiration.value)
+              ? json[DailyParameters.et0FaoEvapotranspiration.value] as String
+              : null,
     );
   }
 
@@ -310,83 +352,84 @@ class DailyUnits {
     };
 
     if (temperature2MMax != null) {
-      map['temperature_2m_max'] = temperature2MMax!;
+      map[DailyParameters.temperature2MMax.value] = temperature2MMax;
     }
 
     if (temperature2MMin != null) {
-      map['temperature_2m_min'] = temperature2MMin!;
+      map[DailyParameters.temperature2MMin.value] = temperature2MMin;
     }
 
     if (apparentTemperatureMax != null) {
-      map['apparent_temperature_max'] = apparentTemperatureMax!;
+      map[DailyParameters.apparentTemperatureMax.value] =
+          apparentTemperatureMax;
     }
 
     if (apparentTemperatureMin != null) {
-      map['apparent_temperature_min'] = apparentTemperatureMin!;
-    }
-
-    if (apparentTemperatureMin != null) {
-      map['apparent_temperature_min'] = apparentTemperatureMin!;
+      map[DailyParameters.apparentTemperatureMin.value] =
+          apparentTemperatureMin;
     }
 
     if (sunrise != null) {
-      map['sunrise'] = sunrise!;
+      map[DailyParameters.sunrise.value] = sunrise;
     }
 
     if (sunset != null) {
-      map['sunset'] = sunset!;
+      map[DailyParameters.sunset.value] = sunset;
     }
 
     if (uvIndexMax != null) {
-      map['uv_index_max'] = uvIndexMax!;
+      map[DailyParameters.uvIndexMax.value] = uvIndexMax;
     }
 
     if (uvIndexClearSkyMax != null) {
-      map['uv_index_clear_sky_max'] = uvIndexClearSkyMax!;
+      map[DailyParameters.uvIndexClearSkyMax.value] = uvIndexClearSkyMax;
     }
 
     if (precipitationSum != null) {
-      map['precipitation_sum'] = precipitationSum!;
+      map[DailyParameters.precipitationSum.value] = precipitationSum;
     }
 
     if (rainSum != null) {
-      map['rain_sum'] = rainSum!;
+      map[DailyParameters.rainSum.value] = rainSum;
     }
 
     if (showersSum != null) {
-      map['showers_sum'] = showersSum!;
+      map[DailyParameters.showersSum.value] = showersSum;
     }
 
     if (snowfallSum != null) {
-      map['snowfall_sum'] = snowfallSum!;
+      map[DailyParameters.snowfallSum.value] = snowfallSum;
     }
 
     if (precipitationHours != null) {
-      map['precipitation_hours'] = precipitationHours!;
+      map[DailyParameters.precipitationHours.value] = precipitationHours;
     }
 
     if (precipitationProbabilityMax != null) {
-      map['precipitation_probability_max'] = precipitationProbabilityMax!;
+      map[DailyParameters.precipitationProbabilityMax.value] =
+          precipitationProbabilityMax;
+    }
+
+    if (windspeed10MMax != null) {
+      map[DailyParameters.windspeed10MMax.value] = windspeed10MMax;
     }
 
     if (windgusts10MMax != null) {
-      map['windspeed_10m_max'] = windgusts10MMax!;
+      map[DailyParameters.windspeed10MMax.value] = windgusts10MMax;
     }
 
     if (winddirection10MDominant != null) {
-      map['winddirection_10m_dominant'] = winddirection10MDominant!;
+      map[DailyParameters.winddirection10MDominant.value] =
+          winddirection10MDominant;
     }
 
     if (shortwaveRadiationSum != null) {
-      map['shortwave_radiation_sum'] = shortwaveRadiationSum!;
-    }
-
-    if (shortwaveRadiationSum != null) {
-      map['shortwave_radiation_sum'] = shortwaveRadiationSum!;
+      map[DailyParameters.shortwaveRadiationSum.value] = shortwaveRadiationSum;
     }
 
     if (et0FaoEvapotranspiration != null) {
-      map['et0_fao_evapotranspiration'] = et0FaoEvapotranspiration!;
+      map[DailyParameters.et0FaoEvapotranspiration.value] =
+          et0FaoEvapotranspiration;
     }
 
     return map;

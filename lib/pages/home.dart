@@ -18,22 +18,23 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        endDrawer: Drawer(),
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          centerTitle: false,
-          automaticallyImplyLeading: false,
-          titleSpacing: AppStyle.spaceSmall,
-          title: DropdownButton<String>(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: AppStyle.spaceMedium),
-              elevation: 0,
-              underline: const SizedBox(),
-              value: 'Berlin',
-              items: const [
-                DropdownMenuItem(value: 'Berlin', child: Text('Berlin')),
-                DropdownMenuItem(value: 'London', child: Text('London'))
-              ],
-              onChanged: (x) {}),
+          // centerTitle: false,
+          // automaticallyImplyLeading: false,
+          // titleSpacing: AppStyle.spaceSmall,
+          // title: DropdownButton<String>(
+          //     padding:
+          //         const EdgeInsets.symmetric(horizontal: AppStyle.spaceMedium),
+          //     elevation: 0,
+          //     underline: const SizedBox(),
+          //     value: 'Berlin',
+          //     items: const [
+          //       DropdownMenuItem(value: 'Berlin', child: Text('Berlin')),
+          //       DropdownMenuItem(value: 'London', child: Text('London'))
+          //     ],
+          //     onChanged: (x) {}),
           bottom: const TabBar(tabs: [
             Tab(
               text: 'Today',

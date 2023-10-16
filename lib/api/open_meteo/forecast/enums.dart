@@ -17,7 +17,7 @@ enum TimeZone {
   String toString() => value;
 }
 
-enum CurrentQueryParameters {
+enum CurrentParameters {
   temperature2M('temperature_2m'),
   relativehumidity2M('relativehumidity_2m'),
   apparentTemperature('apparent_temperature'),
@@ -34,12 +34,12 @@ enum CurrentQueryParameters {
   winddirection10M('winddirection_10m'),
   windgusts10M('windgusts_10m');
 
-  const CurrentQueryParameters(this.value);
+  const CurrentParameters(this.value);
 
-  factory CurrentQueryParameters.fromString(String value) {
+  factory CurrentParameters.fromString(String value) {
     return values.firstWhere(
       (e) => e.value == value,
-      orElse: () => CurrentQueryParameters.values.first,
+      orElse: () => CurrentParameters.values.first,
     );
   }
 
@@ -108,8 +108,7 @@ enum HourlyQueryParameters {
   String toString() => value;
 }
 
-enum DailyQueryParameters {
-  temperature2M('temperature_2m'),
+enum DailyParameters {
   temperature2MMax('temperature_2m_max'),
   temperature2MMin('temperature_2m_min'),
   apparentTemperatureMax('apparent_temperature_max'),
@@ -130,12 +129,12 @@ enum DailyQueryParameters {
   shortwaveRadiationSum('shortwave_radiation_sum'),
   et0FaoEvapotranspiration('et0_fao_evapotranspiration');
 
-  const DailyQueryParameters(this.value);
+  const DailyParameters(this.value);
 
-  factory DailyQueryParameters.fromString(String value) {
+  factory DailyParameters.fromString(String value) {
     return values.firstWhere(
       (e) => e.value == value,
-      orElse: () => DailyQueryParameters.values.first,
+      orElse: () => DailyParameters.values.first,
     );
   }
 

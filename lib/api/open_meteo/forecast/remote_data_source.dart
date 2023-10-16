@@ -10,7 +10,7 @@ class RemoteDataSource {
   final String endpoint = 'v1/forecast';
 
   Future<Forecast> getForecast(double lat, double long,
-      {List<CurrentQueryParameters> current = const [],
+      {List<CurrentParameters> current = const [],
       List<HourlyQueryParameters> hourly = const [],
       List<HourlyQueryParameters> daily = const []}) async {
     final queryParams = <String, dynamic>{
@@ -36,6 +36,8 @@ class RemoteDataSource {
     final response = await http.get(url);
     Map<String, dynamic> map = jsonDecode(response.body);
     debugPrint(map.toString());
-    return Forecast.fromJson(map);
+    final forecast = Forecast.fromJson(map);
+    debugPrint(forecast.hourly!.time.toString());
+    return forecast;
   }
 }

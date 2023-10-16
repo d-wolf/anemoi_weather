@@ -27,23 +27,15 @@ class HourlyLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print('xxxxxxxx');
+    // debugPrint(spots
+    //     .map((e) => DateTime.fromMillisecondsSinceEpoch(e.x.toInt()))
+    //     .toList()
+    //     .toString());
     return LineChart(
       LineChartData(
-        lineTouchData: LineTouchData(
+        lineTouchData: const LineTouchData(
           enabled: false,
-          touchTooltipData: LineTouchTooltipData(
-            getTooltipItems: (touchedSpots) {
-              return touchedSpots.map((LineBarSpot touchedSpot) {
-                return LineTooltipItem(
-                  '${touchedSpot.y.toStringAsFixed(2)} $unit',
-                  TextStyle(
-                    color: touchedSpot.bar.gradient?.colors[0] ??
-                        touchedSpot.bar.color,
-                  ),
-                );
-              }).toList();
-            },
-          ),
         ),
         lineBarsData: [
           LineChartBarData(
@@ -64,19 +56,30 @@ class HourlyLineChart extends StatelessWidget {
             ),
           ),
           rightTitles: const AxisTitles(),
-          bottomTitles: const AxisTitles(
+          bottomTitles: AxisTitles(
             sideTitles: SideTitles(
-              showTitles: true,
-              reservedSize: 36,
-              interval: 4 * 1000 * 3600,
-            ),
+                showTitles: true,
+                reservedSize: 36,
+                getTitlesWidget: (value, meta) {
+                  final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt());
+                  final hour = dt.hour;
+                  debugPrint(dt.toString());
+                  final text = hour % 4 == 0 ? dt.hour.toString() : '';
+                  debugPrint('labelpainter');
+                  debugPrint(dt.toString());
+                  return SideTitleWidget(
+                    axisSide: meta.axisSide,
+                    child: Text(text),
+                  );
+                },
+                interval: 1000 * 3600),
           ),
           topTitles: const AxisTitles(),
         ),
-        // minX: 0,
-        // maxX: 23,
         minY: _minY(spots).toDouble(),
         maxY: _maxY(spots).toDouble(),
+        // minX: 1,
+        // maxX: 23,
         gridData: FlGridData(
           show: true,
           getDrawingHorizontalLine: (value) {

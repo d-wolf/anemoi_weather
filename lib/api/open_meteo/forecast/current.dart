@@ -1,3 +1,5 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
+
 class Current {
   final DateTime time;
   final int interval;
@@ -42,40 +44,53 @@ class Current {
       time: DateTime.fromMillisecondsSinceEpoch((json['time'] as int) * 1000,
           isUtc: true),
       interval: json['interval'] as int,
-      temperature2M: json.containsKey('temperature_2m')
-          ? json['temperature_2m'] as double
+      temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
+          ? json[CurrentParameters.temperature2M.value] as double
           : null,
-      relativehumidity2M: json.containsKey('relativehumidity_2m')
-          ? json['relativehumidity_2m'] as int
+      relativehumidity2M:
+          json.containsKey(CurrentParameters.relativehumidity2M.value)
+              ? json[CurrentParameters.relativehumidity2M.value] as int
+              : null,
+      apparentTemperature:
+          json.containsKey(CurrentParameters.apparentTemperature.value)
+              ? json[CurrentParameters.apparentTemperature.value] as double
+              : null,
+      isDay: json.containsKey(CurrentParameters.isDay.value)
+          ? (json[CurrentParameters.isDay.value] as int) == 1
           : null,
-      apparentTemperature: json.containsKey('apparent_temperature')
-          ? json['apparent_temperature'] as double
+      precipitation: json.containsKey(CurrentParameters.precipitation.value)
+          ? json[CurrentParameters.precipitation.value] as double
           : null,
-      isDay: json.containsKey('is_day') ? (json['is_day'] as int) == 1 : null,
-      precipitation: json.containsKey('precipitation')
-          ? json['precipitation'] as double
+      rain: json.containsKey(CurrentParameters.rain.value)
+          ? json[CurrentParameters.rain.value] as int
           : null,
-      rain: json.containsKey('rain') ? json['rain'] as int : null,
-      showers: json.containsKey('showers') ? json['showers'] as int : null,
-      snowfall: json.containsKey('snowfall') ? json['snowfall'] as int : null,
-      weathercode:
-          json.containsKey('weathercode') ? json['weathercode'] as int : null,
-      cloudcover:
-          json.containsKey('cloudcover') ? json['cloudcover'] as int : null,
-      pressureMsl: json.containsKey('pressure_msl')
-          ? json['pressure_msl'] as double
+      showers: json.containsKey(CurrentParameters.showers.value)
+          ? json[CurrentParameters.showers.value] as int
           : null,
-      surfacePressure: json.containsKey('surface_pressure')
-          ? json['surface_pressure'] as double
+      snowfall: json.containsKey(CurrentParameters.snowfall.value)
+          ? json[CurrentParameters.snowfall.value] as int
           : null,
-      windspeed10M: json.containsKey('windspeed_10m')
-          ? json['windspeed_10m'] as double
+      weathercode: json.containsKey(CurrentParameters.weathercode.value)
+          ? json[CurrentParameters.weathercode.value] as int
           : null,
-      winddirection10M: json.containsKey('winddirection_10m')
-          ? json['winddirection_10m'] as int
+      cloudcover: json.containsKey(CurrentParameters.cloudcover.value)
+          ? json[CurrentParameters.cloudcover.value] as int
           : null,
-      windgusts10M: json.containsKey('windgusts_10m')
-          ? json['windgusts_10m'] as int
+      pressureMsl: json.containsKey(CurrentParameters.pressureMsl.value)
+          ? json[CurrentParameters.pressureMsl.value] as double
+          : null,
+      surfacePressure: json.containsKey(CurrentParameters.surfacePressure.value)
+          ? json[CurrentParameters.surfacePressure.value] as double
+          : null,
+      windspeed10M: json.containsKey(CurrentParameters.windspeed10M.value)
+          ? json[CurrentParameters.windspeed10M.value] as double
+          : null,
+      winddirection10M:
+          json.containsKey(CurrentParameters.winddirection10M.value)
+              ? json[CurrentParameters.winddirection10M.value] as int
+              : null,
+      windgusts10M: json.containsKey(CurrentParameters.windgusts10M.value)
+          ? json[CurrentParameters.windgusts10M.value] as int
           : null,
     );
   }
@@ -87,59 +102,59 @@ class Current {
     };
 
     if (temperature2M != null) {
-      map['temperature_2m'] = temperature2M;
+      map[CurrentParameters.temperature2M.value] = temperature2M;
     }
 
     if (relativehumidity2M != null) {
-      map['relativehumidity_2m'] = relativehumidity2M;
+      map[CurrentParameters.relativehumidity2M.value] = relativehumidity2M;
     }
 
     if (apparentTemperature != null) {
-      map['apparent_temperature'] = apparentTemperature;
+      map[CurrentParameters.apparentTemperature.value] = apparentTemperature;
     }
 
     if (isDay != null) {
-      map['isDay'] = isDay! ? 1 : 0;
+      map[CurrentParameters.isDay.value] = isDay! ? 1 : 0;
     }
 
     if (precipitation != null) {
-      map['precipitation'] = precipitation;
+      map[CurrentParameters.precipitation.value] = precipitation;
     }
 
     if (rain != null) {
-      map['rain'] = rain;
+      map[CurrentParameters.rain.value] = rain;
     }
 
     if (snowfall != null) {
-      map['snowfall'] = snowfall;
+      map[CurrentParameters.snowfall.value] = snowfall;
     }
 
     if (weathercode != null) {
-      map['weathercode'] = weathercode;
+      map[CurrentParameters.weathercode.value] = weathercode;
     }
 
     if (cloudcover != null) {
-      map['cloudcover'] = cloudcover;
+      map[CurrentParameters.cloudcover.value] = cloudcover;
     }
 
     if (pressureMsl != null) {
-      map['pressure_msl'] = pressureMsl;
+      map[CurrentParameters.pressureMsl.value] = pressureMsl;
     }
 
     if (surfacePressure != null) {
-      map['surface_pressure'] = surfacePressure;
+      map[CurrentParameters.surfacePressure.value] = surfacePressure;
     }
 
     if (windspeed10M != null) {
-      map['windspeed_10m'] = windspeed10M;
+      map[CurrentParameters.windspeed10M.value] = windspeed10M;
     }
 
     if (winddirection10M != null) {
-      map['winddirection_10m'] = winddirection10M;
+      map[CurrentParameters.winddirection10M.value] = winddirection10M;
     }
 
     if (windgusts10M != null) {
-      map['windgusts_10m'] = windgusts10M;
+      map[CurrentParameters.windgusts10M.value] = windgusts10M;
     }
 
     return map;
@@ -189,42 +204,53 @@ class CurrentUnits {
     return CurrentUnits(
       time: json['time'] as String,
       interval: json['interval'] as String,
-      temperature2M: json.containsKey('temperature_2m')
-          ? json['temperature_2m'] as String
+      temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
+          ? json[CurrentParameters.temperature2M.value] as String
           : null,
-      relativehumidity2M: json.containsKey('relativehumidity_2m')
-          ? json['relativehumidity_2m'] as String
+      relativehumidity2M:
+          json.containsKey(CurrentParameters.relativehumidity2M.value)
+              ? json[CurrentParameters.relativehumidity2M.value] as String
+              : null,
+      apparentTemperature:
+          json.containsKey(CurrentParameters.apparentTemperature.value)
+              ? json[CurrentParameters.apparentTemperature.value] as String
+              : null,
+      isDay: json.containsKey(CurrentParameters.isDay.value)
+          ? json[CurrentParameters.isDay.value] as String
           : null,
-      apparentTemperature: json.containsKey('apparent_temperature')
-          ? json['apparent_temperature'] as String
+      precipitation: json.containsKey(CurrentParameters.precipitation.value)
+          ? json[CurrentParameters.precipitation.value] as String
           : null,
-      isDay: json.containsKey('is_day') ? json['is_day'] as String : null,
-      precipitation: json.containsKey('precipitation')
-          ? json['precipitation'] as String
+      rain: json.containsKey(CurrentParameters.rain.value)
+          ? json[CurrentParameters.rain.value] as String
           : null,
-      rain: json.containsKey('rain') ? json['rain'] as String : null,
-      showers: json.containsKey('showers') ? json['showers'] as String : null,
-      snowfall:
-          json.containsKey('snowfall') ? json['snowfall'] as String : null,
-      weathercode: json.containsKey('weathercode')
-          ? json['weathercode'] as String
+      showers: json.containsKey(CurrentParameters.showers.value)
+          ? json[CurrentParameters.showers.value] as String
           : null,
-      cloudcover:
-          json.containsKey('cloudcover') ? json['cloudcover'] as String : null,
-      pressureMsl: json.containsKey('pressure_msl')
-          ? json['pressure_msl'] as String
+      snowfall: json.containsKey(CurrentParameters.snowfall.value)
+          ? json[CurrentParameters.snowfall.value] as String
           : null,
-      surfacePressure: json.containsKey('surface_pressure')
-          ? json['surface_pressure'] as String
+      weathercode: json.containsKey(CurrentParameters.weathercode.value)
+          ? json[CurrentParameters.weathercode.value] as String
           : null,
-      windspeed10M: json.containsKey('windspeed_10m')
-          ? json['windspeed_10m'] as String
+      cloudcover: json.containsKey(CurrentParameters.cloudcover.value)
+          ? json[CurrentParameters.cloudcover.value] as String
           : null,
-      winddirection10M: json.containsKey('winddirection_10m')
-          ? json['winddirection_10m'] as String
+      pressureMsl: json.containsKey(CurrentParameters.pressureMsl.value)
+          ? json[CurrentParameters.pressureMsl.value] as String
           : null,
-      windgusts10M: json.containsKey('windgusts_10m')
-          ? json['windgusts_10m'] as String
+      surfacePressure: json.containsKey(CurrentParameters.surfacePressure.value)
+          ? json[CurrentParameters.surfacePressure.value] as String
+          : null,
+      windspeed10M: json.containsKey(CurrentParameters.windspeed10M.value)
+          ? json[CurrentParameters.windspeed10M.value] as String
+          : null,
+      winddirection10M:
+          json.containsKey(CurrentParameters.winddirection10M.value)
+              ? json[CurrentParameters.winddirection10M.value] as String
+              : null,
+      windgusts10M: json.containsKey(CurrentParameters.windgusts10M.value)
+          ? json[CurrentParameters.windgusts10M.value] as String
           : null,
     );
   }
@@ -236,63 +262,63 @@ class CurrentUnits {
     };
 
     if (temperature2M != null) {
-      map['temperature_2m'] = temperature2M;
+      map[CurrentParameters.temperature2M.value] = temperature2M;
     }
 
     if (relativehumidity2M != null) {
-      map['relativehumidity_2m'] = relativehumidity2M;
+      map[CurrentParameters.relativehumidity2M.value] = relativehumidity2M;
     }
 
     if (apparentTemperature != null) {
-      map['apparent_temperature'] = apparentTemperature;
+      map[CurrentParameters.apparentTemperature.value] = apparentTemperature;
     }
 
     if (isDay != null) {
-      map['is_day'] = isDay;
+      map[CurrentParameters.isDay.value] = isDay;
     }
 
     if (precipitation != null) {
-      map['precipitation'] = precipitation;
+      map[CurrentParameters.precipitation.value] = precipitation;
     }
 
     if (rain != null) {
-      map['rain'] = rain;
+      map[CurrentParameters.rain.value] = rain;
     }
 
     if (showers != null) {
-      map['showers'] = showers;
+      map[CurrentParameters.showers.value] = showers;
     }
 
     if (snowfall != null) {
-      map['snowfall'] = snowfall;
+      map[CurrentParameters.snowfall.value] = snowfall;
     }
 
     if (weathercode != null) {
-      map['weathercode'] = weathercode;
+      map[CurrentParameters.weathercode.value] = weathercode;
     }
 
     if (cloudcover != null) {
-      map['cloudcover'] = cloudcover;
+      map[CurrentParameters.cloudcover.value] = cloudcover;
     }
 
     if (pressureMsl != null) {
-      map['pressure_msl'] = pressureMsl;
+      map[CurrentParameters.pressureMsl.value] = pressureMsl;
     }
 
     if (surfacePressure != null) {
-      map['surface_pressure'] = surfacePressure;
+      map[CurrentParameters.surfacePressure.value] = surfacePressure;
     }
 
     if (windspeed10M != null) {
-      map['windspeed_10m'] = windspeed10M;
+      map[CurrentParameters.windspeed10M.value] = windspeed10M;
     }
 
     if (winddirection10M != null) {
-      map['winddirection_10m'] = winddirection10M;
+      map[CurrentParameters.winddirection10M.value] = winddirection10M;
     }
 
     if (windgusts10M != null) {
-      map['windgusts_10m'] = windgusts10M;
+      map[CurrentParameters.windgusts10M.value] = windgusts10M;
     }
 
     return map;

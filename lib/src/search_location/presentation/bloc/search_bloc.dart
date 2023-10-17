@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'search_event.dart';
 part 'search_state.dart';
 
-class SearchBloc extends Bloc<SearchEvent, SearchStateUpdate> {
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SearchLocation _searchLocation;
   SearchBloc({required SearchLocation searchLocation})
       : _searchLocation = searchLocation,
@@ -15,13 +15,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchStateUpdate> {
   }
 
   Future<void> _handleSearchInput(
-      SearchEventInput event, Emitter<SearchStateUpdate> emit) async {
+      SearchEventInput event, Emitter<SearchState> emit) async {
     if (event.input.isEmpty) {
       emit(const SearchStateUpdate(results: []));
     } else {
+      emit(const SearchStateSearching());
       final result = await _searchLocation(SearchLocationParams(
           name: event.input, count: 10, languageCode: 'en'));
-      result.fold((l) {}, (r) {
+      result.fold((l) {
+        emit(const SearchStateUpdate(results: []));
+      }, (r) {
         emit(SearchStateUpdate(results: r.results));
       });
     }

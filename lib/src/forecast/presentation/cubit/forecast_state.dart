@@ -15,14 +15,16 @@ class ForecastStateLoading extends ForecastState {
 }
 
 class ForecastStateLoaded extends ForecastState {
+  final UserLocation userLocation;
   final Forecast forecast;
 
   const ForecastStateLoaded({
     required this.forecast,
+    required this.userLocation,
   });
 
   @override
-  List<Object?> get props => [forecast];
+  List<Object?> get props => [forecast, userLocation];
 }
 
 class ForecastStateError extends ForecastState {

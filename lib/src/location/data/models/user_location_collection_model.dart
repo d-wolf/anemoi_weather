@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:anemoi_weather/src/core/utils/typedef.dart';
 import 'package:anemoi_weather/src/location/data/models/user_location_model.dart';
-import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
 import 'package:anemoi_weather/src/location/domain/entities/user_location_collection.dart';
 
 class UserLocationCollectionModel extends UserLocationCollection {

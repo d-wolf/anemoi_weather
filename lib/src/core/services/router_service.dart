@@ -1,6 +1,5 @@
 import 'package:anemoi_weather/src/core/services/injection_container.dart';
 import 'package:anemoi_weather/src/forecast/presentation/page/forecast_page.dart';
-import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/location/presentation/page/location_page.dart';
 import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
@@ -56,12 +55,9 @@ class RouteGenerator {
         );
       case Routes.locationPage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<LocationCubit>(
-            create: (_) => sl()..loadSavedLocations(),
-            child: BlocProvider<SearchBloc>(
-              create: (_) => sl(),
-              child: const LocationPage(),
-            ),
+          builder: (_) => BlocProvider<SearchBloc>(
+            create: (_) => sl(),
+            child: const LocationPage(),
           ),
           settings: settings,
         );

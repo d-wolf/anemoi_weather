@@ -29,10 +29,11 @@ class LocationCubit extends Cubit<LocationState> {
         _selectLocation = selectLocation,
         super(const LocationStateLoading());
 
-  Future<void> loadSavedLocations() async {
+  Future<void> init() async {
     final result = await _getAllLocations();
-    result.fold((l) => emit(const LocationStateError()),
-        (r) => emit(LocationsStateLoaded(collection: r)));
+    result.fold((l) => emit(const LocationStateError()), (r) {
+      emit(LocationsStateLoaded(collection: r));
+    });
   }
 
   Future<void> addLocation(GeocodingSearchResult value) async {
@@ -44,19 +45,22 @@ class LocationCubit extends Cubit<LocationState> {
       tag: '${value.country}, ${value.admin1}',
     ));
 
-    result.fold((l) => emit(const LocationStateError()),
-        (r) => emit(LocationsStateLoaded(collection: r)));
+    result.fold((l) => emit(const LocationStateError()), (r) {
+      emit(LocationsStateLoaded(collection: r));
+    });
   }
 
   Future<void> deleteLocation(UserLocation value) async {
     final result = await _deleteLocation(value);
-    result.fold((l) => emit(const LocationStateError()),
-        (r) => emit(LocationsStateLoaded(collection: r)));
+    result.fold((l) => emit(const LocationStateError()), (r) {
+      emit(LocationsStateLoaded(collection: r));
+    });
   }
 
   Future<void> selectLocation(UserLocation value) async {
     final result = await _selectLocation(value);
-    result.fold((l) => emit(const LocationStateError()),
-        (r) => emit(LocationsStateLoaded(collection: r)));
+    result.fold((l) => emit(const LocationStateError()), (r) {
+      emit(LocationsStateLoaded(collection: r));
+    });
   }
 }

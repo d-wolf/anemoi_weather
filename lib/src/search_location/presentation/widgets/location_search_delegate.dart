@@ -53,7 +53,7 @@ class LocationSearchDelegate extends SearchDelegate {
     return BlocProvider.value(
       value: bloc,
       child: Builder(builder: (context) {
-        return BlocBuilder<SearchBloc, SearchStateUpdate>(
+        return BlocBuilder<SearchBloc, SearchState>(
           builder: (context, state) {
             switch (state) {
               case SearchStateSearching():

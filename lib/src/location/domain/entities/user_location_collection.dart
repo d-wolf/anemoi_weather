@@ -5,6 +5,10 @@ class UserLocationCollection {
   List<UserLocation> locations;
 
   bool get isEmpty => locations.isEmpty;
+  bool get isNotEmpty => locations.isNotEmpty;
+
+  UserLocation get selected =>
+      locations.firstWhere((element) => element.uuid == selectedUuid);
 
   UserLocationCollection({
     this.selectedUuid,

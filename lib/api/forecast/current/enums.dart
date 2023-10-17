@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/forecast/api_strings.dart';
 
 enum CurrentParameters {
   temperature2M(ApiStrings.temperature2M),

@@ -1,7 +1,10 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/current/enums.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly/enums.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/remote_data_source.dart';
+import 'dart:io';
+
+import 'package:anemoi_weather/api/forecast/current/enums.dart';
+import 'package:anemoi_weather/api/forecast/forecast.dart';
+import 'package:anemoi_weather/api/forecast/hourly/enums.dart';
+import 'package:anemoi_weather/api/forecast/forecast_remote_data_source.dart';
+import 'package:anemoi_weather/api/geocoding/geocoding_remote_data_source.dart';
 import 'package:anemoi_weather/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:system_theme/system_theme.dart';
@@ -12,9 +15,13 @@ Future<void> main() async {
   final accentColor = SystemTheme.accentColor.accent;
 
   // berlin: 52.5200° N, 13.4050° E
-  final rds = RemoteDataSource();
+  final fcDataSource = ForecastRemoteDataSource();
+  final geoDataSource = GeocodingRemoteDataSource();
 
-  final data = await rds.getForecast(52.5200, 13.4050, current: [
+  final String defaultLocale = Platform.localeName.split('_').first;
+  final result = geoDataSource.search('Ber', 10, defaultLocale);
+
+  final data = await fcDataSource.getForecast(52.5200, 13.4050, current: [
     CurrentParameters.temperature2M,
     CurrentParameters.windspeed10M,
     CurrentParameters.relativehumidity2M,

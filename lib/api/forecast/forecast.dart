@@ -1,10 +1,10 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/current/current.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/current/current_units.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/daily/daily.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/daily/daily_units.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly/hourly.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly/hourly_units.dart';
+import 'package:anemoi_weather/api/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/forecast/current/current.dart';
+import 'package:anemoi_weather/api/forecast/current/current_units.dart';
+import 'package:anemoi_weather/api/forecast/daily/daily.dart';
+import 'package:anemoi_weather/api/forecast/daily/daily_units.dart';
+import 'package:anemoi_weather/api/forecast/hourly/hourly.dart';
+import 'package:anemoi_weather/api/forecast/hourly/hourly_units.dart';
 
 class Forecast {
   final double latitude;

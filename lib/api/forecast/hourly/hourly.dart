@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly/enums.dart';
+import 'package:anemoi_weather/api/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/forecast/hourly/enums.dart';
 
 class Hourly {
   final List<DateTime> time;

@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/current/enums.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/daily/enums.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly/enums.dart';
+import 'package:anemoi_weather/api/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/forecast/current/enums.dart';
+import 'package:anemoi_weather/api/forecast/daily/enums.dart';
+import 'package:anemoi_weather/api/forecast/enums.dart';
+import 'package:anemoi_weather/api/forecast/forecast.dart';
+import 'package:anemoi_weather/api/forecast/hourly/enums.dart';
 import 'package:http/http.dart' as http;
 
-class RemoteDataSource {
+class ForecastRemoteDataSource {
   final String baseUrl = 'api.open-meteo.com';
   final String endpoint = 'v1/forecast';
 

@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
+import 'package:anemoi_weather/api/forecast/forecast.dart';
 import 'package:anemoi_weather/constants/app_colors.dart';
 import 'package:anemoi_weather/constants/app_style.dart';
 import 'package:anemoi_weather/constants/constants.dart';

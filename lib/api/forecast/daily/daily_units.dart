@@ -1,5 +1,5 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/daily/enums.dart';
+import 'package:anemoi_weather/api/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/forecast/daily/enums.dart';
 
 class DailyUnits {
   final String time;

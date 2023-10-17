@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
+import 'package:anemoi_weather/api/forecast/forecast.dart';
 import 'package:anemoi_weather/widgets/today_tab_widget.dart';
 import 'package:flutter/material.dart';
 

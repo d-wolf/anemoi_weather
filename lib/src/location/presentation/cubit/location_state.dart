@@ -7,26 +7,24 @@ sealed class LocationState extends Equatable {
   List<Object?> get props => [];
 }
 
-final class HasNoSavedLocationState extends LocationState {
-  const HasNoSavedLocationState();
+final class LocationStateLoading extends LocationState {
+  const LocationStateLoading();
 
   @override
   List<Object?> get props => [];
 }
 
-final class LocationsLoadedState extends LocationState {
-  final int selectedId;
-  final List<GeocodingSearchResult> locations;
+final class LocationsStateLoaded extends LocationState {
+  final UserLocationCollection collection;
 
-  const LocationsLoadedState(
-      {required this.selectedId, required this.locations});
+  const LocationsStateLoaded({required this.collection});
 
   @override
-  List<Object?> get props => [selectedId, locations];
+  List<Object?> get props => [collection];
 }
 
-final class ErrorLocationState extends LocationState {
-  const ErrorLocationState();
+final class LocationStateError extends LocationState {
+  const LocationStateError();
 
   @override
   List<Object?> get props => [];

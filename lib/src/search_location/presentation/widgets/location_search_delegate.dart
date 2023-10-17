@@ -51,19 +51,27 @@ class LocationSearchDelegate extends SearchDelegate {
       child: Builder(builder: (context) {
         return BlocBuilder<SearchBloc, SearchStateUpdate>(
           builder: (context, state) {
-            return ListView.builder(
-              itemCount: state.results.length,
-              itemBuilder: (context, index) {
-                final result = state.results[index];
-                return ListTile(
-                  title: Text(result.name),
-                  subtitle: Text('${result.country}, ${result.admin1}'),
-                  onTap: () {
-                    searchSelectionCallback?.call(result);
+            switch (state) {
+              case SearchStateSearching():
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              case SearchStateUpdate(results: final results):
+                return ListView.builder(
+                  itemCount: results.length,
+                  itemBuilder: (context, index) {
+                    final result = results[index];
+                    return ListTile(
+                      title: Text(result.name),
+                      subtitle: Text('${result.country}, ${result.admin1}'),
+                      onTap: () {
+                        searchSelectionCallback?.call(result);
+                        Navigator.of(context).pop();
+                      },
+                    );
                   },
                 );
-              },
-            );
+            }
           },
         );
       }),

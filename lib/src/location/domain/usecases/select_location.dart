@@ -4,14 +4,14 @@ import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
 import 'package:anemoi_weather/src/location/domain/entities/user_location_collection.dart';
 import 'package:anemoi_weather/src/location/domain/repositories/user_locations_repository.dart';
 
-class DeleteLocation
+class SelectLocation
     extends UsecaseWithParams<UserLocationCollection, UserLocation> {
   final UserLocationsRepository _repo;
 
-  DeleteLocation(this._repo);
+  SelectLocation(this._repo);
 
   @override
   ResultFuture<UserLocationCollection> call(UserLocation params) async {
-    return _repo.delete(params);
+    return _repo.setSelected(params);
   }
 }

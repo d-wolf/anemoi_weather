@@ -16,16 +16,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchStateUpdate> {
 
   Future<void> _handleSearchInput(
       SearchEventInput event, Emitter<SearchStateUpdate> emit) async {
-    print('_handleSearchInput');
-
     if (event.input.isEmpty) {
       emit(const SearchStateUpdate(results: []));
     } else {
       final result = await _searchLocation(SearchLocationParams(
           name: event.input, count: 10, languageCode: 'en'));
-      result.fold((l) {
-        print(l);
-      }, (r) {
+      result.fold((l) {}, (r) {
         emit(SearchStateUpdate(results: r.results));
       });
     }

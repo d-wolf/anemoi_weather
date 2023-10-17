@@ -17,25 +17,7 @@ class _LocationPageState extends State<LocationPage> {
     return BlocBuilder<LocationCubit, LocationState>(
       builder: (context, state) {
         switch (state) {
-          case LocationsLoadedState loaded:
-            return Scaffold(
-              appBar: AppBar(),
-              body: ListView.builder(
-                  itemCount: loaded.locations.length,
-                  itemBuilder: (context, index) {
-                    final location = loaded.locations[index];
-                    return ListTile(
-                      selected: location.id == loaded.selectedId,
-                      title: Text(location.name),
-                    );
-                  }),
-            );
-          case ErrorLocationState():
-            return Scaffold(
-              appBar: AppBar(),
-              body: const Center(child: Text('ERROR')),
-            );
-          case HasNoSavedLocationState():
+          case LocationsStateLoaded loaded:
             return Scaffold(
               appBar: AppBar(
                 actions: [
@@ -55,11 +37,32 @@ class _LocationPageState extends State<LocationPage> {
                       icon: const Icon(Icons.search))
                 ],
               ),
-              body: const Column(
-                children: [
-                  Center(child: Text('HasNoSavedLocationState')),
-                ],
-              ),
+              body: ListView.builder(
+                  itemCount: loaded.collection.locations.length,
+                  itemBuilder: (context, index) {
+                    final location = loaded.collection.locations[index];
+                    return ListTile(
+                      selected: location.uuid == loaded.collection.selectedUuid,
+                      trailing: location.uuid == loaded.collection.selectedUuid
+                          ? const Icon(Icons.check)
+                          : const SizedBox(),
+                      title: Text(location.name),
+                      subtitle: Text(location.tag),
+                      onTap: () {
+                        context.read<LocationCubit>().selectLocation(location);
+                      },
+                    );
+                  }),
+            );
+          case LocationStateError():
+            return Scaffold(
+              appBar: AppBar(),
+              body: const Center(child: Text('ERROR')),
+            );
+          case LocationStateLoading():
+            return Scaffold(
+              appBar: AppBar(),
+              body: const Center(child: CircularProgressIndicator()),
             );
         }
       },

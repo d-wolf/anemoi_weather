@@ -1,31 +1,17 @@
 import 'package:anemoi_weather/src/core/usecase/usecase.dart';
 import 'package:anemoi_weather/src/core/utils/typedef.dart';
-import 'package:anemoi_weather/src/search_location/domain/entities/geocoding_search_results.dart';
-import 'package:anemoi_weather/src/location/domain/repositories/saved_locations_repository.dart';
-import 'package:equatable/equatable.dart';
+import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
+import 'package:anemoi_weather/src/location/domain/entities/user_location_collection.dart';
+import 'package:anemoi_weather/src/location/domain/repositories/user_locations_repository.dart';
 
-class AddLocation extends UsecaseWithParams<void, GeocodingSearchResult> {
-  final SavedLocationsRepository _repo;
+class AddLocation
+    extends UsecaseWithParams<UserLocationCollection, UserLocation> {
+  final UserLocationsRepository _repo;
 
   AddLocation(this._repo);
 
   @override
-  ResultFuture<void> call(GeocodingSearchResult params) async {
-    return _repo.addOrUpdate(params);
+  ResultFuture<UserLocationCollection> call(UserLocation params) async {
+    return _repo.add(params);
   }
-}
-
-class SearchLocationParams extends Equatable {
-  final String name;
-  final int count;
-  final String languageCode;
-
-  const SearchLocationParams({
-    required this.name,
-    required this.count,
-    required this.languageCode,
-  });
-
-  @override
-  List<Object?> get props => [];
 }

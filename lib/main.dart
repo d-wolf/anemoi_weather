@@ -1,5 +1,6 @@
-import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/current/enums.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/hourly/enums.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/remote_data_source.dart';
 import 'package:anemoi_weather/pages/home.dart';
 import 'package:flutter/material.dart';

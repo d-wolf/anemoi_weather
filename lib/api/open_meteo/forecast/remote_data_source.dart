@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/current/enums.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/daily/enums.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/forecast.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/hourly/enums.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteDataSource {
@@ -13,7 +16,7 @@ class RemoteDataSource {
       {TimeZone tz = TimeZone.auto,
       List<CurrentParameters> current = const [],
       List<HourlyParameters> hourly = const [],
-      List<HourlyParameters> daily = const []}) async {
+      List<DailyParameters> daily = const []}) async {
     final queryParams = <String, dynamic>{
       ApiStrings.timeformat: 'unixtime',
       ApiStrings.timezone: '$tz',

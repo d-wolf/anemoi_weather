@@ -1,7 +1,10 @@
 import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/current.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/daily.dart';
-import 'package:anemoi_weather/api/open_meteo/forecast/hourly.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/current/current.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/current/current_units.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/daily/daily.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/daily/daily_units.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/hourly/hourly.dart';
+import 'package:anemoi_weather/api/open_meteo/forecast/hourly/hourly_units.dart';
 
 class Forecast {
   final double latitude;
@@ -38,11 +41,11 @@ class Forecast {
     return Forecast(
       latitude: json[ApiStrings.latitude] as double,
       longitude: json[ApiStrings.longitude] as double,
-      generationtimeMs: json['generationtime_ms'] as double,
-      utcOffsetSeconds: json['utc_offset_seconds'] as int,
+      generationtimeMs: json[ApiStrings.generationtimeMs] as double,
+      utcOffsetSeconds: json[ApiStrings.utcOffsetSeconds] as int,
       timezone: json[ApiStrings.timezone] as String,
-      timezoneAbbreviation: json['timezone_abbreviation'] as String,
-      elevation: json['elevation'] as double,
+      timezoneAbbreviation: json[ApiStrings.timezoneAbbreviation] as String,
+      elevation: json[ApiStrings.elevation] as double,
       currentUnits: json.containsKey(ApiStrings.currentUnits)
           ? CurrentUnits.fromJson(json[ApiStrings.currentUnits])
           : null,
@@ -66,37 +69,37 @@ class Forecast {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{
-      'latitude': latitude,
-      'longitude': longitude,
-      'generationtime_ms': generationtimeMs,
-      'utc_offset_seconds': utcOffsetSeconds,
-      'timezone': timezone,
-      'timezoneAbbreviation': timezoneAbbreviation,
-      'elevation': elevation,
+      ApiStrings.latitude: latitude,
+      ApiStrings.longitude: longitude,
+      ApiStrings.generationtimeMs: generationtimeMs,
+      ApiStrings.utcOffsetSeconds: utcOffsetSeconds,
+      ApiStrings.timezone: timezone,
+      ApiStrings.timezoneAbbreviation: timezoneAbbreviation,
+      ApiStrings.elevation: elevation,
     };
 
     if (currentUnits != null) {
-      map['current_units'] = currentUnits!.toJson();
+      map[ApiStrings.currentUnits] = currentUnits!.toJson();
     }
 
     if (current != null) {
-      map['current'] = current!.toJson();
+      map[ApiStrings.current] = current!.toJson();
     }
 
     if (hourlyUnits != null) {
-      map['hourly_units'] = hourlyUnits!.toJson();
+      map[ApiStrings.hourlyUnits] = hourlyUnits!.toJson();
     }
 
     if (hourly != null) {
-      map['hourly'] = hourly!.toJson();
+      map[ApiStrings.hourly] = hourly!.toJson();
     }
 
     if (dailyUnits != null) {
-      map['daily_units'] = dailyUnits!.toJson();
+      map[ApiStrings.dailyUnits] = dailyUnits!.toJson();
     }
 
     if (hourly != null) {
-      map['daily'] = daily!.toJson();
+      map[ApiStrings.daily] = daily!.toJson();
     }
 
     return map;

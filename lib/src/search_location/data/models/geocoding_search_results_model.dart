@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:anemoi_weather/src/location/data/api_strings.dart';
-import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
+import 'package:anemoi_weather/src/search_location/data/api_strings.dart';
+import 'package:anemoi_weather/src/search_location/domain/entities/geocoding_search_results.dart';
 
 class GeocodingSearchResultsModel extends GeocodingSearchResults {
   const GeocodingSearchResultsModel({

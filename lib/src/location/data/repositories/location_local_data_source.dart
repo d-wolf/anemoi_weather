@@ -1,6 +1,6 @@
 import 'package:anemoi_weather/src/core/utils/typedef.dart';
 import 'package:anemoi_weather/src/location/data/datasources/location_local_data_source.dart';
-import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
+import 'package:anemoi_weather/src/search_location/domain/entities/geocoding_search_results.dart';
 import 'package:anemoi_weather/src/location/domain/failures/failure.dart';
 import 'package:anemoi_weather/src/location/domain/repositories/saved_locations_repository.dart';
 import 'package:dartz/dartz.dart';

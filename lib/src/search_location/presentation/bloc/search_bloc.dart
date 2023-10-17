@@ -1,5 +1,5 @@
-import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
-import 'package:anemoi_weather/src/location/domain/usecases/search_location.dart';
+import 'package:anemoi_weather/src/search_location/domain/entities/geocoding_search_results.dart';
+import 'package:anemoi_weather/src/search_location/domain/usecases/search_location.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

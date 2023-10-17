@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:anemoi_weather/src/location/data/models/geocoding_search_results_model.dart';
-import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
+import 'package:anemoi_weather/src/search_location/data/models/geocoding_search_results_model.dart';
+import 'package:anemoi_weather/src/search_location/domain/entities/geocoding_search_results.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LocationsLocalDataSource {

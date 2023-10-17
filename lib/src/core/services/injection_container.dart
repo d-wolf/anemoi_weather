@@ -10,6 +10,7 @@ import 'package:anemoi_weather/src/location/domain/repositories/selected_locatio
 import 'package:anemoi_weather/src/location/domain/usecases/get_saved_locations_or_empty.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/get_selected_location.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/search_location.dart';
+import 'package:anemoi_weather/src/location/presentation/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +19,8 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
+  sl.registerFactory(() => SearchBloc(searchLocation: sl()));
+
   sl.registerFactory(() => LocationCubit(
       getSavedLocations: sl(),
       getSelectedLocation: sl(),

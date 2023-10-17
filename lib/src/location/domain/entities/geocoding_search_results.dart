@@ -1,14 +1,19 @@
-class GeocodingSearchResults {
+import 'package:equatable/equatable.dart';
+
+class GeocodingSearchResults extends Equatable {
   final List<GeocodingSearchResult> results;
   final double generationtimeMs;
 
-  GeocodingSearchResults({
-    required this.results,
+  const GeocodingSearchResults({
+    this.results = const [],
     required this.generationtimeMs,
   });
+
+  @override
+  List<Object?> get props => [results, generationtimeMs];
 }
 
-class GeocodingSearchResult {
+class GeocodingSearchResult extends Equatable {
   final int id;
   final String name;
   final double latitude;
@@ -30,7 +35,7 @@ class GeocodingSearchResult {
   final int countryId;
   final String country;
 
-  GeocodingSearchResult({
+  const GeocodingSearchResult({
     required this.id,
     required this.name,
     required this.latitude,
@@ -52,4 +57,7 @@ class GeocodingSearchResult {
     this.population,
     this.postcodes = const [],
   });
+
+  @override
+  List<Object?> get props => [id];
 }

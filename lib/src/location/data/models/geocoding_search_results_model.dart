@@ -4,16 +4,18 @@ import 'package:anemoi_weather/src/location/data/api_strings.dart';
 import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
 
 class GeocodingSearchResultsModel extends GeocodingSearchResults {
-  GeocodingSearchResultsModel({
-    required super.results,
+  const GeocodingSearchResultsModel({
+    super.results,
     required super.generationtimeMs,
   });
 
   factory GeocodingSearchResultsModel.fromJson(Map<String, dynamic> json) {
     return GeocodingSearchResultsModel(
-      results: List<dynamic>.from(json[ApiStrings.results])
-          .map((e) => GeocodingSearchResultModel.fromJson(e))
-          .toList(),
+      results: json.containsKey(ApiStrings.results)
+          ? List<dynamic>.from(json[ApiStrings.results])
+              .map((e) => GeocodingSearchResultModel.fromJson(e))
+              .toList()
+          : [],
       generationtimeMs: json[ApiStrings.generationtimeMs],
     );
   }
@@ -27,7 +29,7 @@ class GeocodingSearchResultsModel extends GeocodingSearchResults {
 }
 
 class GeocodingSearchResultModel extends GeocodingSearchResult {
-  GeocodingSearchResultModel({
+  const GeocodingSearchResultModel({
     required super.id,
     required super.name,
     required super.latitude,

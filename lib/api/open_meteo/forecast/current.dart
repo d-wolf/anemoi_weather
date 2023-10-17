@@ -1,3 +1,4 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
 
 class Current {
@@ -41,9 +42,10 @@ class Current {
 
   factory Current.fromJson(Map<String, dynamic> json) {
     return Current(
-      time: DateTime.fromMillisecondsSinceEpoch((json['time'] as int) * 1000,
+      time: DateTime.fromMillisecondsSinceEpoch(
+          (json[ApiStrings.time] as int) * 1000,
           isUtc: true),
-      interval: json['interval'] as int,
+      interval: json[ApiStrings.interval] as int,
       temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
           ? json[CurrentParameters.temperature2M.value] as double
           : null,
@@ -97,8 +99,8 @@ class Current {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{
-      'time': time.millisecondsSinceEpoch ~/ 1000,
-      'interval': interval,
+      ApiStrings.time: time.millisecondsSinceEpoch ~/ 1000,
+      ApiStrings.interval: interval,
     };
 
     if (temperature2M != null) {
@@ -202,8 +204,8 @@ class CurrentUnits {
 
   factory CurrentUnits.fromJson(Map<String, dynamic> json) {
     return CurrentUnits(
-      time: json['time'] as String,
-      interval: json['interval'] as String,
+      time: json[ApiStrings.time] as String,
+      interval: json[ApiStrings.interval] as String,
       temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
           ? json[CurrentParameters.temperature2M.value] as String
           : null,
@@ -257,8 +259,8 @@ class CurrentUnits {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{
-      'time': time,
-      'interval': interval,
+      ApiStrings.time: time,
+      ApiStrings.interval: interval,
     };
 
     if (temperature2M != null) {

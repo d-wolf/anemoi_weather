@@ -1,6 +1,8 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
+
 enum TimeZone {
-  auto('auto'),
-  europeBerlin('Europe/Berlin');
+  auto(ApiStrings.timezoneAuto),
+  europeBerlin(ApiStrings.timezoneEuropeBerlin);
 
   const TimeZone(this.value);
 
@@ -18,21 +20,21 @@ enum TimeZone {
 }
 
 enum CurrentParameters {
-  temperature2M('temperature_2m'),
-  relativehumidity2M('relativehumidity_2m'),
-  apparentTemperature('apparent_temperature'),
-  isDay('is_day'),
-  precipitation('precipitation'),
-  rain('rain'),
-  showers('showers'),
-  snowfall('snowfall'),
-  weathercode('weathercode'),
-  cloudcover('cloudcover'),
-  pressureMsl('pressure_msl'),
-  surfacePressure('surface_pressure'),
-  windspeed10M('windspeed_10m'),
-  winddirection10M('winddirection_10m'),
-  windgusts10M('windgusts_10m');
+  temperature2M(ApiStrings.temperature2M),
+  relativehumidity2M(ApiStrings.relativehumidity2M),
+  apparentTemperature(ApiStrings.apparentTemperature),
+  isDay(ApiStrings.isDay),
+  precipitation(ApiStrings.precipitation),
+  rain(ApiStrings.rain),
+  showers(ApiStrings.showers),
+  snowfall(ApiStrings.snowfall),
+  weathercode(ApiStrings.weathercode),
+  cloudcover(ApiStrings.cloudcover),
+  pressureMsl(ApiStrings.pressureMsl),
+  surfacePressure(ApiStrings.surfacePressure),
+  windspeed10M(ApiStrings.windspeed10M),
+  winddirection10M(ApiStrings.winddirection10M),
+  windgusts10M(ApiStrings.windgusts10M);
 
   const CurrentParameters(this.value);
 
@@ -49,56 +51,56 @@ enum CurrentParameters {
   String toString() => value;
 }
 
-enum HourlyQueryParameters {
-  temperature2M('temperature_2m'),
-  relativehumidity2M('relativehumidity_2m'),
-  dewpoint2M('dewpoint_2m'),
-  apparentTemperature('apparent_temperature'),
-  precipitationProbability('precipitation_probability'),
-  precipitation('precipitation'),
-  rain('rain'),
-  showers('showers'),
-  snowfall('snowfall'),
-  snowDepth('snow_depth'),
-  weathercode('weathercode'),
-  pressureMsl('pressure_msl'),
-  surfacePressure('surface_pressure'),
-  cloudcover('cloudcover'),
-  cloudcoverLow('cloudcover_low'),
-  cloudcoverMid('cloudcover_mid'),
-  cloudcoverHigh('cloudcover_high'),
-  visibility('visibility'),
-  evapotranspiration('evapotranspiration'),
-  et0FaoEvapotranspiration('et0_fao_evapotranspiration'),
-  vaporPressureDeficit('vapor_pressure_deficit'),
-  windspeed10M('windspeed_10m'),
-  windspeed80M('windspeed_80m'),
-  windspeed120M('windspeed_120m'),
-  windspeed180M('windspeed_180m'),
-  winddirection10M('winddirection_10m'),
-  winddirection80M('winddirection_80m'),
-  winddirection120M('winddirection_120m'),
-  winddirection180M('winddirection_180m'),
-  windgusts10M('windgusts_10m'),
-  temperature80M('temperature_80m'),
-  temperature120M('temperature_120m'),
-  temperature180M('temperature_180m'),
-  soilTemperature0Cm('soil_temperature_0cm'),
-  soilTemperature6Cm('soil_temperature_6cm'),
-  soilTemperature18Cm('soil_temperature_18cm'),
-  soilTemperature54Cm('soil_temperature_54cm'),
-  soilMoisture0To1Cm('soil_moisture_0_to_1cm'),
-  soilMoisture1To3Cm('soil_moisture_1_to_3cm'),
-  soilMoisture3To9Cm('soil_moisture_3_to_9cm'),
-  soilMoisture9To27Cm('soil_moisture_9_to_27cm'),
-  soilMoisture27To81Cm('soil_moisture_27_to_81cm');
+enum HourlyParameters {
+  temperature2M(ApiStrings.temperature2M),
+  relativehumidity2M(ApiStrings.relativehumidity2M),
+  dewpoint2M(ApiStrings.dewpoint2M),
+  apparentTemperature(ApiStrings.apparentTemperature),
+  precipitationProbability(ApiStrings.precipitationProbability),
+  precipitation(ApiStrings.precipitation),
+  rain(ApiStrings.rain),
+  showers(ApiStrings.showers),
+  snowfall(ApiStrings.snowfall),
+  snowDepth(ApiStrings.snowDepth),
+  weathercode(ApiStrings.weathercode),
+  pressureMsl(ApiStrings.pressureMsl),
+  surfacePressure(ApiStrings.surfacePressure),
+  cloudcover(ApiStrings.cloudcover),
+  cloudcoverLow(ApiStrings.cloudcoverLow),
+  cloudcoverMid(ApiStrings.cloudcoverMid),
+  cloudcoverHigh(ApiStrings.cloudcoverHigh),
+  visibility(ApiStrings.visibility),
+  evapotranspiration(ApiStrings.evapotranspiration),
+  et0FaoEvapotranspiration(ApiStrings.et0FaoEvapotranspiration),
+  vaporPressureDeficit(ApiStrings.vaporPressureDeficit),
+  windspeed10M(ApiStrings.windspeed10M),
+  windspeed80M(ApiStrings.windspeed80M),
+  windspeed120M(ApiStrings.windspeed120M),
+  windspeed180M(ApiStrings.windspeed180M),
+  winddirection10M(ApiStrings.winddirection10M),
+  winddirection80M(ApiStrings.winddirection80M),
+  winddirection120M(ApiStrings.winddirection120M),
+  winddirection180M(ApiStrings.winddirection180M),
+  windgusts10M(ApiStrings.windgusts10M),
+  temperature80M(ApiStrings.temperature80M),
+  temperature120M(ApiStrings.temperature120M),
+  temperature180M(ApiStrings.temperature180M),
+  soilTemperature0Cm(ApiStrings.soilTemperature0Cm),
+  soilTemperature6Cm(ApiStrings.soilTemperature6Cm),
+  soilTemperature18Cm(ApiStrings.soilTemperature18Cm),
+  soilTemperature54Cm(ApiStrings.soilTemperature54Cm),
+  soilMoisture0To1Cm(ApiStrings.soilMoisture0To1Cm),
+  soilMoisture1To3Cm(ApiStrings.soilMoisture1To3Cm),
+  soilMoisture3To9Cm(ApiStrings.soilMoisture3To9Cm),
+  soilMoisture9To27Cm(ApiStrings.soilMoisture9To27Cm),
+  soilMoisture27To81Cm(ApiStrings.soilMoisture27To81Cm);
 
-  const HourlyQueryParameters(this.value);
+  const HourlyParameters(this.value);
 
-  factory HourlyQueryParameters.fromString(String value) {
+  factory HourlyParameters.fromString(String value) {
     return values.firstWhere(
       (e) => e.value == value,
-      orElse: () => HourlyQueryParameters.values.first,
+      orElse: () => HourlyParameters.values.first,
     );
   }
 
@@ -109,25 +111,25 @@ enum HourlyQueryParameters {
 }
 
 enum DailyParameters {
-  temperature2MMax('temperature_2m_max'),
-  temperature2MMin('temperature_2m_min'),
-  apparentTemperatureMax('apparent_temperature_max'),
-  apparentTemperatureMin('apparent_temperature_min'),
-  sunrise('sunrise'),
-  sunset('sunset'),
-  uvIndexMax('uv_index_max'),
-  uvIndexClearSkyMax('uv_index_clear_sky_max'),
-  precipitationSum('precipitation_sum'),
-  rainSum('rain_sum'),
-  showersSum('showers_sum'),
-  snowfallSum('snowfall_sum'),
-  precipitationHours('precipitation_hours'),
-  precipitationProbabilityMax('precipitation_probability_max'),
-  windspeed10MMax('windspeed_10m_max'),
-  windgusts10MMax('windgusts_10m_max'),
-  winddirection10MDominant('winddirection_10m_dominant'),
-  shortwaveRadiationSum('shortwave_radiation_sum'),
-  et0FaoEvapotranspiration('et0_fao_evapotranspiration');
+  temperature2MMax(ApiStrings.temperature2MMax),
+  temperature2MMin(ApiStrings.temperature2MMin),
+  apparentTemperatureMax(ApiStrings.apparentTemperatureMax),
+  apparentTemperatureMin(ApiStrings.apparentTemperatureMin),
+  sunrise(ApiStrings.sunrise),
+  sunset(ApiStrings.sunset),
+  uvIndexMax(ApiStrings.uvIndexMax),
+  uvIndexClearSkyMax(ApiStrings.uvIndexClearSkyMax),
+  precipitationSum(ApiStrings.precipitationSum),
+  rainSum(ApiStrings.rainSum),
+  showersSum(ApiStrings.showersSum),
+  snowfallSum(ApiStrings.snowfallSum),
+  precipitationHours(ApiStrings.precipitationHours),
+  precipitationProbabilityMax(ApiStrings.precipitationProbabilityMax),
+  windspeed10MMax(ApiStrings.windspeed10MMax),
+  windgusts10MMax(ApiStrings.windgusts10MMax),
+  winddirection10MDominant(ApiStrings.winddirection10MDominant),
+  shortwaveRadiationSum(ApiStrings.shortwaveRadiationSum),
+  et0FaoEvapotranspiration(ApiStrings.et0FaoEvapotranspiration);
 
   const DailyParameters(this.value);
 

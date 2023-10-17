@@ -70,8 +70,6 @@ class HourlyLineChart extends StatelessWidget {
         ),
         minY: _minY(spots).toDouble(),
         maxY: _maxY(spots).toDouble(),
-        // minX: 1,
-        // maxX: 23,
         gridData: FlGridData(
           show: true,
           getDrawingHorizontalLine: (value) {

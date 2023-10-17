@@ -20,12 +20,12 @@ Future<void> main() async {
     CurrentParameters.weathercode,
     CurrentParameters.precipitation,
   ], hourly: [
-    HourlyQueryParameters.temperature2M,
-    HourlyQueryParameters.windspeed10M,
-    HourlyQueryParameters.relativehumidity2M,
-    HourlyQueryParameters.weathercode,
-    HourlyQueryParameters.precipitation,
-    HourlyQueryParameters.precipitationProbability,
+    HourlyParameters.temperature2M,
+    HourlyParameters.windspeed10M,
+    HourlyParameters.relativehumidity2M,
+    HourlyParameters.weathercode,
+    HourlyParameters.precipitation,
+    HourlyParameters.precipitationProbability,
   ]);
 
   runApp(MyApp(

@@ -99,170 +99,153 @@ class Hourly {
           .map(
               (e) => DateTime.fromMillisecondsSinceEpoch(e * 1000, isUtc: true))
           .toList(),
-      temperature2M: json.containsKey(HourlyQueryParameters.temperature2M.value)
-          ? List<double>.from(json[HourlyQueryParameters.temperature2M.value])
+      temperature2M: json.containsKey(HourlyParameters.temperature2M.value)
+          ? List<double>.from(json[HourlyParameters.temperature2M.value])
           : [],
-      relativehumidity2M: json
-              .containsKey(HourlyQueryParameters.relativehumidity2M.value)
-          ? List<int>.from(json[HourlyQueryParameters.relativehumidity2M.value])
-          : [],
-      dewpoint2M: json.containsKey(HourlyQueryParameters.dewpoint2M.value)
-          ? List<double>.from(json[HourlyQueryParameters.dewpoint2M.value])
-          : [],
-      apparentTemperature:
-          json.containsKey(HourlyQueryParameters.apparentTemperature.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.apparentTemperature.value])
+      relativehumidity2M:
+          json.containsKey(HourlyParameters.relativehumidity2M.value)
+              ? List<int>.from(json[HourlyParameters.relativehumidity2M.value])
               : [],
+      dewpoint2M: json.containsKey(HourlyParameters.dewpoint2M.value)
+          ? List<double>.from(json[HourlyParameters.dewpoint2M.value])
+          : [],
+      apparentTemperature: json
+              .containsKey(HourlyParameters.apparentTemperature.value)
+          ? List<double>.from(json[HourlyParameters.apparentTemperature.value])
+          : [],
       precipitationProbability:
-          json.containsKey(HourlyQueryParameters.precipitationProbability.value)
+          json.containsKey(HourlyParameters.precipitationProbability.value)
               ? List<int>.from(
-                  json[HourlyQueryParameters.precipitationProbability.value])
+                  json[HourlyParameters.precipitationProbability.value])
               : [],
-      precipitation: json.containsKey(HourlyQueryParameters.precipitation.value)
-          ? List<double>.from(json[HourlyQueryParameters.precipitation.value])
+      precipitation: json.containsKey(HourlyParameters.precipitation.value)
+          ? List<double>.from(json[HourlyParameters.precipitation.value])
           : [],
-      rain: json.containsKey(HourlyQueryParameters.rain.value)
-          ? List<double>.from(json[HourlyQueryParameters.rain.value])
+      rain: json.containsKey(HourlyParameters.rain.value)
+          ? List<double>.from(json[HourlyParameters.rain.value])
           : [],
-      showers: json.containsKey(HourlyQueryParameters.showers.value)
-          ? List<double>.from(json[HourlyQueryParameters.showers.value])
+      showers: json.containsKey(HourlyParameters.showers.value)
+          ? List<double>.from(json[HourlyParameters.showers.value])
           : [],
-      snowfall: json.containsKey(HourlyQueryParameters.snowfall.value)
-          ? List<double>.from(json[HourlyQueryParameters.snowfall.value])
+      snowfall: json.containsKey(HourlyParameters.snowfall.value)
+          ? List<double>.from(json[HourlyParameters.snowfall.value])
           : [],
-      snowDepth: json.containsKey(HourlyQueryParameters.snowDepth.value)
-          ? List<double>.from(json[HourlyQueryParameters.snowDepth.value])
+      snowDepth: json.containsKey(HourlyParameters.snowDepth.value)
+          ? List<double>.from(json[HourlyParameters.snowDepth.value])
           : [],
-      weathercode: json.containsKey(HourlyQueryParameters.weathercode.value)
-          ? List<int>.from(json[HourlyQueryParameters.weathercode.value])
+      weathercode: json.containsKey(HourlyParameters.weathercode.value)
+          ? List<int>.from(json[HourlyParameters.weathercode.value])
           : [],
-      pressureMsl: json.containsKey(HourlyQueryParameters.pressureMsl.value)
-          ? List<double>.from(json[HourlyQueryParameters.pressureMsl.value])
+      pressureMsl: json.containsKey(HourlyParameters.pressureMsl.value)
+          ? List<double>.from(json[HourlyParameters.pressureMsl.value])
           : [],
-      surfacePressure: json
-              .containsKey(HourlyQueryParameters.surfacePressure.value)
-          ? List<double>.from(json[HourlyQueryParameters.surfacePressure.value])
+      surfacePressure: json.containsKey(HourlyParameters.surfacePressure.value)
+          ? List<double>.from(json[HourlyParameters.surfacePressure.value])
           : [],
-      cloudcover: json.containsKey(HourlyQueryParameters.cloudcover.value)
-          ? List<int>.from(json[HourlyQueryParameters.cloudcover.value])
+      cloudcover: json.containsKey(HourlyParameters.cloudcover.value)
+          ? List<int>.from(json[HourlyParameters.cloudcover.value])
           : [],
-      cloudcoverLow: json.containsKey(HourlyQueryParameters.cloudcoverLow.value)
-          ? List<int>.from(json[HourlyQueryParameters.cloudcoverLow.value])
+      cloudcoverLow: json.containsKey(HourlyParameters.cloudcoverLow.value)
+          ? List<int>.from(json[HourlyParameters.cloudcoverLow.value])
           : [],
-      cloudcoverMid: json.containsKey(HourlyQueryParameters.cloudcoverMid.value)
-          ? List<int>.from(json[HourlyQueryParameters.cloudcoverMid.value])
+      cloudcoverMid: json.containsKey(HourlyParameters.cloudcoverMid.value)
+          ? List<int>.from(json[HourlyParameters.cloudcoverMid.value])
           : [],
-      cloudcoverHigh:
-          json.containsKey(HourlyQueryParameters.cloudcoverHigh.value)
-              ? List<int>.from(json[HourlyQueryParameters.cloudcoverHigh.value])
-              : [],
-      visibility: json.containsKey(HourlyQueryParameters.visibility.value)
-          ? List<int>.from(json[HourlyQueryParameters.visibility.value])
+      cloudcoverHigh: json.containsKey(HourlyParameters.cloudcoverHigh.value)
+          ? List<int>.from(json[HourlyParameters.cloudcoverHigh.value])
           : [],
-      evapotranspiration:
-          json.containsKey(HourlyQueryParameters.evapotranspiration.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.evapotranspiration.value])
-              : [],
+      visibility: json.containsKey(HourlyParameters.visibility.value)
+          ? List<int>.from(json[HourlyParameters.visibility.value])
+          : [],
+      evapotranspiration: json
+              .containsKey(HourlyParameters.evapotranspiration.value)
+          ? List<double>.from(json[HourlyParameters.evapotranspiration.value])
+          : [],
       et0FaoEvapotranspiration:
-          json.containsKey(HourlyQueryParameters.et0FaoEvapotranspiration.value)
+          json.containsKey(HourlyParameters.et0FaoEvapotranspiration.value)
               ? List<double>.from(
-                  json[HourlyQueryParameters.et0FaoEvapotranspiration.value])
+                  json[HourlyParameters.et0FaoEvapotranspiration.value])
               : [],
-      vaporPressureDeficit:
-          json.containsKey(HourlyQueryParameters.vaporPressureDeficit.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.vaporPressureDeficit.value])
+      vaporPressureDeficit: json
+              .containsKey(HourlyParameters.vaporPressureDeficit.value)
+          ? List<double>.from(json[HourlyParameters.vaporPressureDeficit.value])
+          : [],
+      windspeed10M: json.containsKey(HourlyParameters.windspeed10M.value)
+          ? List<double>.from(json[HourlyParameters.windspeed10M.value])
+          : [],
+      windspeed80M: json.containsKey(HourlyParameters.windspeed80M.value)
+          ? List<double>.from(json[HourlyParameters.windspeed80M.value])
+          : [],
+      windspeed120M: json.containsKey(HourlyParameters.windspeed120M.value)
+          ? List<double>.from(json[HourlyParameters.windspeed120M.value])
+          : [],
+      windspeed180M: json.containsKey(HourlyParameters.windspeed180M.value)
+          ? List<double>.from(json[HourlyParameters.windspeed180M.value])
+          : [],
+      winddirection10M:
+          json.containsKey(HourlyParameters.winddirection10M.value)
+              ? List<int>.from(json[HourlyParameters.winddirection10M.value])
               : [],
-      windspeed10M: json.containsKey(HourlyQueryParameters.windspeed10M.value)
-          ? List<double>.from(json[HourlyQueryParameters.windspeed10M.value])
-          : [],
-      windspeed80M: json.containsKey(HourlyQueryParameters.windspeed80M.value)
-          ? List<double>.from(json[HourlyQueryParameters.windspeed80M.value])
-          : [],
-      windspeed120M: json.containsKey(HourlyQueryParameters.windspeed120M.value)
-          ? List<double>.from(json[HourlyQueryParameters.windspeed120M.value])
-          : [],
-      windspeed180M: json.containsKey(HourlyQueryParameters.windspeed180M.value)
-          ? List<double>.from(json[HourlyQueryParameters.windspeed180M.value])
-          : [],
-      winddirection10M: json
-              .containsKey(HourlyQueryParameters.winddirection10M.value)
-          ? List<int>.from(json[HourlyQueryParameters.winddirection10M.value])
-          : [],
-      winddirection80M: json
-              .containsKey(HourlyQueryParameters.winddirection80M.value)
-          ? List<int>.from(json[HourlyQueryParameters.winddirection80M.value])
-          : [],
-      winddirection120M: json
-              .containsKey(HourlyQueryParameters.winddirection120M.value)
-          ? List<int>.from(json[HourlyQueryParameters.winddirection120M.value])
-          : [],
-      winddirection180M: json
-              .containsKey(HourlyQueryParameters.winddirection180M.value)
-          ? List<int>.from(json[HourlyQueryParameters.winddirection180M.value])
-          : [],
-      windgusts10M: json.containsKey(HourlyQueryParameters.windgusts10M.value)
-          ? List<double>.from(json[HourlyQueryParameters.windgusts10M.value])
-          : [],
-      temperature80M: json
-              .containsKey(HourlyQueryParameters.temperature80M.value)
-          ? List<double>.from(json[HourlyQueryParameters.temperature80M.value])
-          : [],
-      temperature120M: json
-              .containsKey(HourlyQueryParameters.temperature120M.value)
-          ? List<double>.from(json[HourlyQueryParameters.temperature120M.value])
-          : [],
-      temperature180M: json
-              .containsKey(HourlyQueryParameters.temperature180M.value)
-          ? List<double>.from(json[HourlyQueryParameters.temperature180M.value])
-          : [],
-      soilTemperature0Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature0Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilTemperature0Cm.value])
+      winddirection80M:
+          json.containsKey(HourlyParameters.winddirection80M.value)
+              ? List<int>.from(json[HourlyParameters.winddirection80M.value])
               : [],
-      soilTemperature6Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature6Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilTemperature6Cm.value])
+      winddirection120M:
+          json.containsKey(HourlyParameters.winddirection120M.value)
+              ? List<int>.from(json[HourlyParameters.winddirection120M.value])
               : [],
-      soilTemperature18Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature18Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilTemperature18Cm.value])
+      winddirection180M:
+          json.containsKey(HourlyParameters.winddirection180M.value)
+              ? List<int>.from(json[HourlyParameters.winddirection180M.value])
               : [],
-      soilTemperature54Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature54Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilTemperature54Cm.value])
-              : [],
-      soilMoisture0To1Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture0To1Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilMoisture0To1Cm.value])
-              : [],
-      soilMoisture1To3Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture1To3Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilMoisture1To3Cm.value])
-              : [],
-      soilMoisture3To9Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture3To9Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilMoisture3To9Cm.value])
-              : [],
-      soilMoisture9To27Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture9To27Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilMoisture9To27Cm.value])
-              : [],
-      soilMoisture27To81Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture27To81Cm.value)
-              ? List<double>.from(
-                  json[HourlyQueryParameters.soilMoisture27To81Cm.value])
-              : [],
+      windgusts10M: json.containsKey(HourlyParameters.windgusts10M.value)
+          ? List<double>.from(json[HourlyParameters.windgusts10M.value])
+          : [],
+      temperature80M: json.containsKey(HourlyParameters.temperature80M.value)
+          ? List<double>.from(json[HourlyParameters.temperature80M.value])
+          : [],
+      temperature120M: json.containsKey(HourlyParameters.temperature120M.value)
+          ? List<double>.from(json[HourlyParameters.temperature120M.value])
+          : [],
+      temperature180M: json.containsKey(HourlyParameters.temperature180M.value)
+          ? List<double>.from(json[HourlyParameters.temperature180M.value])
+          : [],
+      soilTemperature0Cm: json
+              .containsKey(HourlyParameters.soilTemperature0Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilTemperature0Cm.value])
+          : [],
+      soilTemperature6Cm: json
+              .containsKey(HourlyParameters.soilTemperature6Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilTemperature6Cm.value])
+          : [],
+      soilTemperature18Cm: json
+              .containsKey(HourlyParameters.soilTemperature18Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilTemperature18Cm.value])
+          : [],
+      soilTemperature54Cm: json
+              .containsKey(HourlyParameters.soilTemperature54Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilTemperature54Cm.value])
+          : [],
+      soilMoisture0To1Cm: json
+              .containsKey(HourlyParameters.soilMoisture0To1Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilMoisture0To1Cm.value])
+          : [],
+      soilMoisture1To3Cm: json
+              .containsKey(HourlyParameters.soilMoisture1To3Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilMoisture1To3Cm.value])
+          : [],
+      soilMoisture3To9Cm: json
+              .containsKey(HourlyParameters.soilMoisture3To9Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilMoisture3To9Cm.value])
+          : [],
+      soilMoisture9To27Cm: json
+              .containsKey(HourlyParameters.soilMoisture9To27Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilMoisture9To27Cm.value])
+          : [],
+      soilMoisture27To81Cm: json
+              .containsKey(HourlyParameters.soilMoisture27To81Cm.value)
+          ? List<double>.from(json[HourlyParameters.soilMoisture27To81Cm.value])
+          : [],
     );
   }
 
@@ -273,200 +256,189 @@ class Hourly {
     };
 
     if (temperature2M.isNotEmpty) {
-      map[HourlyQueryParameters.temperature2M.value] =
-          jsonEncode(temperature2M);
+      map[HourlyParameters.temperature2M.value] = jsonEncode(temperature2M);
     }
 
     if (relativehumidity2M.isNotEmpty) {
-      map[HourlyQueryParameters.relativehumidity2M.value] =
+      map[HourlyParameters.relativehumidity2M.value] =
           jsonEncode(relativehumidity2M);
     }
 
     if (dewpoint2M.isNotEmpty) {
-      map[HourlyQueryParameters.dewpoint2M.value] = jsonEncode(dewpoint2M);
+      map[HourlyParameters.dewpoint2M.value] = jsonEncode(dewpoint2M);
     }
 
     if (apparentTemperature.isNotEmpty) {
-      map[HourlyQueryParameters.apparentTemperature.value] =
+      map[HourlyParameters.apparentTemperature.value] =
           jsonEncode(apparentTemperature);
     }
 
     if (precipitationProbability.isNotEmpty) {
-      map[HourlyQueryParameters.precipitationProbability.value] =
+      map[HourlyParameters.precipitationProbability.value] =
           jsonEncode(precipitationProbability);
     }
 
     if (precipitation.isNotEmpty) {
-      map[HourlyQueryParameters.precipitation.value] =
-          jsonEncode(precipitation);
+      map[HourlyParameters.precipitation.value] = jsonEncode(precipitation);
     }
 
     if (rain.isNotEmpty) {
-      map[HourlyQueryParameters.rain.value] = jsonEncode(rain);
+      map[HourlyParameters.rain.value] = jsonEncode(rain);
     }
 
     if (showers.isNotEmpty) {
-      map[HourlyQueryParameters.showers.value] = jsonEncode(showers);
+      map[HourlyParameters.showers.value] = jsonEncode(showers);
     }
 
     if (snowfall.isNotEmpty) {
-      map[HourlyQueryParameters.snowfall.value] = jsonEncode(snowfall);
+      map[HourlyParameters.snowfall.value] = jsonEncode(snowfall);
     }
 
     if (snowDepth.isNotEmpty) {
-      map[HourlyQueryParameters.snowDepth.value] = jsonEncode(snowDepth);
+      map[HourlyParameters.snowDepth.value] = jsonEncode(snowDepth);
     }
 
     if (weathercode.isNotEmpty) {
-      map[HourlyQueryParameters.weathercode.value] = jsonEncode(weathercode);
+      map[HourlyParameters.weathercode.value] = jsonEncode(weathercode);
     }
 
     if (pressureMsl.isNotEmpty) {
-      map[HourlyQueryParameters.pressureMsl.value] = jsonEncode(pressureMsl);
+      map[HourlyParameters.pressureMsl.value] = jsonEncode(pressureMsl);
     }
 
     if (surfacePressure.isNotEmpty) {
-      map[HourlyQueryParameters.surfacePressure.value] =
-          jsonEncode(surfacePressure);
+      map[HourlyParameters.surfacePressure.value] = jsonEncode(surfacePressure);
     }
 
     if (cloudcover.isNotEmpty) {
-      map[HourlyQueryParameters.cloudcover.value] = jsonEncode(cloudcover);
+      map[HourlyParameters.cloudcover.value] = jsonEncode(cloudcover);
     }
 
     if (cloudcoverLow.isNotEmpty) {
-      map[HourlyQueryParameters.cloudcoverLow.value] =
-          jsonEncode(cloudcoverLow);
+      map[HourlyParameters.cloudcoverLow.value] = jsonEncode(cloudcoverLow);
     }
 
     if (cloudcoverMid.isNotEmpty) {
-      map[HourlyQueryParameters.cloudcoverMid.value] =
-          jsonEncode(cloudcoverMid);
+      map[HourlyParameters.cloudcoverMid.value] = jsonEncode(cloudcoverMid);
     }
 
     if (cloudcoverHigh.isNotEmpty) {
-      map[HourlyQueryParameters.cloudcoverHigh.value] =
-          jsonEncode(cloudcoverHigh);
+      map[HourlyParameters.cloudcoverHigh.value] = jsonEncode(cloudcoverHigh);
     }
 
     if (visibility.isNotEmpty) {
-      map[HourlyQueryParameters.visibility.value] = jsonEncode(visibility);
+      map[HourlyParameters.visibility.value] = jsonEncode(visibility);
     }
 
     if (evapotranspiration.isNotEmpty) {
-      map[HourlyQueryParameters.evapotranspiration.value] =
+      map[HourlyParameters.evapotranspiration.value] =
           jsonEncode(evapotranspiration);
     }
 
     if (et0FaoEvapotranspiration.isNotEmpty) {
-      map[HourlyQueryParameters.et0FaoEvapotranspiration.value] =
+      map[HourlyParameters.et0FaoEvapotranspiration.value] =
           jsonEncode(et0FaoEvapotranspiration);
     }
 
     if (vaporPressureDeficit.isNotEmpty) {
-      map[HourlyQueryParameters.vaporPressureDeficit.value] =
+      map[HourlyParameters.vaporPressureDeficit.value] =
           jsonEncode(vaporPressureDeficit);
     }
 
     if (windspeed10M.isNotEmpty) {
-      map[HourlyQueryParameters.windspeed10M.value] = jsonEncode(windspeed10M);
+      map[HourlyParameters.windspeed10M.value] = jsonEncode(windspeed10M);
     }
 
     if (windspeed80M.isNotEmpty) {
-      map[HourlyQueryParameters.windspeed80M.value] = jsonEncode(windspeed80M);
+      map[HourlyParameters.windspeed80M.value] = jsonEncode(windspeed80M);
     }
 
     if (windspeed120M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection120M.value] =
-          jsonEncode(windspeed120M);
+      map[HourlyParameters.winddirection120M.value] = jsonEncode(windspeed120M);
     }
 
     if (windspeed180M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection180M.value] =
-          jsonEncode(windspeed180M);
+      map[HourlyParameters.winddirection180M.value] = jsonEncode(windspeed180M);
     }
 
     if (winddirection10M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection10M.value] =
+      map[HourlyParameters.winddirection10M.value] =
           jsonEncode(winddirection10M);
     }
 
     if (winddirection80M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection80M.value] =
+      map[HourlyParameters.winddirection80M.value] =
           jsonEncode(winddirection80M);
     }
 
     if (winddirection120M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection120M.value] =
+      map[HourlyParameters.winddirection120M.value] =
           jsonEncode(winddirection120M);
     }
 
     if (winddirection180M.isNotEmpty) {
-      map[HourlyQueryParameters.winddirection180M.value] =
+      map[HourlyParameters.winddirection180M.value] =
           jsonEncode(winddirection180M);
     }
 
     if (windgusts10M.isNotEmpty) {
-      map[HourlyQueryParameters.windgusts10M.value] = jsonEncode(windgusts10M);
+      map[HourlyParameters.windgusts10M.value] = jsonEncode(windgusts10M);
     }
 
     if (temperature80M.isNotEmpty) {
-      map[HourlyQueryParameters.temperature80M.value] =
-          jsonEncode(temperature80M);
+      map[HourlyParameters.temperature80M.value] = jsonEncode(temperature80M);
     }
 
     if (temperature120M.isNotEmpty) {
-      map[HourlyQueryParameters.temperature120M.value] =
-          jsonEncode(temperature120M);
+      map[HourlyParameters.temperature120M.value] = jsonEncode(temperature120M);
     }
 
     if (temperature180M.isNotEmpty) {
-      map[HourlyQueryParameters.temperature180M.value] =
-          jsonEncode(temperature180M);
+      map[HourlyParameters.temperature180M.value] = jsonEncode(temperature180M);
     }
 
     if (soilTemperature0Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilTemperature0Cm.value] =
+      map[HourlyParameters.soilTemperature0Cm.value] =
           jsonEncode(soilTemperature0Cm);
     }
 
     if (soilTemperature6Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilTemperature6Cm.value] =
+      map[HourlyParameters.soilTemperature6Cm.value] =
           jsonEncode(soilTemperature6Cm);
     }
 
     if (soilTemperature18Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilTemperature18Cm.value] =
+      map[HourlyParameters.soilTemperature18Cm.value] =
           jsonEncode(soilTemperature18Cm);
     }
 
     if (soilTemperature54Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilTemperature54Cm.value] =
+      map[HourlyParameters.soilTemperature54Cm.value] =
           jsonEncode(soilTemperature54Cm);
     }
 
     if (soilMoisture0To1Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilMoisture0To1Cm.value] =
+      map[HourlyParameters.soilMoisture0To1Cm.value] =
           jsonEncode(soilMoisture0To1Cm);
     }
 
     if (soilMoisture1To3Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilMoisture1To3Cm.value] =
+      map[HourlyParameters.soilMoisture1To3Cm.value] =
           jsonEncode(soilMoisture1To3Cm);
     }
 
     if (soilMoisture3To9Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilMoisture3To9Cm.value] =
+      map[HourlyParameters.soilMoisture3To9Cm.value] =
           jsonEncode(soilMoisture3To9Cm);
     }
 
     if (soilMoisture9To27Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilMoisture9To27Cm.value] =
+      map[HourlyParameters.soilMoisture9To27Cm.value] =
           jsonEncode(soilMoisture9To27Cm);
     }
 
     if (soilMoisture27To81Cm.isNotEmpty) {
-      map[HourlyQueryParameters.soilMoisture27To81Cm.value] =
+      map[HourlyParameters.soilMoisture27To81Cm.value] =
           jsonEncode(soilMoisture27To81Cm);
     }
 
@@ -568,155 +540,150 @@ class HourlyUnits {
   factory HourlyUnits.fromJson(Map<String, dynamic> json) {
     return HourlyUnits(
       time: json['time'] as String,
-      temperature2M: json.containsKey(HourlyQueryParameters.temperature2M.value)
-          ? json[HourlyQueryParameters.temperature2M.value] as String
+      temperature2M: json.containsKey(HourlyParameters.temperature2M.value)
+          ? json[HourlyParameters.temperature2M.value] as String
           : null,
       relativehumidity2M:
-          json.containsKey(HourlyQueryParameters.relativehumidity2M.value)
-              ? json[HourlyQueryParameters.relativehumidity2M.value] as String
+          json.containsKey(HourlyParameters.relativehumidity2M.value)
+              ? json[HourlyParameters.relativehumidity2M.value] as String
               : null,
-      dewpoint2M: json.containsKey(HourlyQueryParameters.dewpoint2M.value)
-          ? json[HourlyQueryParameters.dewpoint2M.value] as String
+      dewpoint2M: json.containsKey(HourlyParameters.dewpoint2M.value)
+          ? json[HourlyParameters.dewpoint2M.value] as String
           : null,
       apparentTemperature:
-          json.containsKey(HourlyQueryParameters.apparentTemperature.value)
-              ? json[HourlyQueryParameters.apparentTemperature.value] as String
+          json.containsKey(HourlyParameters.apparentTemperature.value)
+              ? json[HourlyParameters.apparentTemperature.value] as String
               : null,
-      precipitationProbability: json
-              .containsKey(HourlyQueryParameters.precipitationProbability.value)
-          ? json[HourlyQueryParameters.precipitationProbability.value] as String
-          : null,
-      precipitation: json.containsKey(HourlyQueryParameters.precipitation.value)
-          ? json[HourlyQueryParameters.precipitation.value] as String
-          : null,
-      rain: json.containsKey(HourlyQueryParameters.rain.value)
-          ? json[HourlyQueryParameters.rain.value] as String
-          : null,
-      showers: json.containsKey(HourlyQueryParameters.showers.value)
-          ? json[HourlyQueryParameters.showers.value] as String
-          : null,
-      snowfall: json.containsKey(HourlyQueryParameters.snowfall.value)
-          ? json[HourlyQueryParameters.snowfall.value] as String
-          : null,
-      snowDepth: json.containsKey(HourlyQueryParameters.snowDepth.value)
-          ? json[HourlyQueryParameters.snowDepth.value] as String
-          : null,
-      weathercode: json.containsKey(HourlyQueryParameters.weathercode.value)
-          ? json[HourlyQueryParameters.weathercode.value] as String
-          : null,
-      pressureMsl: json.containsKey(HourlyQueryParameters.pressureMsl.value)
-          ? json[HourlyQueryParameters.pressureMsl.value] as String
-          : null,
-      surfacePressure:
-          json.containsKey(HourlyQueryParameters.surfacePressure.value)
-              ? json[HourlyQueryParameters.surfacePressure.value] as String
+      precipitationProbability:
+          json.containsKey(HourlyParameters.precipitationProbability.value)
+              ? json[HourlyParameters.precipitationProbability.value] as String
               : null,
-      cloudcover: json.containsKey(HourlyQueryParameters.cloudcover.value)
-          ? json[HourlyQueryParameters.cloudcover.value] as String
+      precipitation: json.containsKey(HourlyParameters.precipitation.value)
+          ? json[HourlyParameters.precipitation.value] as String
           : null,
-      cloudcoverLow: json.containsKey(HourlyQueryParameters.cloudcoverLow.value)
-          ? json[HourlyQueryParameters.cloudcoverLow.value] as String
+      rain: json.containsKey(HourlyParameters.rain.value)
+          ? json[HourlyParameters.rain.value] as String
           : null,
-      cloudcoverMid: json.containsKey(HourlyQueryParameters.cloudcoverMid.value)
-          ? json[HourlyQueryParameters.cloudcoverMid.value] as String
+      showers: json.containsKey(HourlyParameters.showers.value)
+          ? json[HourlyParameters.showers.value] as String
           : null,
-      cloudcoverHigh:
-          json.containsKey(HourlyQueryParameters.cloudcoverHigh.value)
-              ? json[HourlyQueryParameters.cloudcoverHigh.value] as String
-              : null,
-      visibility: json.containsKey(HourlyQueryParameters.visibility.value)
-          ? json[HourlyQueryParameters.visibility.value] as String
+      snowfall: json.containsKey(HourlyParameters.snowfall.value)
+          ? json[HourlyParameters.snowfall.value] as String
+          : null,
+      snowDepth: json.containsKey(HourlyParameters.snowDepth.value)
+          ? json[HourlyParameters.snowDepth.value] as String
+          : null,
+      weathercode: json.containsKey(HourlyParameters.weathercode.value)
+          ? json[HourlyParameters.weathercode.value] as String
+          : null,
+      pressureMsl: json.containsKey(HourlyParameters.pressureMsl.value)
+          ? json[HourlyParameters.pressureMsl.value] as String
+          : null,
+      surfacePressure: json.containsKey(HourlyParameters.surfacePressure.value)
+          ? json[HourlyParameters.surfacePressure.value] as String
+          : null,
+      cloudcover: json.containsKey(HourlyParameters.cloudcover.value)
+          ? json[HourlyParameters.cloudcover.value] as String
+          : null,
+      cloudcoverLow: json.containsKey(HourlyParameters.cloudcoverLow.value)
+          ? json[HourlyParameters.cloudcoverLow.value] as String
+          : null,
+      cloudcoverMid: json.containsKey(HourlyParameters.cloudcoverMid.value)
+          ? json[HourlyParameters.cloudcoverMid.value] as String
+          : null,
+      cloudcoverHigh: json.containsKey(HourlyParameters.cloudcoverHigh.value)
+          ? json[HourlyParameters.cloudcoverHigh.value] as String
+          : null,
+      visibility: json.containsKey(HourlyParameters.visibility.value)
+          ? json[HourlyParameters.visibility.value] as String
           : null,
       evapotranspiration:
-          json.containsKey(HourlyQueryParameters.evapotranspiration.value)
-              ? json[HourlyQueryParameters.evapotranspiration.value] as String
+          json.containsKey(HourlyParameters.evapotranspiration.value)
+              ? json[HourlyParameters.evapotranspiration.value] as String
               : null,
-      et0FaoEvapotranspiration: json
-              .containsKey(HourlyQueryParameters.et0FaoEvapotranspiration.value)
-          ? json[HourlyQueryParameters.et0FaoEvapotranspiration.value] as String
-          : null,
+      et0FaoEvapotranspiration:
+          json.containsKey(HourlyParameters.et0FaoEvapotranspiration.value)
+              ? json[HourlyParameters.et0FaoEvapotranspiration.value] as String
+              : null,
       vaporPressureDeficit:
-          json.containsKey(HourlyQueryParameters.vaporPressureDeficit.value)
-              ? json[HourlyQueryParameters.vaporPressureDeficit.value] as String
+          json.containsKey(HourlyParameters.vaporPressureDeficit.value)
+              ? json[HourlyParameters.vaporPressureDeficit.value] as String
               : null,
-      windspeed10M: json.containsKey(HourlyQueryParameters.windspeed10M.value)
-          ? json[HourlyQueryParameters.windspeed10M.value] as String
+      windspeed10M: json.containsKey(HourlyParameters.windspeed10M.value)
+          ? json[HourlyParameters.windspeed10M.value] as String
           : null,
-      windspeed80M: json.containsKey(HourlyQueryParameters.windspeed80M.value)
-          ? json[HourlyQueryParameters.windspeed80M.value] as String
+      windspeed80M: json.containsKey(HourlyParameters.windspeed80M.value)
+          ? json[HourlyParameters.windspeed80M.value] as String
           : null,
-      windspeed120M: json.containsKey(HourlyQueryParameters.windspeed120M.value)
-          ? json[HourlyQueryParameters.windspeed120M.value] as String
+      windspeed120M: json.containsKey(HourlyParameters.windspeed120M.value)
+          ? json[HourlyParameters.windspeed120M.value] as String
           : null,
-      windspeed180M: json.containsKey(HourlyQueryParameters.windspeed180M.value)
-          ? json[HourlyQueryParameters.windspeed180M.value] as String
+      windspeed180M: json.containsKey(HourlyParameters.windspeed180M.value)
+          ? json[HourlyParameters.windspeed180M.value] as String
           : null,
       winddirection10M:
-          json.containsKey(HourlyQueryParameters.winddirection10M.value)
-              ? json[HourlyQueryParameters.winddirection10M.value] as String
+          json.containsKey(HourlyParameters.winddirection10M.value)
+              ? json[HourlyParameters.winddirection10M.value] as String
               : null,
       winddirection80M:
-          json.containsKey(HourlyQueryParameters.winddirection80M.value)
-              ? json[HourlyQueryParameters.winddirection80M.value] as String
+          json.containsKey(HourlyParameters.winddirection80M.value)
+              ? json[HourlyParameters.winddirection80M.value] as String
               : null,
       winddirection120M:
-          json.containsKey(HourlyQueryParameters.winddirection120M.value)
-              ? json[HourlyQueryParameters.winddirection120M.value] as String
+          json.containsKey(HourlyParameters.winddirection120M.value)
+              ? json[HourlyParameters.winddirection120M.value] as String
               : null,
       winddirection180M:
-          json.containsKey(HourlyQueryParameters.winddirection180M.value)
-              ? json[HourlyQueryParameters.winddirection180M.value] as String
+          json.containsKey(HourlyParameters.winddirection180M.value)
+              ? json[HourlyParameters.winddirection180M.value] as String
               : null,
-      windgusts10M: json.containsKey(HourlyQueryParameters.windgusts10M.value)
-          ? json[HourlyQueryParameters.windgusts10M.value] as String
+      windgusts10M: json.containsKey(HourlyParameters.windgusts10M.value)
+          ? json[HourlyParameters.windgusts10M.value] as String
           : null,
-      temperature80M:
-          json.containsKey(HourlyQueryParameters.temperature80M.value)
-              ? json[HourlyQueryParameters.temperature80M.value] as String
-              : null,
-      temperature120M:
-          json.containsKey(HourlyQueryParameters.temperature120M.value)
-              ? json[HourlyQueryParameters.temperature120M.value] as String
-              : null,
-      temperature180M:
-          json.containsKey(HourlyQueryParameters.temperature180M.value)
-              ? json[HourlyQueryParameters.temperature180M.value] as String
-              : null,
+      temperature80M: json.containsKey(HourlyParameters.temperature80M.value)
+          ? json[HourlyParameters.temperature80M.value] as String
+          : null,
+      temperature120M: json.containsKey(HourlyParameters.temperature120M.value)
+          ? json[HourlyParameters.temperature120M.value] as String
+          : null,
+      temperature180M: json.containsKey(HourlyParameters.temperature180M.value)
+          ? json[HourlyParameters.temperature180M.value] as String
+          : null,
       soilTemperature0Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature0Cm.value)
-              ? json[HourlyQueryParameters.soilTemperature0Cm.value] as String
+          json.containsKey(HourlyParameters.soilTemperature0Cm.value)
+              ? json[HourlyParameters.soilTemperature0Cm.value] as String
               : null,
       soilTemperature6Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature6Cm.value)
-              ? json[HourlyQueryParameters.soilTemperature6Cm.value] as String
+          json.containsKey(HourlyParameters.soilTemperature6Cm.value)
+              ? json[HourlyParameters.soilTemperature6Cm.value] as String
               : null,
       soilTemperature18Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature18Cm.value)
-              ? json[HourlyQueryParameters.soilTemperature18Cm.value] as String
+          json.containsKey(HourlyParameters.soilTemperature18Cm.value)
+              ? json[HourlyParameters.soilTemperature18Cm.value] as String
               : null,
       soilTemperature54Cm:
-          json.containsKey(HourlyQueryParameters.soilTemperature54Cm.value)
-              ? json[HourlyQueryParameters.soilTemperature54Cm.value] as String
+          json.containsKey(HourlyParameters.soilTemperature54Cm.value)
+              ? json[HourlyParameters.soilTemperature54Cm.value] as String
               : null,
       soilMoisture0To1Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture0To1Cm.value)
-              ? json[HourlyQueryParameters.soilMoisture0To1Cm.value] as String
+          json.containsKey(HourlyParameters.soilMoisture0To1Cm.value)
+              ? json[HourlyParameters.soilMoisture0To1Cm.value] as String
               : null,
       soilMoisture1To3Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture1To3Cm.value)
-              ? json[HourlyQueryParameters.soilMoisture1To3Cm.value] as String
+          json.containsKey(HourlyParameters.soilMoisture1To3Cm.value)
+              ? json[HourlyParameters.soilMoisture1To3Cm.value] as String
               : null,
       soilMoisture3To9Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture3To9Cm.value)
-              ? json[HourlyQueryParameters.soilMoisture3To9Cm.value] as String
+          json.containsKey(HourlyParameters.soilMoisture3To9Cm.value)
+              ? json[HourlyParameters.soilMoisture3To9Cm.value] as String
               : null,
       soilMoisture9To27Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture9To27Cm.value)
-              ? json[HourlyQueryParameters.soilMoisture9To27Cm.value] as String
+          json.containsKey(HourlyParameters.soilMoisture9To27Cm.value)
+              ? json[HourlyParameters.soilMoisture9To27Cm.value] as String
               : null,
       soilMoisture27To81Cm:
-          json.containsKey(HourlyQueryParameters.soilMoisture27To81Cm.value)
-              ? json[HourlyQueryParameters.soilMoisture27To81Cm.value] as String
+          json.containsKey(HourlyParameters.soilMoisture27To81Cm.value)
+              ? json[HourlyParameters.soilMoisture27To81Cm.value] as String
               : null,
     );
   }
@@ -727,179 +694,173 @@ class HourlyUnits {
     };
 
     if (temperature2M != null) {
-      map[HourlyQueryParameters.temperature2M.value] = temperature2M;
+      map[HourlyParameters.temperature2M.value] = temperature2M;
     }
 
     if (relativehumidity2M != null) {
-      map[HourlyQueryParameters.relativehumidity2M.value] = relativehumidity2M;
+      map[HourlyParameters.relativehumidity2M.value] = relativehumidity2M;
     }
 
     if (dewpoint2M != null) {
-      map[HourlyQueryParameters.dewpoint2M.value] = dewpoint2M;
+      map[HourlyParameters.dewpoint2M.value] = dewpoint2M;
     }
 
     if (apparentTemperature != null) {
-      map[HourlyQueryParameters.apparentTemperature.value] =
-          apparentTemperature;
+      map[HourlyParameters.apparentTemperature.value] = apparentTemperature;
     }
 
     if (precipitationProbability != null) {
-      map[HourlyQueryParameters.precipitationProbability.value] =
+      map[HourlyParameters.precipitationProbability.value] =
           precipitationProbability;
     }
 
     if (precipitation != null) {
-      map[HourlyQueryParameters.precipitation.value] = precipitation;
+      map[HourlyParameters.precipitation.value] = precipitation;
     }
 
     if (rain != null) {
-      map[HourlyQueryParameters.rain.value] = rain;
+      map[HourlyParameters.rain.value] = rain;
     }
 
     if (showers != null) {
-      map[HourlyQueryParameters.showers.value] = showers;
+      map[HourlyParameters.showers.value] = showers;
     }
 
     if (snowfall != null) {
-      map[HourlyQueryParameters.snowfall.value] = snowfall;
+      map[HourlyParameters.snowfall.value] = snowfall;
     }
 
     if (snowDepth != null) {
-      map[HourlyQueryParameters.snowDepth.value] = snowDepth;
+      map[HourlyParameters.snowDepth.value] = snowDepth;
     }
 
     if (weathercode != null) {
-      map[HourlyQueryParameters.weathercode.value] = weathercode;
+      map[HourlyParameters.weathercode.value] = weathercode;
     }
 
     if (pressureMsl != null) {
-      map[HourlyQueryParameters.pressureMsl.value] = pressureMsl;
+      map[HourlyParameters.pressureMsl.value] = pressureMsl;
     }
 
     if (surfacePressure != null) {
-      map[HourlyQueryParameters.surfacePressure.value] = surfacePressure;
+      map[HourlyParameters.surfacePressure.value] = surfacePressure;
     }
 
     if (cloudcover != null) {
-      map[HourlyQueryParameters.cloudcover.value] = cloudcover;
+      map[HourlyParameters.cloudcover.value] = cloudcover;
     }
 
     if (cloudcoverLow != null) {
-      map[HourlyQueryParameters.cloudcoverLow.value] = cloudcoverLow;
+      map[HourlyParameters.cloudcoverLow.value] = cloudcoverLow;
     }
 
     if (cloudcoverMid != null) {
-      map[HourlyQueryParameters.cloudcoverMid.value] = cloudcoverMid;
+      map[HourlyParameters.cloudcoverMid.value] = cloudcoverMid;
     }
 
     if (cloudcoverHigh != null) {
-      map[HourlyQueryParameters.cloudcoverHigh.value] = cloudcoverHigh;
+      map[HourlyParameters.cloudcoverHigh.value] = cloudcoverHigh;
     }
 
     if (visibility != null) {
-      map[HourlyQueryParameters.visibility.value] = visibility;
+      map[HourlyParameters.visibility.value] = visibility;
     }
 
     if (evapotranspiration != null) {
-      map[HourlyQueryParameters.evapotranspiration.value] = evapotranspiration;
+      map[HourlyParameters.evapotranspiration.value] = evapotranspiration;
     }
 
     if (et0FaoEvapotranspiration != null) {
-      map[HourlyQueryParameters.et0FaoEvapotranspiration.value] =
+      map[HourlyParameters.et0FaoEvapotranspiration.value] =
           et0FaoEvapotranspiration;
     }
 
     if (vaporPressureDeficit != null) {
-      map[HourlyQueryParameters.vaporPressureDeficit.value] =
-          vaporPressureDeficit;
+      map[HourlyParameters.vaporPressureDeficit.value] = vaporPressureDeficit;
     }
 
     if (windspeed10M != null) {
-      map[HourlyQueryParameters.windspeed10M.value] = windspeed10M;
+      map[HourlyParameters.windspeed10M.value] = windspeed10M;
     }
 
     if (windspeed80M != null) {
-      map[HourlyQueryParameters.windspeed80M.value] = windspeed80M;
+      map[HourlyParameters.windspeed80M.value] = windspeed80M;
     }
 
     if (windspeed120M != null) {
-      map[HourlyQueryParameters.windspeed120M.value] = windspeed120M;
+      map[HourlyParameters.windspeed120M.value] = windspeed120M;
     }
 
     if (windspeed180M != null) {
-      map[HourlyQueryParameters.winddirection180M.value] = windspeed180M;
+      map[HourlyParameters.winddirection180M.value] = windspeed180M;
     }
 
     if (winddirection10M != null) {
-      map[HourlyQueryParameters.winddirection10M.value] = winddirection10M;
+      map[HourlyParameters.winddirection10M.value] = winddirection10M;
     }
 
     if (winddirection80M != null) {
-      map[HourlyQueryParameters.winddirection80M.value] = winddirection80M;
+      map[HourlyParameters.winddirection80M.value] = winddirection80M;
     }
 
     if (winddirection120M != null) {
-      map[HourlyQueryParameters.winddirection120M.value] = winddirection120M;
+      map[HourlyParameters.winddirection120M.value] = winddirection120M;
     }
 
     if (winddirection180M != null) {
-      map[HourlyQueryParameters.winddirection180M.value] = winddirection180M;
+      map[HourlyParameters.winddirection180M.value] = winddirection180M;
     }
 
     if (windgusts10M != null) {
-      map[HourlyQueryParameters.windgusts10M.value] = windgusts10M;
+      map[HourlyParameters.windgusts10M.value] = windgusts10M;
     }
 
     if (temperature80M != null) {
-      map[HourlyQueryParameters.temperature80M.value] = temperature80M;
+      map[HourlyParameters.temperature80M.value] = temperature80M;
     }
 
     if (temperature120M != null) {
-      map[HourlyQueryParameters.temperature120M.value] = temperature120M;
+      map[HourlyParameters.temperature120M.value] = temperature120M;
     }
 
     if (temperature180M != null) {
-      map[HourlyQueryParameters.temperature180M.value] = temperature180M;
+      map[HourlyParameters.temperature180M.value] = temperature180M;
     }
 
     if (soilTemperature0Cm != null) {
-      map[HourlyQueryParameters.soilTemperature0Cm.value] = soilTemperature0Cm;
+      map[HourlyParameters.soilTemperature0Cm.value] = soilTemperature0Cm;
     }
 
     if (soilTemperature6Cm != null) {
-      map[HourlyQueryParameters.soilTemperature6Cm.value] = soilTemperature6Cm;
+      map[HourlyParameters.soilTemperature6Cm.value] = soilTemperature6Cm;
     }
 
     if (soilTemperature18Cm != null) {
-      map[HourlyQueryParameters.soilTemperature18Cm.value] =
-          soilTemperature18Cm;
+      map[HourlyParameters.soilTemperature18Cm.value] = soilTemperature18Cm;
     }
 
     if (soilTemperature54Cm != null) {
-      map[HourlyQueryParameters.soilTemperature54Cm.value] =
-          soilTemperature54Cm;
+      map[HourlyParameters.soilTemperature54Cm.value] = soilTemperature54Cm;
     }
 
     if (soilMoisture0To1Cm != null) {
-      map[HourlyQueryParameters.soilMoisture0To1Cm.value] = soilMoisture0To1Cm;
+      map[HourlyParameters.soilMoisture0To1Cm.value] = soilMoisture0To1Cm;
     }
 
     if (soilMoisture1To3Cm != null) {
-      map[HourlyQueryParameters.soilMoisture1To3Cm.value] = soilMoisture1To3Cm;
+      map[HourlyParameters.soilMoisture1To3Cm.value] = soilMoisture1To3Cm;
     }
 
     if (soilMoisture3To9Cm != null) {
-      map[HourlyQueryParameters.soilMoisture3To9Cm.value] = soilMoisture3To9Cm;
+      map[HourlyParameters.soilMoisture3To9Cm.value] = soilMoisture3To9Cm;
     }
 
     if (soilMoisture9To27Cm != null) {
-      map[HourlyQueryParameters.soilMoisture9To27Cm.value] =
-          soilMoisture9To27Cm;
+      map[HourlyParameters.soilMoisture9To27Cm.value] = soilMoisture9To27Cm;
     }
 
     if (soilMoisture27To81Cm != null) {
-      map[HourlyQueryParameters.soilMoisture27To81Cm.value] =
-          soilMoisture27To81Cm;
+      map[HourlyParameters.soilMoisture27To81Cm.value] = soilMoisture27To81Cm;
     }
 
     return map;

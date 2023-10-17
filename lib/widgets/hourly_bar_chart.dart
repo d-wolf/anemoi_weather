@@ -33,6 +33,8 @@ class HourlyBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final minY = _minY(spots).toDouble();
+    final maxY = _maxY(spots).toDouble();
     return BarChart(
       BarChartData(
         barTouchData: BarTouchData(
@@ -57,8 +59,8 @@ class HourlyBarChart extends StatelessWidget {
           ),
           topTitles: const AxisTitles(),
         ),
-        minY: _minY(spots).toDouble(),
-        maxY: _maxY(spots).toDouble(),
+        minY: minY,
+        maxY: maxY == minY ? maxY + intervalY : maxY,
         gridData: FlGridData(
           show: true,
           getDrawingHorizontalLine: (value) {

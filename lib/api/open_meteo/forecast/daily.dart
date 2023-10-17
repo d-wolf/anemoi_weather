@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/enums.dart';
 
 class Daily {
@@ -51,7 +52,7 @@ class Daily {
 
   factory Daily.fromJson(Map<String, dynamic> json) {
     return Daily(
-      time: List<int>.from(json['time'])
+      time: List<int>.from(json[ApiStrings.time])
           .map(
               (e) => DateTime.fromMillisecondsSinceEpoch(e * 1000, isUtc: true))
           .toList(),
@@ -129,7 +130,7 @@ class Daily {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{
-      'time': jsonEncode(
+      ApiStrings.time: jsonEncode(
           time.map((e) => e.millisecondsSinceEpoch ~/ 1000).toList()),
     };
 
@@ -277,7 +278,7 @@ class DailyUnits {
 
   factory DailyUnits.fromJson(Map<String, dynamic> json) {
     return DailyUnits(
-      time: json['time'] as String,
+      time: json[ApiStrings.time] as String,
       temperature2MMax: json.containsKey(DailyParameters.temperature2MMax.value)
           ? json[DailyParameters.temperature2MMax.value] as String
           : null,
@@ -348,7 +349,7 @@ class DailyUnits {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{
-      'time': time,
+      ApiStrings.time: time,
     };
 
     if (temperature2MMax != null) {

@@ -3,21 +3,21 @@ import 'package:anemoi_weather/constants/app_colors.dart';
 import 'package:anemoi_weather/constants/app_style.dart';
 import 'package:anemoi_weather/constants/constants.dart';
 import 'package:anemoi_weather/icons/weather_icons.dart';
-import 'package:anemoi_weather/widgets/today/hourly_bar_chart.dart';
-import 'package:anemoi_weather/widgets/today/hourly_line_chart.dart';
+import 'package:anemoi_weather/widgets/hourly_bar_chart.dart';
+import 'package:anemoi_weather/widgets/hourly_line_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class TodayTabWidget extends StatefulWidget {
+class TodayAndWeekWidget extends StatefulWidget {
   final Forecast forecast;
 
-  const TodayTabWidget({required this.forecast, super.key});
+  const TodayAndWeekWidget({required this.forecast, super.key});
 
   @override
-  State<TodayTabWidget> createState() => _TodayTabWidgetState();
+  State<TodayAndWeekWidget> createState() => _TodayAndWeekWidgetState();
 }
 
-class _TodayTabWidgetState extends State<TodayTabWidget> {
+class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
   final cardHeight = 350.0;
   final smallCardSize = 120.0;
   final smallTileAnimateNextDuration = const Duration(milliseconds: 100);

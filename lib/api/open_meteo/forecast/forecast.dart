@@ -1,3 +1,4 @@
+import 'package:anemoi_weather/api/open_meteo/forecast/api_strings.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/current.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/daily.dart';
 import 'package:anemoi_weather/api/open_meteo/forecast/hourly.dart';
@@ -35,28 +36,31 @@ class Forecast {
 
   factory Forecast.fromJson(Map<String, dynamic> json) {
     return Forecast(
-      latitude: json['latitude'] as double,
-      longitude: json['longitude'] as double,
+      latitude: json[ApiStrings.latitude] as double,
+      longitude: json[ApiStrings.longitude] as double,
       generationtimeMs: json['generationtime_ms'] as double,
       utcOffsetSeconds: json['utc_offset_seconds'] as int,
-      timezone: json['timezone'] as String,
+      timezone: json[ApiStrings.timezone] as String,
       timezoneAbbreviation: json['timezone_abbreviation'] as String,
       elevation: json['elevation'] as double,
-      currentUnits: json.containsKey('current_units')
-          ? CurrentUnits.fromJson(json['current_units'])
+      currentUnits: json.containsKey(ApiStrings.currentUnits)
+          ? CurrentUnits.fromJson(json[ApiStrings.currentUnits])
           : null,
-      current: json.containsKey('current')
-          ? Current.fromJson(json['current'])
+      current: json.containsKey(ApiStrings.current)
+          ? Current.fromJson(json[ApiStrings.current])
           : null,
-      hourlyUnits: json.containsKey('hourly_units')
-          ? HourlyUnits.fromJson(json['hourly_units'])
+      hourlyUnits: json.containsKey(ApiStrings.hourlyUnits)
+          ? HourlyUnits.fromJson(json[ApiStrings.hourlyUnits])
           : null,
-      hourly:
-          json.containsKey('hourly') ? Hourly.fromJson(json['hourly']) : null,
-      dailyUnits: json.containsKey('daily_units')
-          ? DailyUnits.fromJson(json['daily_units'])
+      hourly: json.containsKey(ApiStrings.hourly)
+          ? Hourly.fromJson(json[ApiStrings.hourly])
           : null,
-      daily: json.containsKey('hourly') ? Daily.fromJson(json['hourly']) : null,
+      dailyUnits: json.containsKey(ApiStrings.dailyUnits)
+          ? DailyUnits.fromJson(json[ApiStrings.dailyUnits])
+          : null,
+      daily: json.containsKey(ApiStrings.daily)
+          ? Daily.fromJson(json[ApiStrings.daily])
+          : null,
     );
   }
 

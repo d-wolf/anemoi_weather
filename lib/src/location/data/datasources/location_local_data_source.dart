@@ -33,6 +33,8 @@ class LocationsLocalDataSourceImpl implements LocationsLocalDataSource {
 
   @override
   List<GeocodingSearchResult> read() {
+    if (!exists()) return [];
+
     final str = _prefs.getString(key)!;
     final l = List<dynamic>.from(json.decode(str));
     final results = List<GeocodingSearchResult>.from(

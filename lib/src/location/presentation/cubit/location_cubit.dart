@@ -1,5 +1,5 @@
 import 'package:anemoi_weather/src/location/domain/entities/geocoding_search_results.dart';
-import 'package:anemoi_weather/src/location/domain/usecases/get_saved_locations.dart';
+import 'package:anemoi_weather/src/location/domain/usecases/get_saved_locations_or_empty.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/get_selected_location.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/search_location.dart';
 import 'package:equatable/equatable.dart';
@@ -8,12 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
-  final GetSavedLocations _getSavedLocations;
+  final GetSavedLocationsOrEmpty _getSavedLocations;
   final GetSelectedLocation _getSelectedLocation;
   final SearchLocation _searchLocation;
 
   LocationCubit({
-    required GetSavedLocations getSavedLocations,
+    required GetSavedLocationsOrEmpty getSavedLocations,
     required GetSelectedLocation getSelectedLocation,
     required SearchLocation searchLocation,
   })  : _getSavedLocations = getSavedLocations,
@@ -31,7 +31,7 @@ class LocationCubit extends Cubit<LocationState> {
         final selectedResult = await _getSelectedLocation();
         selectedResult.fold(
             (l) => emit(const ErrorLocationState()),
-            (selectedId) => emit(SavedLocationState(
+            (selectedId) => emit(LocationsLoadedState(
                 selectedId: selectedId, locations: savedLocations)));
       }
     });

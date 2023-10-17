@@ -14,11 +14,12 @@ final class HasNoSavedLocationState extends LocationState {
   List<Object?> get props => [];
 }
 
-final class SavedLocationState extends LocationState {
+final class LocationsLoadedState extends LocationState {
   final int selectedId;
   final List<GeocodingSearchResult> locations;
 
-  const SavedLocationState({required this.selectedId, required this.locations});
+  const LocationsLoadedState(
+      {required this.selectedId, required this.locations});
 
   @override
   List<Object?> get props => [selectedId, locations];

@@ -1,13 +1,11 @@
+import 'package:anemoi_weather/src/core/services/injection_container.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:system_theme/system_theme.dart';
-
-late final SharedPreferences prefs;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  prefs = await SharedPreferences.getInstance();
+  await init();
   await SystemTheme.accentColor.load();
   final accentColor = SystemTheme.accentColor.accent;
 

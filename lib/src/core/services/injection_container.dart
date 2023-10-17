@@ -7,21 +7,23 @@ import 'package:anemoi_weather/src/location/data/repositories/selected_location_
 import 'package:anemoi_weather/src/location/domain/repositories/geocoding_search_repository.dart';
 import 'package:anemoi_weather/src/location/domain/repositories/saved_locations_repository.dart';
 import 'package:anemoi_weather/src/location/domain/repositories/selected_location_repository.dart';
-import 'package:anemoi_weather/src/location/domain/usecases/get_saved_locations.dart';
+import 'package:anemoi_weather/src/location/domain/usecases/get_saved_locations_or_empty.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/get_selected_location.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/search_location.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  final prefs = await SharedPreferences.getInstance();
   sl.registerFactory(() => LocationCubit(
       getSavedLocations: sl(),
       getSelectedLocation: sl(),
       searchLocation: sl()));
 
-  sl.registerLazySingleton(() => GetSavedLocations(sl()));
+  sl.registerLazySingleton(() => GetSavedLocationsOrEmpty(sl()));
   sl.registerLazySingleton(() => GetSelectedLocation(sl()));
   sl.registerLazySingleton(() => SearchLocation(sl()));
 
@@ -40,4 +42,6 @@ Future<void> init() async {
 
   sl.registerLazySingleton<GeocodingRemoteDataSource>(
       () => GeocodingRemoteDataSourceImpl());
+
+  sl.registerLazySingleton<SharedPreferences>(() => prefs);
 }

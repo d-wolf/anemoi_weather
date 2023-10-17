@@ -24,7 +24,9 @@ class _ForecastPageState extends State<ForecastPage> {
       listener: (context, state) {
         switch (state) {
           case LocationsStateLoaded(collection: final collection):
-            context.read<ForecastCubit>().loadForecast(collection);
+            context
+                .read<ForecastCubit>()
+                .loadForecastFromCollection(collection);
             break;
           default:
         }
@@ -58,7 +60,28 @@ class _ForecastPageState extends State<ForecastPage> {
                 return Scaffold(
                     drawer: const AppDrawer(),
                     appBar: AppBar(
-                      title: Text(userLocation.name),
+                      actions: [
+                        IconButton(
+                            onPressed: () {
+                              context
+                                  .read<ForecastCubit>()
+                                  .loadForecast(userLocation);
+                            },
+                            icon: const Icon(Icons.replay))
+                      ],
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            userLocation.name,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text(
+                            userLocation.tag,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
                       backgroundColor:
                           Theme.of(context).colorScheme.inversePrimary,
                     ),

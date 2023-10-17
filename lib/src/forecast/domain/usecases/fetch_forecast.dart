@@ -1,3 +1,4 @@
+import 'package:anemoi_weather/src/forecast/domain/enums/enums.dart';
 import 'package:anemoi_weather/src/forecast/domain/repositories/forecast_repository.dart';
 import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
 import 'package:anemoi_weather/src/core/usecase/usecase.dart';
@@ -11,6 +12,19 @@ class FetchForecast extends UsecaseWithParams<Forecast, UserLocation> {
 
   @override
   ResultFuture<Forecast> call(UserLocation params) {
-    return _repo.getForecast(params.lat, params.long);
+    return _repo.getForecast(params.lat, params.long, current: [
+      CurrentParameters.temperature2M,
+      CurrentParameters.windspeed10M,
+      CurrentParameters.relativehumidity2M,
+      CurrentParameters.weathercode,
+      CurrentParameters.precipitation,
+    ], hourly: [
+      HourlyParameters.temperature2M,
+      HourlyParameters.windspeed10M,
+      HourlyParameters.relativehumidity2M,
+      HourlyParameters.weathercode,
+      HourlyParameters.precipitation,
+      HourlyParameters.precipitationProbability,
+    ]);
   }
 }

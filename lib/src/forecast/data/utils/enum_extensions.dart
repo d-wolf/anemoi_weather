@@ -173,3 +173,12 @@ extension DailyParametersExtension on domain.DailyParameters {
     }
   }
 }
+
+extension TimeZoneExtensions on domain.TimeZone {
+  String get value {
+    switch (this) {
+      case domain.TimeZone.auto:
+        return 'auto';
+    }
+  }
+}

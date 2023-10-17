@@ -14,7 +14,7 @@ class ForecastCubit extends Cubit<ForecastState> {
       : _fetchForecast = fetchForecast,
         super(const ForecastStateLoading());
 
-  void loadForecast(UserLocation userLocation) async {
+  Future<void> loadForecast(UserLocation userLocation) async {
     final result = await _fetchForecast(userLocation);
     result.fold((l) => emit(const ForecastStateError()),
         (r) => emit(ForecastStateLoaded(forecast: r)));

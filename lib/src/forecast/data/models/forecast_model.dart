@@ -25,6 +25,7 @@ class ForecastModel extends Forecast {
   });
 
   factory ForecastModel.fromJson(Map<String, dynamic> json) {
+    print(json);
     return ForecastModel(
       latitude: json[ApiStrings.latitude] as double,
       longitude: json[ApiStrings.longitude] as double,

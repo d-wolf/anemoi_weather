@@ -1,7 +1,6 @@
 import 'package:anemoi_weather/icons/weather_icons.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});

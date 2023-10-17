@@ -1,6 +1,5 @@
 enum TimeZone {
   auto,
-  europeBerlin;
 }
 
 enum CurrentParameters {

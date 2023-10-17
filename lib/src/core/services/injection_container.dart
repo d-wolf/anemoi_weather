@@ -1,3 +1,8 @@
+import 'package:anemoi_weather/src/forecast/data/datasources/forecast_remote_data_source.dart';
+import 'package:anemoi_weather/src/forecast/data/repositories/forecast_repository_impl.dart';
+import 'package:anemoi_weather/src/forecast/domain/repositories/forecast_repository.dart';
+import 'package:anemoi_weather/src/forecast/domain/usecases/fetch_forecast.dart';
+import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/location/domain/repositories/user_locations_repository.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/add_location.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/delete_location.dart';
@@ -19,6 +24,13 @@ final sl = GetIt.instance;
 Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.remove('locations_key');
+
+  sl.registerFactory(() => ForecastCubit(fetchForecast: sl()));
+  sl.registerLazySingleton(() => FetchForecast(sl()));
+  sl.registerLazySingleton<ForecastRepository>(
+      () => ForecastRepositoryImpl(sl()));
+  sl.registerLazySingleton<ForecastRemoteDataSource>(
+      () => ForecastRemoteDataSourceImpl());
 
   sl.registerFactory(() => SearchBloc(searchLocation: sl()));
 

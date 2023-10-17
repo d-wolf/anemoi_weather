@@ -28,6 +28,7 @@ class ForecastRepositoryImpl implements ForecastRepository {
 
       return right(result);
     } catch (e) {
+      rethrow;
       return left(ForecastApiFailure(message: e.toString()));
     }
   }

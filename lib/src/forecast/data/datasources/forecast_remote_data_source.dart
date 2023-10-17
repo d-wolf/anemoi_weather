@@ -27,7 +27,7 @@ class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
       List<DailyParameters> daily = const []}) async {
     final queryParams = <String, dynamic>{
       ApiStrings.timeformat: 'unixtime',
-      ApiStrings.timezone: '$tz',
+      ApiStrings.timezone: tz.value,
       ApiStrings.latitude: '$lat',
       ApiStrings.longitude: '$long',
     };

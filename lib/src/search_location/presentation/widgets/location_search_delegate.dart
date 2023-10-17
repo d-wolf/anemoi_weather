@@ -35,13 +35,17 @@ class LocationSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    bloc.add(SearchEventInput(input: query));
+    final appLocale = Localizations.localeOf(context);
+    bloc.add(
+        SearchEventInput(input: query, languageCode: appLocale.languageCode));
     return _buildList();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    bloc.add(SearchEventInput(input: query));
+    final appLocale = Localizations.localeOf(context);
+    bloc.add(
+        SearchEventInput(input: query, languageCode: appLocale.languageCode));
     return _buildList();
   }
 

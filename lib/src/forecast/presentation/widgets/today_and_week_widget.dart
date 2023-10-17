@@ -1,8 +1,8 @@
-import 'package:anemoi_weather/src/forecast/data/models/forecast_model.dart';
 import 'package:anemoi_weather/src/core/res/app_colors.dart';
 import 'package:anemoi_weather/src/core/res/app_style.dart';
 import 'package:anemoi_weather/src/core/res/constants.dart';
 import 'package:anemoi_weather/icons/weather_icons.dart';
+import 'package:anemoi_weather/src/forecast/domain/entities/forecast.dart';
 import 'package:anemoi_weather/src/forecast/presentation/widgets/hourly_bar_chart.dart';
 import 'package:anemoi_weather/src/forecast/presentation/widgets/hourly_line_chart.dart';
 
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TodayAndWeekWidget extends StatefulWidget {
-  final ForecastModel forecast;
+  final Forecast forecast;
 
   const TodayAndWeekWidget({required this.forecast, super.key});
 

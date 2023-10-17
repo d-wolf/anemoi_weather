@@ -24,3 +24,10 @@ class ForecastStateLoaded extends ForecastState {
   @override
   List<Object?> get props => [forecast];
 }
+
+class ForecastStateError extends ForecastState {
+  const ForecastStateError();
+
+  @override
+  List<Object?> get props => [];
+}

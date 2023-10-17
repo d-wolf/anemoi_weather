@@ -1,3 +1,5 @@
+import 'package:anemoi_weather/src/core/widgets/app_drawer.dart';
+import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/search_location/presentation/widgets/location_search_delegate.dart';
@@ -19,7 +21,9 @@ class _LocationPageState extends State<LocationPage> {
         switch (state) {
           case LocationsStateLoaded loaded:
             return Scaffold(
+              drawer: const AppDrawer(),
               appBar: AppBar(
+                title: const Text('Locations'),
                 actions: [
                   IconButton(
                       onPressed: () {
@@ -50,6 +54,7 @@ class _LocationPageState extends State<LocationPage> {
                       subtitle: Text(location.tag),
                       onTap: () {
                         context.read<LocationCubit>().selectLocation(location);
+                        context.read<ForecastCubit>().loadForecast(location);
                       },
                     );
                   }),

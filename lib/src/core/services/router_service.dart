@@ -1,5 +1,9 @@
+import 'package:anemoi_weather/src/core/services/injection_container.dart';
 import 'package:anemoi_weather/src/forecast/presentation/page/forecast_page.dart';
+import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
+import 'package:anemoi_weather/src/location/presentation/page/location_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Routes {
   static const String permissionsPage = 'permissions_page';
@@ -47,6 +51,14 @@ class RouteGenerator {
       case Routes.homePage:
         return MaterialPageRoute(
           builder: (_) => const ForecastPage(),
+          settings: settings,
+        );
+      case Routes.locationPage:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<LocationCubit>(
+            create: (_) => sl()..loadSavedLocations(),
+            child: const LocationPage(),
+          ),
           settings: settings,
         );
       default:

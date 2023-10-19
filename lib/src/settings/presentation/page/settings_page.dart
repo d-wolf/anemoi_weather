@@ -1,3 +1,5 @@
+import 'package:anemoi_weather/src/core/services/router_service.dart';
+import 'package:anemoi_weather/src/core/widgets/app_drawer.dart';
 import 'package:anemoi_weather/src/settings/presentation/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +12,9 @@ class SettingsPage extends StatelessWidget {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
         return Scaffold(
+          drawer: const AppDrawer(
+            route: Routes.settingsPage,
+          ),
           appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             title: const Text('Settings'),

@@ -2,6 +2,7 @@ import 'package:anemoi_weather/src/core/services/injection_container.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
+import 'package:anemoi_weather/src/settings/presentation/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_theme/system_theme.dart';
@@ -26,21 +27,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LocationCubit>(
-      create: (context) => sl()..init(),
-      child: BlocProvider<ForecastCubit>(
-        create: (context) => sl(),
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-                seedColor: sysColor, brightness: Brightness.dark),
-            useMaterial3: true,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<SettingsCubit>(
+            create: (context) => sl()..init(),
           ),
-          onGenerateRoute: RouteGenerator.generateRoute,
-          initialRoute: Routes.homePage,
-        ),
-      ),
-    );
+          BlocProvider<LocationCubit>(
+            create: (context) => sl()..init(),
+          ),
+          BlocProvider<ForecastCubit>(
+            create: (context) => sl(),
+          ),
+        ],
+        child: BlocBuilder<SettingsCubit, SettingsState>(
+          builder: (context, state) {
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(
+                    seedColor: sysColor, brightness: state.brightness),
+                useMaterial3: true,
+              ),
+              onGenerateRoute: RouteGenerator.generateRoute,
+              initialRoute: Routes.forecastPage,
+            );
+          },
+        ));
   }
 }

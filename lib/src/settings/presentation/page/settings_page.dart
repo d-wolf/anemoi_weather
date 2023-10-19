@@ -1,0 +1,33 @@
+import 'package:anemoi_weather/src/settings/presentation/cubit/settings_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            title: const Text('Settings'),
+          ),
+          body: ListView(
+            children: [
+              SwitchListTile(
+                title: const Text('Brightness'),
+                subtitle: Text('${state.brightness}'),
+                value: state.brightness.index == 0,
+                onChanged: (vlaue) {
+                  context.read<SettingsCubit>().switchBrightness();
+                },
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

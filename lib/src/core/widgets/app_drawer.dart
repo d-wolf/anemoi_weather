@@ -1,33 +1,77 @@
 import 'package:anemoi_weather/icons/weather_icons.dart';
+import 'package:anemoi_weather/src/core/res/app_style.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
+  final String route;
+  const AppDrawer({required this.route, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        const Placeholder(
-          fallbackHeight: 200,
-          fallbackWidth: 200,
+    return SafeArea(
+      child: Drawer(
+        child: Column(
+          children: [
+            ListTile(
+              selected: route == Routes.forecastPage,
+              leading: const Icon(Weather.wi_day_sunny),
+              title: const Text('Forecast'),
+              onTap: route == Routes.forecastPage
+                  ? null
+                  : () {
+                      Navigator.of(context).pushNamed(Routes.forecastPage);
+                    },
+            ),
+            const DrawerItemDivider(),
+            ListTile(
+              selected: route == Routes.locationPage,
+              leading: const Icon(Icons.location_pin),
+              title: const Text('Locations'),
+              onTap: route == Routes.locationPage
+                  ? null
+                  : () {
+                      Navigator.of(context).pushNamed(Routes.locationPage);
+                    },
+            ),
+            const DrawerItemDivider(),
+            ListTile(
+              selected: route == Routes.settingsPage,
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: route == Routes.settingsPage
+                  ? null
+                  : () {
+                      Navigator.of(context).pushNamed(Routes.settingsPage);
+                    },
+            ),
+            const Expanded(child: SizedBox()),
+            ListTile(
+              selected: route == Routes.aboutPage,
+              leading: const Icon(Icons.info),
+              title: const Text('About'),
+              onTap: route == Routes.aboutPage
+                  ? null
+                  : () {
+                      Navigator.of(context).pushNamed(Routes.locationPage);
+                    },
+            ),
+          ],
         ),
-        ListTile(
-          leading: const Icon(Weather.wi_day_sunny),
-          title: const Text('Forecast'),
-          onTap: () {
-            Navigator.of(context).pushNamed(Routes.homePage);
-          },
-        ),
-        ListTile(
-          leading: const Icon(Icons.location_pin),
-          title: const Text('Locations'),
-          onTap: () {
-            Navigator.of(context).pushNamed(Routes.locationPage);
-          },
-        )
-      ],
+      ),
+    );
+  }
+}
+
+class DrawerItemDivider extends StatelessWidget {
+  const DrawerItemDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Divider(
+      height: 0,
+      indent: AppStyle.spaceXLarge,
+      endIndent: AppStyle.spaceXLarge,
     );
   }
 }

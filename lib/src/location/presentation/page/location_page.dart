@@ -1,3 +1,4 @@
+import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:anemoi_weather/src/core/widgets/app_drawer.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
@@ -20,8 +21,11 @@ class _LocationPageState extends State<LocationPage> {
         switch (state) {
           case LocationsStateLoaded loaded:
             return Scaffold(
-              drawer: const AppDrawer(),
+              drawer: const AppDrawer(
+                route: Routes.locationPage,
+              ),
               appBar: AppBar(
+                backgroundColor: Theme.of(context).colorScheme.inversePrimary,
                 title: const Text('Locations'),
                 actions: [
                   IconButton(

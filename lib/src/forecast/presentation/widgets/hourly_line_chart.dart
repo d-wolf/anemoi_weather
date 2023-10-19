@@ -2,6 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:intl/intl.dart';
+
 class HourlyLineChart extends StatelessWidget {
   final List<DateTime> time;
   final List<double> values;
@@ -56,9 +58,11 @@ class HourlyLineChart extends StatelessWidget {
                 showTitles: true,
                 reservedSize: 36,
                 getTitlesWidget: (value, meta) {
-                  final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt());
-                  final hour = dt.hour;
-                  final text = hour % 4 == 0 ? dt.hour.toString() : '';
+                  final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt(),
+                          isUtc: true)
+                      .toLocal();
+                  final format = DateFormat.H();
+                  final text = dt.hour % 4 == 0 ? format.format(dt) : '';
                   return SideTitleWidget(
                     axisSide: meta.axisSide,
                     child: Text(text),

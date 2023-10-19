@@ -16,6 +16,7 @@ import 'package:anemoi_weather/src/search_location/domain/repositories/geocoding
 import 'package:anemoi_weather/src/search_location/domain/usecases/search_location.dart';
 import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
+import 'package:anemoi_weather/src/settings/presentation/cubit/settings_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,6 +25,8 @@ final sl = GetIt.instance;
 Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.remove('locations_key');
+
+  sl.registerFactory(() => SettingsCubit());
 
   sl.registerFactory(() => ForecastCubit(fetchForecast: sl()));
   sl.registerLazySingleton(() => FetchForecast(sl()));

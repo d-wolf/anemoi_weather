@@ -2,6 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:intl/intl.dart';
+
 class HourlyBarChart extends StatelessWidget {
   final List<DateTime> time;
   final List<double> values;
@@ -20,11 +22,16 @@ class HourlyBarChart extends StatelessWidget {
     this.color = Colors.lightBlue,
     this.intervalY = 1.0,
     super.key,
-  }) : spots = List.generate(time.length,
-            (index) => FlSpot(time[index].hour.toDouble(), values[index]));
+  }) : spots = List.generate(
+            time.length,
+            (index) => FlSpot(
+                time[index].millisecondsSinceEpoch.toDouble(), values[index]));
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    final str = value.toInt() % 4 == 0 ? value.toInt().toString() : '';
+    final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt(), isUtc: true)
+        .toLocal();
+    final format = DateFormat.H();
+    final str = dt.hour % 4 == 0 ? format.format(dt) : '';
     return SideTitleWidget(
       axisSide: meta.axisSide,
       child: Text(str),

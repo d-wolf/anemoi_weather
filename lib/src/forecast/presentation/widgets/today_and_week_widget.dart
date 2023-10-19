@@ -10,9 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TodayAndWeekWidget extends StatefulWidget {
+  final DateTime lastUpdated;
   final Forecast forecast;
 
-  const TodayAndWeekWidget({required this.forecast, super.key});
+  const TodayAndWeekWidget(
+      {required this.lastUpdated, required this.forecast, super.key});
 
   @override
   State<TodayAndWeekWidget> createState() => _TodayAndWeekWidgetState();
@@ -35,8 +37,9 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Aktuell'),
-                subtitle: Text('${DateTime.now()}'),
+                title: const Text('Last Updated'),
+                subtitle:
+                    Text(DateFormat.Hms().format(widget.lastUpdated.toLocal())),
               ),
               Row(
                 children: [
@@ -60,25 +63,29 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                         children: [
                           ListTile(
                             leading: const Icon(Weather.wi_thermometer),
-                            title: Text(
+                            title: const Text('Current Temperature'),
+                            subtitle: Text(
                               '${widget.forecast.current!.temperature2M} ${widget.forecast.currentUnits!.temperature2M}',
                             ),
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_rain_mix),
-                            title: Text(
+                            title: const Text('Precipitation'),
+                            subtitle: Text(
                               '${widget.forecast.current!.precipitation} ${widget.forecast.currentUnits!.precipitation}',
                             ),
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_humidity),
-                            title: Text(
+                            title: const Text('Rrelative Humidity'),
+                            subtitle: Text(
                               '${widget.forecast.current!.relativehumidity2M} ${widget.forecast.currentUnits!.relativehumidity2M}',
                             ),
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_windy),
-                            title: Text(
+                            title: const Text('Windspeed'),
+                            subtitle: Text(
                               '${widget.forecast.current!.windspeed10M} ${widget.forecast.currentUnits!.windspeed10M}',
                             ),
                           ),
@@ -126,8 +133,9 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(DateFormat.Hm().format(
-                                      widget.forecast.hourly!.time[index])),
+                                  Text(DateFormat.Hm().format(widget
+                                      .forecast.hourly!.time[index]
+                                      .toLocal())),
                                   Icon(
                                     Constants.wmoIconMap[widget
                                         .forecast.hourly!.weathercode[index]],
@@ -191,7 +199,7 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Precepitation'),
+                title: const Text('Precepitation Probability'),
                 subtitle: Text(
                     'in ${widget.forecast.hourlyUnits!.precipitationProbability!}'),
               ),
@@ -213,6 +221,38 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                         widget.forecast.hourlyUnits!.precipitationProbability!,
                     color: AppColors.precipitationColor,
                     intervalY: 10,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Card(
+          margin: AppStyle.insetsMedium,
+          child: Column(
+            children: [
+              ListTile(
+                title: const Text('Precepitation'),
+                subtitle:
+                    Text('in ${widget.forecast.hourlyUnits!.precipitation!}'),
+              ),
+              SizedBox(
+                height: cardHeight,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: AppStyle.spaceSmall,
+                      top: AppStyle.spaceMedium,
+                      right: AppStyle.spaceXLarge,
+                      bottom: AppStyle.spaceMedium),
+                  child: HourlyBarChart(
+                    values: widget.forecast.hourly!.precipitation
+                        .map((e) => e.toDouble())
+                        .take(24)
+                        .toList(),
+                    time: widget.forecast.hourly!.time.take(24).toList(),
+                    unit: widget.forecast.hourlyUnits!.precipitation!,
+                    color: AppColors.precipitationColor,
+                    intervalY: 5,
                   ),
                 ),
               ),

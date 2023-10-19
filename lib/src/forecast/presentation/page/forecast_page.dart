@@ -1,3 +1,4 @@
+import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:anemoi_weather/src/core/widgets/app_drawer.dart';
 import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/forecast/presentation/widgets/today_and_week_widget.dart';
@@ -37,7 +38,9 @@ class _ForecastPageState extends State<ForecastPage> {
             switch (forecastState) {
               case ForecastStateError():
                 return Scaffold(
-                    drawer: const AppDrawer(),
+                    drawer: const AppDrawer(
+                      route: Routes.forecastPage,
+                    ),
                     appBar: AppBar(
                       backgroundColor:
                           Theme.of(context).colorScheme.inversePrimary,
@@ -45,7 +48,9 @@ class _ForecastPageState extends State<ForecastPage> {
                     body: Container());
               case ForecastStateLoading():
                 return Scaffold(
-                    drawer: const AppDrawer(),
+                    drawer: const AppDrawer(
+                      route: Routes.forecastPage,
+                    ),
                     appBar: AppBar(
                       backgroundColor:
                           Theme.of(context).colorScheme.inversePrimary,
@@ -54,11 +59,14 @@ class _ForecastPageState extends State<ForecastPage> {
                       child: CircularProgressIndicator(),
                     ));
               case ForecastStateLoaded(
+                  lastUpdated: final lastUpdated,
                   userLocation: final userLocation,
                   forecast: final forecast
                 ):
                 return Scaffold(
-                    drawer: const AppDrawer(),
+                    drawer: const AppDrawer(
+                      route: Routes.forecastPage,
+                    ),
                     appBar: AppBar(
                       actions: [
                         IconButton(
@@ -86,6 +94,7 @@ class _ForecastPageState extends State<ForecastPage> {
                           Theme.of(context).colorScheme.inversePrimary,
                     ),
                     body: TodayAndWeekWidget(
+                      lastUpdated: lastUpdated,
                       forecast: forecast,
                     ));
             }

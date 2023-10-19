@@ -23,14 +23,20 @@ class ForecastCubit extends Cubit<ForecastState> {
       result.fold(
           (l) => emit(const ForecastStateError()),
           (r) => emit(ForecastStateLoaded(
-              userLocation: collection.selected, forecast: r)));
+              lastUpdated: DateTime.timestamp(),
+              userLocation: collection.selected,
+              forecast: r)));
     }
   }
 
   Future<void> loadForecast(UserLocation location) async {
     emit(const ForecastStateLoading());
     final result = await _fetchForecast(location);
-    result.fold((l) => emit(const ForecastStateError()),
-        (r) => emit(ForecastStateLoaded(userLocation: location, forecast: r)));
+    result.fold(
+        (l) => emit(const ForecastStateError()),
+        (r) => emit(ForecastStateLoaded(
+            lastUpdated: DateTime.timestamp(),
+            userLocation: location,
+            forecast: r)));
   }
 }

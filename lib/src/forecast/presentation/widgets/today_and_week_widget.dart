@@ -5,16 +5,21 @@ import 'package:anemoi_weather/icons/weather_icons.dart';
 import 'package:anemoi_weather/src/forecast/domain/entities/forecast.dart';
 import 'package:anemoi_weather/src/forecast/presentation/widgets/hourly_bar_chart.dart';
 import 'package:anemoi_weather/src/forecast/presentation/widgets/hourly_line_chart.dart';
+import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TodayAndWeekWidget extends StatefulWidget {
   final DateTime lastUpdated;
+  final UserLocation userLocation;
   final Forecast forecast;
 
   const TodayAndWeekWidget(
-      {required this.lastUpdated, required this.forecast, super.key});
+      {required this.lastUpdated,
+      required this.userLocation,
+      required this.forecast,
+      super.key});
 
   @override
   State<TodayAndWeekWidget> createState() => _TodayAndWeekWidgetState();
@@ -37,9 +42,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Last Updated'),
-                subtitle:
-                    Text(DateFormat.Hms().format(widget.lastUpdated.toLocal())),
+                title: Text(
+                    '${widget.userLocation.name}, ${widget.userLocation.tag}'),
+                subtitle: Text(
+                    'Last Updated: ${DateFormat.Hms().format(widget.lastUpdated.toLocal())}'),
               ),
               Row(
                 children: [

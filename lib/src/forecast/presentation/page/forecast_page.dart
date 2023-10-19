@@ -77,24 +77,13 @@ class _ForecastPageState extends State<ForecastPage> {
                             },
                             icon: const Icon(Icons.replay))
                       ],
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            userLocation.name,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          Text(
-                            userLocation.tag,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
+                      title: const Text('Forecast'),
                       backgroundColor:
                           Theme.of(context).colorScheme.inversePrimary,
                     ),
                     body: TodayAndWeekWidget(
                       lastUpdated: lastUpdated,
+                      userLocation: userLocation,
                       forecast: forecast,
                     ));
             }

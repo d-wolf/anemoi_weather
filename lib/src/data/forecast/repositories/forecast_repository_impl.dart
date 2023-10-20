@@ -1,5 +1,5 @@
-import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/forecast/datasources/forecast_remote_data_source.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 import 'package:anemoi_weather/src/domain/forecast/failures/failure.dart';

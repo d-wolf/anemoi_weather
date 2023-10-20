@@ -1,5 +1,5 @@
-import 'package:anemoi_weather/src/domain/core/usecase/usecase.dart';
 import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
+import 'package:anemoi_weather/src/domain/core/usecase/usecase.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 import 'package:anemoi_weather/src/domain/forecast/repositories/forecast_repository.dart';

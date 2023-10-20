@@ -1,4 +1,3 @@
-import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/forecast/api_strings.dart';
 import 'package:anemoi_weather/src/data/forecast/models/current/current_model.dart';
 import 'package:anemoi_weather/src/data/forecast/models/current/current_units_model.dart';
@@ -6,6 +5,7 @@ import 'package:anemoi_weather/src/data/forecast/models/daily/daily_model.dart';
 import 'package:anemoi_weather/src/data/forecast/models/daily/daily_units_model.dart';
 import 'package:anemoi_weather/src/data/forecast/models/hourly/hourly_model.dart';
 import 'package:anemoi_weather/src/data/forecast/models/hourly/hourly_units_model.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 
 class ForecastModel extends Forecast {

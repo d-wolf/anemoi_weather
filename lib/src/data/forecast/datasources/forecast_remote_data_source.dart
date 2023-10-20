@@ -2,10 +2,10 @@
 
 import 'dart:convert';
 
-import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/forecast/api_strings.dart';
 import 'package:anemoi_weather/src/data/forecast/models/forecast_model.dart';
 import 'package:anemoi_weather/src/data/forecast/utils/enum_extensions.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 import 'package:http/http.dart' as http;

@@ -1,5 +1,5 @@
-import 'package:anemoi_weather/src/domain/core/usecase/usecase.dart';
 import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
+import 'package:anemoi_weather/src/domain/core/usecase/usecase.dart';
 import 'package:anemoi_weather/src/domain/search_location/entities/geocoding_search_results.dart';
 import 'package:anemoi_weather/src/domain/search_location/repositories/geocoding_search_repository.dart';
 import 'package:equatable/equatable.dart';

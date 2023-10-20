@@ -1,6 +1,6 @@
-import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/forecast/api_strings.dart';
 import 'package:anemoi_weather/src/data/forecast/utils/enum_extensions.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/daily_units.dart';
 import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 

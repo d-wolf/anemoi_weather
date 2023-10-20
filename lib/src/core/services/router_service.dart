@@ -1,9 +1,8 @@
 import 'package:anemoi_weather/src/core/services/injection_container.dart';
-import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
-import 'package:anemoi_weather/src/forecast/presentation/page/forecast_page.dart';
-import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
-import 'package:anemoi_weather/src/location/presentation/page/location_page.dart';
-import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
+import 'package:anemoi_weather/src/presentation/forecast/cubit/forecast_cubit.dart';
+import 'package:anemoi_weather/src/presentation/forecast/page/forecast_page.dart';
+import 'package:anemoi_weather/src/presentation/location/page/location_page.dart';
+import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/settings/presentation/page/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,28 +21,15 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.forecastPage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ForecastCubit>(
-            create: (_) => sl()..reload(),
-            child: const ForecastPage(),
-          ),
+          builder: (_) => const ForecastPage(),
           settings: settings,
         );
       case Routes.locationPage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<LocationCubit>(
-            create: (_) => sl()..loadLocations(),
-            child: MultiBlocProvider(
-              providers: [
-                BlocProvider<LocationCubit>(
-                  create: (_) => sl()..loadLocations(),
-                ),
-                BlocProvider<SearchBloc>(
-                  create: (_) => sl(),
-                ),
-              ],
-              child: LocationPage(
-                forecastCubit: settings.arguments! as ForecastCubit,
-              ),
+          builder: (_) => BlocProvider<SearchBloc>(
+            create: (context) => sl(),
+            child: LocationPage(
+              forecastCubit: settings.arguments! as ForecastCubit,
             ),
           ),
           settings: settings,

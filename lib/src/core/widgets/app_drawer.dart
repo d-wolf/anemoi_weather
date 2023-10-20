@@ -7,8 +7,6 @@ class AppDrawer extends StatelessWidget {
   final String route;
   final Map<String, Object?>? argsMap;
 
-  // final Object? arguments;
-
   const AppDrawer({required this.route, this.argsMap, super.key});
 
   @override

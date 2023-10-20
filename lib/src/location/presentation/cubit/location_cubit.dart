@@ -1,4 +1,3 @@
-import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/location/domain/entities/user_location.dart';
 import 'package:anemoi_weather/src/location/domain/entities/user_location_collection.dart';
 import 'package:anemoi_weather/src/location/domain/usecases/add_location.dart';
@@ -37,8 +36,7 @@ class LocationCubit extends Cubit<LocationState> {
     });
   }
 
-  Future<void> addLocation(
-      GeocodingSearchResult value, ForecastCubit forecastCubit) async {
+  Future<void> addLocation(GeocodingSearchResult value) async {
     final result = await _addLocation(UserLocation(
       uuid: const Uuid().v4(),
       lat: value.latitude,
@@ -48,21 +46,18 @@ class LocationCubit extends Cubit<LocationState> {
     ));
 
     result.fold((l) => emit(const LocationStateError()), (r) {
-      forecastCubit.loadForecast();
       emit(LocationsStateLoaded(collection: r));
     });
   }
 
-  Future<void> deleteLocation(
-      UserLocation value, ForecastCubit forecastCubit) async {
+  Future<void> deleteLocation(UserLocation value) async {
     final result = await _deleteLocation(value);
     result.fold((l) => emit(const LocationStateError()), (r) {
       emit(LocationsStateLoaded(collection: r));
     });
   }
 
-  Future<void> selectLocation(
-      UserLocation value, ForecastCubit forecastCubit) async {
+  Future<void> selectLocation(UserLocation value) async {
     final result = await _selectLocation(value);
     result.fold((l) => emit(const LocationStateError()), (r) {
       emit(LocationsStateLoaded(collection: r));

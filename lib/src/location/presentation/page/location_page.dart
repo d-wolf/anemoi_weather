@@ -18,7 +18,17 @@ class LocationPage extends StatefulWidget {
 class _LocationPageState extends State<LocationPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocationCubit, LocationState>(
+    return BlocConsumer<LocationCubit, LocationState>(
+      listener: (context, state) {
+        switch (state) {
+          case LocationStateLoading():
+            break;
+          case LocationsStateLoaded(collection: final collection):
+            widget.forecastCubit.load(collection);
+          case LocationStateError():
+            break;
+        }
+      },
       builder: (context, state) {
         switch (state) {
           case LocationsStateLoaded loaded:
@@ -38,7 +48,7 @@ class _LocationPageState extends State<LocationPage> {
                               searchSelectionCallback: (result) {
                                 context
                                     .read<LocationCubit>()
-                                    .addLocation(result, widget.forecastCubit);
+                                    .addLocation(result);
                               },
                               bloc: context.read<SearchBloc>()),
                         );
@@ -58,9 +68,7 @@ class _LocationPageState extends State<LocationPage> {
                       title: Text(location.name),
                       subtitle: Text(location.tag),
                       onTap: () {
-                        context
-                            .read<LocationCubit>()
-                            .selectLocation(location, widget.forecastCubit);
+                        context.read<LocationCubit>().selectLocation(location);
                       },
                     );
                   }),

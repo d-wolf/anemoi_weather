@@ -68,7 +68,7 @@ class _ForecastPageState extends State<ForecastPage> {
                     actions: [
                       IconButton(
                           onPressed: () {
-                            context.read<ForecastCubit>().loadForecast();
+                            context.read<ForecastCubit>().reload();
                           },
                           icon: const Icon(Icons.replay))
                     ],
@@ -91,7 +91,7 @@ class _ForecastPageState extends State<ForecastPage> {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        context.read<ForecastCubit>().loadForecast();
+                        context.read<ForecastCubit>().reload();
                       },
                       icon: const Icon(Icons.replay),
                     )

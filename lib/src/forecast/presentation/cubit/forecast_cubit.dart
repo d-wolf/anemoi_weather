@@ -20,8 +20,7 @@ class ForecastCubit extends Cubit<ForecastState> {
         _fetchForecast = fetchForecast,
         super(const ForecastStateLoading());
 
-  Future<void> loadForecastFromCollection(
-      UserLocationCollection collection) async {
+  Future<void> load(UserLocationCollection collection) async {
     if (collection.isNotEmpty) {
       emit(const ForecastStateLoading());
       final result = await _fetchForecast(collection.selected);
@@ -31,12 +30,13 @@ class ForecastCubit extends Cubit<ForecastState> {
               lastUpdated: DateTime.timestamp(),
               userLocation: collection.selected,
               forecast: r)));
+    } else {
+      emit(const ForecastStateNoLocation());
     }
   }
 
-  Future<void> loadForecast() async {
+  Future<void> reload() async {
     emit(const ForecastStateLoading());
-
     final getLocationResult = await _getSelectedLocation();
 
     getLocationResult.fold((l) => emit(const ForecastStateError()),

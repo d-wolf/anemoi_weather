@@ -23,7 +23,7 @@ class RouteGenerator {
       case Routes.forecastPage:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<ForecastCubit>(
-            create: (_) => sl()..loadForecast(),
+            create: (_) => sl()..reload(),
             child: const ForecastPage(),
           ),
           settings: settings,

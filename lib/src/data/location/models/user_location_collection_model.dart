@@ -24,9 +24,9 @@ class UserLocationCollectionModel extends UserLocationCollection {
           ? json['selected_uuid'] as String
           : null,
       locations: json.containsKey('locations')
-          ? List<dynamic>.from(
-              jsonDecode(json['locations'] as String) as List<dynamic>,
-            ).map((e) => UserLocationModel.fromJson(e as DataMap)).toList()
+          ? (jsonDecode(json['locations'] as String) as List)
+              .map((e) => UserLocationModel.fromJson(e as DataMap))
+              .toList()
           : [],
     );
   }

@@ -102,209 +102,174 @@ class HourlyModel extends Hourly {
 
   factory HourlyModel.fromJson(DataMap json) {
     return HourlyModel(
-      time: List<int>.from(json[ApiStrings.time] as List)
+      time: (json[ApiStrings.time] as List)
+          .cast<int>()
           .map(
             (e) => DateTime.fromMillisecondsSinceEpoch(e * 1000, isUtc: true),
           )
           .toList(),
       temperature2M: json.containsKey(HourlyParameters.temperature2M.value)
-          ? List<double>.from(
-              json[HourlyParameters.temperature2M.value] as List,
-            )
+          ? (json[HourlyParameters.temperature2M.value] as List).cast<double>()
           : [],
       relativehumidity2M:
           json.containsKey(HourlyParameters.relativehumidity2M.value)
-              ? List<int>.from(
-                  json[HourlyParameters.relativehumidity2M.value] as List,
-                )
+              ? (json[HourlyParameters.relativehumidity2M.value] as List)
+                  .cast<int>()
               : [],
       dewpoint2M: json.containsKey(HourlyParameters.dewpoint2M.value)
-          ? List<double>.from(json[HourlyParameters.dewpoint2M.value] as List)
+          ? (json[HourlyParameters.dewpoint2M.value] as List).cast<double>()
           : [],
       apparentTemperature:
           json.containsKey(HourlyParameters.apparentTemperature.value)
-              ? List<double>.from(
-                  json[HourlyParameters.apparentTemperature.value] as List,
-                )
+              ? (json[HourlyParameters.apparentTemperature.value] as List)
+                  .cast<double>()
               : [],
       precipitationProbability:
           json.containsKey(HourlyParameters.precipitationProbability.value)
-              ? List<int>.from(
-                  json[HourlyParameters.precipitationProbability.value] as List,
-                )
+              ? (json[HourlyParameters.precipitationProbability.value] as List)
+                  .cast<int>()
               : [],
       precipitation: json.containsKey(HourlyParameters.precipitation.value)
-          ? List<double>.from(
-              json[HourlyParameters.precipitation.value] as List,
-            )
+          ? (json[HourlyParameters.precipitation.value] as List).cast<double>()
           : [],
       rain: json.containsKey(HourlyParameters.rain.value)
-          ? List<double>.from(json[HourlyParameters.rain.value] as List)
+          ? (json[HourlyParameters.rain.value] as List).cast<double>()
           : [],
       showers: json.containsKey(HourlyParameters.showers.value)
-          ? List<double>.from(json[HourlyParameters.showers.value] as List)
+          ? (json[HourlyParameters.showers.value] as List).cast<double>()
           : [],
       snowfall: json.containsKey(HourlyParameters.snowfall.value)
-          ? List<double>.from(json[HourlyParameters.snowfall.value] as List)
+          ? (json[HourlyParameters.snowfall.value] as List).cast<double>()
           : [],
       snowDepth: json.containsKey(HourlyParameters.snowDepth.value)
-          ? List<double>.from(json[HourlyParameters.snowDepth.value] as List)
+          ? (json[HourlyParameters.snowDepth.value] as List).cast<double>()
           : [],
       weathercode: json.containsKey(HourlyParameters.weathercode.value)
-          ? List<int>.from(json[HourlyParameters.weathercode.value] as List)
+          ? (json[HourlyParameters.weathercode.value] as List).cast<int>()
           : [],
       pressureMsl: json.containsKey(HourlyParameters.pressureMsl.value)
-          ? List<double>.from(json[HourlyParameters.pressureMsl.value] as List)
+          ? (json[HourlyParameters.pressureMsl.value] as List).cast<double>()
           : [],
       surfacePressure: json.containsKey(HourlyParameters.surfacePressure.value)
-          ? List<double>.from(
-              json[HourlyParameters.surfacePressure.value] as List,
-            )
+          ? (json[HourlyParameters.surfacePressure.value] as List)
+              .cast<double>()
           : [],
       cloudcover: json.containsKey(HourlyParameters.cloudcover.value)
-          ? List<int>.from(json[HourlyParameters.cloudcover.value] as List)
+          ? (json[HourlyParameters.cloudcover.value] as List).cast<int>()
           : [],
       cloudcoverLow: json.containsKey(HourlyParameters.cloudcoverLow.value)
-          ? List<int>.from(json[HourlyParameters.cloudcoverLow.value] as List)
+          ? (json[HourlyParameters.cloudcoverLow.value] as List).cast<int>()
           : [],
       cloudcoverMid: json.containsKey(HourlyParameters.cloudcoverMid.value)
-          ? List<int>.from(json[HourlyParameters.cloudcoverMid.value] as List)
+          ? (json[HourlyParameters.cloudcoverMid.value] as List).cast<int>()
           : [],
       cloudcoverHigh: json.containsKey(HourlyParameters.cloudcoverHigh.value)
-          ? List<int>.from(json[HourlyParameters.cloudcoverHigh.value] as List)
+          ? (json[HourlyParameters.cloudcoverHigh.value] as List).cast<int>()
           : [],
       visibility: json.containsKey(HourlyParameters.visibility.value)
-          ? List<int>.from(json[HourlyParameters.visibility.value] as List)
+          ? (json[HourlyParameters.visibility.value] as List).cast<int>()
           : [],
       evapotranspiration:
           json.containsKey(HourlyParameters.evapotranspiration.value)
-              ? List<double>.from(
-                  json[HourlyParameters.evapotranspiration.value] as List,
-                )
+              ? (json[HourlyParameters.evapotranspiration.value] as List)
+                  .cast<double>()
               : [],
       et0FaoEvapotranspiration:
           json.containsKey(HourlyParameters.et0FaoEvapotranspiration.value)
-              ? List<double>.from(
-                  json[HourlyParameters.et0FaoEvapotranspiration.value] as List,
-                )
+              ? (json[HourlyParameters.et0FaoEvapotranspiration.value] as List)
+                  .cast<double>()
               : [],
       vaporPressureDeficit:
           json.containsKey(HourlyParameters.vaporPressureDeficit.value)
-              ? List<double>.from(
-                  json[HourlyParameters.vaporPressureDeficit.value] as List,
-                )
+              ? (json[HourlyParameters.vaporPressureDeficit.value] as List)
+                  .cast<double>()
               : [],
       windspeed10M: json.containsKey(HourlyParameters.windspeed10M.value)
-          ? List<double>.from(json[HourlyParameters.windspeed10M.value] as List)
+          ? (json[HourlyParameters.windspeed10M.value] as List).cast<double>()
           : [],
       windspeed80M: json.containsKey(HourlyParameters.windspeed80M.value)
-          ? List<double>.from(json[HourlyParameters.windspeed80M.value] as List)
+          ? (json[HourlyParameters.windspeed80M.value] as List).cast<double>()
           : [],
       windspeed120M: json.containsKey(HourlyParameters.windspeed120M.value)
-          ? List<double>.from(
-              json[HourlyParameters.windspeed120M.value] as List,
-            )
+          ? (json[HourlyParameters.windspeed120M.value] as List).cast<double>()
           : [],
       windspeed180M: json.containsKey(HourlyParameters.windspeed180M.value)
-          ? List<double>.from(
-              json[HourlyParameters.windspeed180M.value] as List,
-            )
+          ? (json[HourlyParameters.windspeed180M.value] as List).cast<double>()
           : [],
-      winddirection10M:
-          json.containsKey(HourlyParameters.winddirection10M.value)
-              ? List<int>.from(
-                  json[HourlyParameters.winddirection10M.value] as List,
-                )
-              : [],
-      winddirection80M:
-          json.containsKey(HourlyParameters.winddirection80M.value)
-              ? List<int>.from(
-                  json[HourlyParameters.winddirection80M.value] as List,
-                )
-              : [],
-      winddirection120M:
-          json.containsKey(HourlyParameters.winddirection120M.value)
-              ? List<int>.from(
-                  json[HourlyParameters.winddirection120M.value] as List,
-                )
-              : [],
-      winddirection180M:
-          json.containsKey(HourlyParameters.winddirection180M.value)
-              ? List<int>.from(
-                  json[HourlyParameters.winddirection180M.value] as List,
-                )
-              : [],
+      winddirection10M: json
+              .containsKey(HourlyParameters.winddirection10M.value)
+          ? (json[HourlyParameters.winddirection10M.value] as List).cast<int>()
+          : [],
+      winddirection80M: json
+              .containsKey(HourlyParameters.winddirection80M.value)
+          ? (json[HourlyParameters.winddirection80M.value] as List).cast<int>()
+          : [],
+      winddirection120M: json
+              .containsKey(HourlyParameters.winddirection120M.value)
+          ? (json[HourlyParameters.winddirection120M.value] as List).cast<int>()
+          : [],
+      winddirection180M: json
+              .containsKey(HourlyParameters.winddirection180M.value)
+          ? (json[HourlyParameters.winddirection180M.value] as List).cast<int>()
+          : [],
       windgusts10M: json.containsKey(HourlyParameters.windgusts10M.value)
-          ? List<double>.from(json[HourlyParameters.windgusts10M.value] as List)
+          ? (json[HourlyParameters.windgusts10M.value] as List).cast<double>()
           : [],
       temperature80M: json.containsKey(HourlyParameters.temperature80M.value)
-          ? List<double>.from(
-              json[HourlyParameters.temperature80M.value] as List,
-            )
+          ? (json[HourlyParameters.temperature80M.value] as List).cast<double>()
           : [],
       temperature120M: json.containsKey(HourlyParameters.temperature120M.value)
-          ? List<double>.from(
-              json[HourlyParameters.temperature120M.value] as List,
-            )
+          ? (json[HourlyParameters.temperature120M.value] as List)
+              .cast<double>()
           : [],
       temperature180M: json.containsKey(HourlyParameters.temperature180M.value)
-          ? List<double>.from(
-              json[HourlyParameters.temperature180M.value] as List,
-            )
+          ? (json[HourlyParameters.temperature180M.value] as List)
+              .cast<double>()
           : [],
       soilTemperature0Cm:
           json.containsKey(HourlyParameters.soilTemperature0Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilTemperature0Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilTemperature0Cm.value] as List)
+                  .cast<double>()
               : [],
       soilTemperature6Cm:
           json.containsKey(HourlyParameters.soilTemperature6Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilTemperature6Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilTemperature6Cm.value] as List)
+                  .cast<double>()
               : [],
       soilTemperature18Cm:
           json.containsKey(HourlyParameters.soilTemperature18Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilTemperature18Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilTemperature18Cm.value] as List)
+                  .cast<double>()
               : [],
       soilTemperature54Cm:
           json.containsKey(HourlyParameters.soilTemperature54Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilTemperature54Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilTemperature54Cm.value] as List)
+                  .cast<double>()
               : [],
       soilMoisture0To1Cm:
           json.containsKey(HourlyParameters.soilMoisture0To1Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilMoisture0To1Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilMoisture0To1Cm.value] as List)
+                  .cast<double>()
               : [],
       soilMoisture1To3Cm:
           json.containsKey(HourlyParameters.soilMoisture1To3Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilMoisture1To3Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilMoisture1To3Cm.value] as List)
+                  .cast<double>()
               : [],
       soilMoisture3To9Cm:
           json.containsKey(HourlyParameters.soilMoisture3To9Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilMoisture3To9Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilMoisture3To9Cm.value] as List)
+                  .cast<double>()
               : [],
       soilMoisture9To27Cm:
           json.containsKey(HourlyParameters.soilMoisture9To27Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilMoisture9To27Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilMoisture9To27Cm.value] as List)
+                  .cast<double>()
               : [],
       soilMoisture27To81Cm:
           json.containsKey(HourlyParameters.soilMoisture27To81Cm.value)
-              ? List<double>.from(
-                  json[HourlyParameters.soilMoisture27To81Cm.value] as List,
-                )
+              ? (json[HourlyParameters.soilMoisture27To81Cm.value] as List)
+                  .cast<double>()
               : [],
     );
   }

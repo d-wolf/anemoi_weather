@@ -13,7 +13,7 @@ class GeocodingSearchResultsModel extends GeocodingSearchResults {
   factory GeocodingSearchResultsModel.fromJson(DataMap json) {
     return GeocodingSearchResultsModel(
       results: json.containsKey(ApiStrings.results)
-          ? List<dynamic>.from(json[ApiStrings.results] as List<dynamic>)
+          ? (json[ApiStrings.results] as List)
               .map((e) => GeocodingSearchResultModel.fromJson(e as DataMap))
               .toList()
           : [],
@@ -117,7 +117,7 @@ class GeocodingSearchResultModel extends GeocodingSearchResult {
           ? json[ApiStrings.population] as int
           : null,
       postcodes: json.containsKey(ApiStrings.postcodes)
-          ? List<String>.from(json[ApiStrings.postcodes] as List)
+          ? (json[ApiStrings.postcodes] as List).cast<String>()
           : [],
     );
   }

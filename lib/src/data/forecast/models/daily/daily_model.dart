@@ -58,101 +58,86 @@ class DailyModel extends Daily {
 
   factory DailyModel.fromJson(DataMap json) {
     return DailyModel(
-      time: List<int>.from(json[ApiStrings.time] as List)
+      time: (json[ApiStrings.time] as List)
+          .cast<int>()
           .map(
             (e) => DateTime.fromMillisecondsSinceEpoch(e * 1000, isUtc: true),
           )
           .toList(),
       temperature2MMax: json.containsKey(DailyParameters.temperature2MMax.value)
-          ? List<double>.from(
-              json[DailyParameters.temperature2MMax.value] as List,
-            )
+          ? (json[DailyParameters.temperature2MMax.value] as List)
+              .cast<double>()
           : [],
       temperature2MMin: json.containsKey(DailyParameters.temperature2MMin.value)
-          ? List<double>.from(
-              json[DailyParameters.temperature2MMin.value] as List,
-            )
+          ? (json[DailyParameters.temperature2MMin.value] as List)
+              .cast<double>()
           : [],
       apparentTemperatureMax:
           json.containsKey(DailyParameters.apparentTemperatureMax.value)
-              ? List<double>.from(
-                  json[DailyParameters.apparentTemperatureMax.value] as List,
-                )
+              ? (json[DailyParameters.apparentTemperatureMax.value] as List)
+                  .cast<double>()
               : [],
       apparentTemperatureMin:
           json.containsKey(DailyParameters.apparentTemperatureMin.value)
-              ? List<double>.from(
-                  json[DailyParameters.apparentTemperatureMin.value] as List,
-                )
+              ? (json[DailyParameters.apparentTemperatureMin.value] as List)
+                  .cast<double>()
               : [],
       sunrise: json.containsKey(DailyParameters.sunrise.value)
-          ? List<String>.from(json[DailyParameters.sunrise.value] as List)
+          ? (json[DailyParameters.sunrise.value] as List).cast<String>()
           : [],
       sunset: json.containsKey(DailyParameters.sunset.value)
-          ? List<String>.from(json[DailyParameters.sunset.value] as List)
+          ? (json[DailyParameters.sunset.value] as List).cast<String>()
           : [],
       uvIndexMax: json.containsKey(DailyParameters.uvIndexMax.value)
-          ? List<double>.from(json[DailyParameters.uvIndexMax.value] as List)
+          ? (json[DailyParameters.uvIndexMax.value] as List).cast<double>()
           : [],
       uvIndexClearSkyMax:
           json.containsKey(DailyParameters.uvIndexClearSkyMax.value)
-              ? List<double>.from(
-                  json[DailyParameters.uvIndexClearSkyMax.value] as List,
-                )
+              ? (json[DailyParameters.uvIndexClearSkyMax.value] as List)
+                  .cast<double>()
               : [],
       precipitationSum: json.containsKey(DailyParameters.precipitationSum.value)
-          ? List<double>.from(
-              json[DailyParameters.precipitationSum.value] as List,
-            )
+          ? (json[DailyParameters.precipitationSum.value] as List)
+              .cast<double>()
           : [],
       rainSum: json.containsKey(DailyParameters.rainSum.value)
-          ? List<double>.from(json[DailyParameters.rainSum.value] as List)
+          ? (json[DailyParameters.rainSum.value] as List).cast<double>()
           : [],
       showersSum: json.containsKey(DailyParameters.showersSum.value)
-          ? List<int>.from(json[DailyParameters.showersSum.value] as List)
+          ? (json[DailyParameters.showersSum.value] as List).cast<int>()
           : [],
       snowfallSum: json.containsKey(DailyParameters.snowfallSum.value)
-          ? List<double>.from(json[DailyParameters.snowfallSum.value] as List)
+          ? (json[DailyParameters.snowfallSum.value] as List).cast<double>()
           : [],
-      precipitationHours:
-          json.containsKey(DailyParameters.precipitationHours.value)
-              ? List<int>.from(
-                  json[DailyParameters.precipitationHours.value] as List,
-                )
-              : [],
+      precipitationHours: json
+              .containsKey(DailyParameters.precipitationHours.value)
+          ? (json[DailyParameters.precipitationHours.value] as List).cast<int>()
+          : [],
       precipitationProbabilityMax: json
               .containsKey(DailyParameters.precipitationProbabilityMax.value)
-          ? List<int>.from(
-              json[DailyParameters.precipitationProbabilityMax.value] as List,
-            )
+          ? (json[DailyParameters.precipitationProbabilityMax.value] as List)
+              .cast<int>()
           : [],
       windspeed10MMax: json.containsKey(DailyParameters.windspeed10MMax.value)
-          ? List<double>.from(
-              json[DailyParameters.windspeed10MMax.value] as List,
-            )
+          ? (json[DailyParameters.windspeed10MMax.value] as List).cast<double>()
           : [],
       windgusts10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
-          ? List<double>.from(
-              json[DailyParameters.windgusts10MMax.value] as List,
-            )
+          ? (json[DailyParameters.windgusts10MMax.value] as List).cast<double>()
           : [],
       winddirection10MDominant:
           json.containsKey(DailyParameters.winddirection10MDominant.value)
-              ? List<int>.from(
-                  json[DailyParameters.winddirection10MDominant.value] as List,
-                )
+              ? (json[DailyParameters.winddirection10MDominant.value] as List)
+                  .cast<int>()
               : [],
       shortwaveRadiationSum:
           json.containsKey(DailyParameters.shortwaveRadiationSum.value)
-              ? List<double>.from(
-                  json[DailyParameters.shortwaveRadiationSum.value] as List,
-                )
+              ? (json[DailyParameters.shortwaveRadiationSum.value] as List)
+                  .cast<double>()
               : [],
       et0FaoEvapotranspiration:
           json.containsKey(DailyParameters.et0FaoEvapotranspiration.value)
-              ? List<double>.from(
-                  json[DailyParameters.et0FaoEvapotranspiration.value] as List,
-                )
+              ? (json[DailyParameters.et0FaoEvapotranspiration.value] as List)
+                  .cast<double>()
               : [],
     );
   }

@@ -28,9 +28,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<SearchBloc>(
             create: (context) => sl(),
-            child: LocationPage(
-              forecastCubit: settings.arguments! as ForecastCubit,
-            ),
+            child: const LocationPage(),
           ),
           settings: settings,
         );

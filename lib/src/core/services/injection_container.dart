@@ -4,6 +4,8 @@ import 'package:anemoi_weather/src/data/manage_locations/datasources/locations_l
 import 'package:anemoi_weather/src/data/manage_locations/repositories/user_locations_repository_impl.dart';
 import 'package:anemoi_weather/src/data/search_location/datasources/geocoding_remote_data_source.dart';
 import 'package:anemoi_weather/src/data/search_location/repositories/geocoding_search_repository_impl.dart';
+import 'package:anemoi_weather/src/data/settings/datasources/settings_local_data_source.dart';
+import 'package:anemoi_weather/src/data/settings/repositories/settings_repository_impl.dart';
 import 'package:anemoi_weather/src/domain/forecast/repositories/forecast_repository.dart';
 import 'package:anemoi_weather/src/domain/forecast/usecases/fetch_forecast.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/repositories/user_locations_repository.dart';
@@ -13,6 +15,9 @@ import 'package:anemoi_weather/src/domain/manage_locations/usecases/get_all_loca
 import 'package:anemoi_weather/src/domain/manage_locations/usecases/select_location.dart';
 import 'package:anemoi_weather/src/domain/search_location/repositories/geocoding_search_repository.dart';
 import 'package:anemoi_weather/src/domain/search_location/usecases/search_location.dart';
+import 'package:anemoi_weather/src/domain/settings/repositories/settings_repository.dart';
+import 'package:anemoi_weather/src/domain/settings/usecases/load_settings.dart';
+import 'package:anemoi_weather/src/domain/settings/usecases/save_settings.dart';
 import 'package:anemoi_weather/src/presentation/forecast/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/presentation/manage_location/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
@@ -25,6 +30,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.remove('locations_key');
+  await prefs.remove('settings_key');
 
   _initSettings();
   _initLocation();
@@ -35,8 +41,18 @@ Future<void> init() async {
 }
 
 void _initSettings() {
-  sl.registerFactory(SettingsCubit.new);
-  // TODO(username): message, https://URL-to-issue.
+  sl
+    ..registerFactory(
+      () => SettingsCubit(loadSettings: sl(), saveSettings: sl()),
+    )
+    ..registerLazySingleton(() => LoadSettings(sl()))
+    ..registerLazySingleton(() => SaveSettings(sl()))
+    ..registerLazySingleton<SettingsRepository>(
+      () => SettingsRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<SettingsLocalDataSource>(
+      () => SettingsLocalDataSourceImpl(sl()),
+    );
 }
 
 void _initLocation() {

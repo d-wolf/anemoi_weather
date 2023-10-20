@@ -11,27 +11,42 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
-        return Scaffold(
-          drawer: const AppDrawer(
-            route: Routes.settingsPage,
-          ),
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: const Text('Settings'),
-          ),
-          body: ListView(
-            children: [
-              SwitchListTile(
-                title: const Text('Brightness'),
-                subtitle: Text('${state.brightness}'),
-                value: state.brightness.index == 0,
-                onChanged: (vlaue) {
-                  context.read<SettingsCubit>().switchBrightness();
-                },
+        switch (state) {
+          case SettingsStateLoading():
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
               ),
-            ],
-          ),
-        );
+            );
+          case SettingsStateUpdate():
+            return Scaffold(
+              drawer: const AppDrawer(
+                route: Routes.settingsPage,
+              ),
+              appBar: AppBar(
+                backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+                title: const Text('Settings'),
+              ),
+              body: ListView(
+                children: [
+                  SwitchListTile(
+                    title: const Text('Brightness'),
+                    subtitle: Text('${state.brightness}'),
+                    value: state.brightness.index == 0,
+                    onChanged: (vlaue) {
+                      context.read<SettingsCubit>().switchBrightness();
+                    },
+                  ),
+                ],
+              ),
+            );
+          case SettingsStateError():
+            return const Scaffold(
+              body: Center(
+                child: Text('ERROR'),
+              ),
+            );
+        }
       },
     );
   }

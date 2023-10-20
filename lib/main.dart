@@ -22,10 +22,15 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({required this.sysColor, super.key});
   final Color sysColor;
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -37,23 +42,38 @@ class MyApp extends StatelessWidget {
           create: (context) => sl(),
         ),
         BlocProvider<SettingsCubit>(
-          create: (context) => sl(),
+          create: (context) => sl()..load(),
         ),
       ],
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
-          return MaterialApp(
-            title: 'ANEMOI',
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: sysColor,
-                brightness: state.brightness,
-              ),
-              useMaterial3: true,
-            ),
-            onGenerateRoute: RouteGenerator.generateRoute,
-            initialRoute: Routes.forecastPage,
-          );
+          switch (state) {
+            case SettingsStateLoading():
+              return const Material(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            case SettingsStateError():
+              return const Material(
+                child: Center(
+                  child: Text('ERROR'),
+                ),
+              );
+            case final SettingsStateUpdate update:
+              return MaterialApp(
+                title: 'ANEMOI',
+                theme: ThemeData(
+                  colorScheme: ColorScheme.fromSeed(
+                    seedColor: widget.sysColor,
+                    brightness: update.brightness,
+                  ),
+                  useMaterial3: true,
+                ),
+                onGenerateRoute: RouteGenerator.generateRoute,
+                initialRoute: Routes.forecastPage,
+              );
+          }
         },
       ),
     );

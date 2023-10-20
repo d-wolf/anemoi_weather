@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/src/core/utils/typedef.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
 
 class UserLocationModel extends UserLocation {

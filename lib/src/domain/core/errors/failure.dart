@@ -7,7 +7,3 @@ class Failure extends Equatable {
   @override
   List<Object?> get props => [message];
 }
-
-class BluetoothFailure extends Failure {
-  const BluetoothFailure({required super.message});
-}

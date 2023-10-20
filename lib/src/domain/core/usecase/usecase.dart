@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/src/core/utils/typedef.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 
 abstract class UsecaseWithParams<Type, Params> {
   const UsecaseWithParams();

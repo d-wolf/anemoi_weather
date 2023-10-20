@@ -1,8 +1,8 @@
 import 'package:anemoi_weather/icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 
-class Constants {
-  Constants._();
+class AppWeatherCodes {
+  AppWeatherCodes._();
 
   static const wmoIconMap = <int, IconData>{
     0: Weather.wi_day_sunny,

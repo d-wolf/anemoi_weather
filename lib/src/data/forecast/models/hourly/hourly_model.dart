@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:anemoi_weather/src/core/utils/typedef.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/forecast/api_strings.dart';
 import 'package:anemoi_weather/src/data/forecast/utils/enum_extensions.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/hourly.dart';

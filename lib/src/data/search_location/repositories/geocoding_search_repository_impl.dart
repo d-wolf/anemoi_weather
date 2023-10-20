@@ -6,13 +6,15 @@ import 'package:anemoi_weather/src/domain/search_location/repositories/geocoding
 import 'package:dartz/dartz.dart';
 
 class GeocodingSearchRepositoryImpl implements GeocodingSearchRepository {
-  final GeocodingRemoteDataSource _remoteDataSource;
-
   GeocodingSearchRepositoryImpl(this._remoteDataSource);
+  final GeocodingRemoteDataSource _remoteDataSource;
 
   @override
   ResultFuture<GeocodingSearchResults> search(
-      String name, int count, String languageCode) async {
+    String name,
+    int count,
+    String languageCode,
+  ) async {
     try {
       final result = await _remoteDataSource.search(name, count, languageCode);
       return right(result);

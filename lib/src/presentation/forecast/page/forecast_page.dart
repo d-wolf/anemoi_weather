@@ -35,27 +35,29 @@ class _ForecastPageState extends State<ForecastPage> {
       builder: (context, state) {
         return BlocBuilder<ForecastCubit, ForecastState>(
           builder: (context, forecastState) {
-            return Builder(builder: (context) {
-              switch (forecastState) {
-                case ForecastStateError():
-                  return Scaffold(
+            return Builder(
+              builder: (context) {
+                switch (forecastState) {
+                  case ForecastStateError():
+                    return Scaffold(
                       drawer: AppDrawer(
                         route: Routes.forecastPage,
                         argsMap: {
-                          Routes.locationPage: context.read<ForecastCubit>()
+                          Routes.locationPage: context.read<ForecastCubit>(),
                         },
                       ),
                       appBar: AppBar(
                         backgroundColor:
                             Theme.of(context).colorScheme.inversePrimary,
                       ),
-                      body: Container());
-                case ForecastStateLoading():
-                  return Scaffold(
+                      body: Container(),
+                    );
+                  case ForecastStateLoading():
+                    return Scaffold(
                       drawer: AppDrawer(
                         route: Routes.forecastPage,
                         argsMap: {
-                          Routes.locationPage: context.read<ForecastCubit>()
+                          Routes.locationPage: context.read<ForecastCubit>(),
                         },
                       ),
                       appBar: AppBar(
@@ -64,26 +66,28 @@ class _ForecastPageState extends State<ForecastPage> {
                       ),
                       body: const Center(
                         child: CircularProgressIndicator(),
-                      ));
-                case ForecastStateLoaded(
-                    lastUpdated: final lastUpdated,
-                    userLocation: final userLocation,
-                    forecast: final forecast
-                  ):
-                  return Scaffold(
+                      ),
+                    );
+                  case ForecastStateLoaded(
+                      lastUpdated: final lastUpdated,
+                      userLocation: final userLocation,
+                      forecast: final forecast
+                    ):
+                    return Scaffold(
                       drawer: AppDrawer(
                         route: Routes.forecastPage,
                         argsMap: {
-                          Routes.locationPage: context.read<ForecastCubit>()
+                          Routes.locationPage: context.read<ForecastCubit>(),
                         },
                       ),
                       appBar: AppBar(
                         actions: [
                           IconButton(
-                              onPressed: () {
-                                context.read<ForecastCubit>().reload();
-                              },
-                              icon: const Icon(Icons.replay))
+                            onPressed: () {
+                              context.read<ForecastCubit>().reload();
+                            },
+                            icon: const Icon(Icons.replay),
+                          ),
                         ],
                         title: const Text('Forecast'),
                         backgroundColor:
@@ -93,34 +97,36 @@ class _ForecastPageState extends State<ForecastPage> {
                         lastUpdated: lastUpdated,
                         userLocation: userLocation,
                         forecast: forecast,
-                      ));
-                case ForecastStateNoLocation():
-                  return Scaffold(
-                    drawer: AppDrawer(
-                      route: Routes.forecastPage,
-                      argsMap: {
-                        Routes.locationPage: context.read<ForecastCubit>()
-                      },
-                    ),
-                    appBar: AppBar(
-                      actions: [
-                        IconButton(
-                          onPressed: () {
-                            context.read<ForecastCubit>().reload();
-                          },
-                          icon: const Icon(Icons.replay),
-                        )
-                      ],
-                      title: const Text('Forecast'),
-                      backgroundColor:
-                          Theme.of(context).colorScheme.inversePrimary,
-                    ),
-                    body: const Center(
-                      child: Text('no location set'),
-                    ),
-                  );
-              }
-            });
+                      ),
+                    );
+                  case ForecastStateNoLocation():
+                    return Scaffold(
+                      drawer: AppDrawer(
+                        route: Routes.forecastPage,
+                        argsMap: {
+                          Routes.locationPage: context.read<ForecastCubit>(),
+                        },
+                      ),
+                      appBar: AppBar(
+                        actions: [
+                          IconButton(
+                            onPressed: () {
+                              context.read<ForecastCubit>().reload();
+                            },
+                            icon: const Icon(Icons.replay),
+                          ),
+                        ],
+                        title: const Text('Forecast'),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.inversePrimary,
+                      ),
+                      body: const Center(
+                        child: Text('no location set'),
+                      ),
+                    );
+                }
+              },
+            );
           },
         );
       },

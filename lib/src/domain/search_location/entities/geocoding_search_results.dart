@@ -1,40 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class GeocodingSearchResults extends Equatable {
+  const GeocodingSearchResults({
+    required this.generationtimeMs,
+    this.results = const [],
+  });
   final List<GeocodingSearchResult> results;
   final double generationtimeMs;
-
-  const GeocodingSearchResults({
-    this.results = const [],
-    required this.generationtimeMs,
-  });
 
   @override
   List<Object?> get props => [results, generationtimeMs];
 }
 
 class GeocodingSearchResult extends Equatable {
-  final int id;
-  final String name;
-  final double latitude;
-  final double longitude;
-  final double elevation;
-  final String featureCode;
-  final String countryCode;
-  final int? admin1Id;
-  final String? admin1;
-  final int? admin2Id;
-  final String? admin2;
-  final int? admin3Id;
-  final String? admin3;
-  final int? admin4Id;
-  final String? admin4;
-  final String timezone;
-  final int? population;
-  final List<String> postcodes;
-  final int countryId;
-  final String country;
-
   const GeocodingSearchResult({
     required this.id,
     required this.name,
@@ -57,6 +35,26 @@ class GeocodingSearchResult extends Equatable {
     this.population,
     this.postcodes = const [],
   });
+  final int id;
+  final String name;
+  final double latitude;
+  final double longitude;
+  final double elevation;
+  final String featureCode;
+  final String countryCode;
+  final int? admin1Id;
+  final String? admin1;
+  final int? admin2Id;
+  final String? admin2;
+  final int? admin3Id;
+  final String? admin3;
+  final int? admin4Id;
+  final String? admin4;
+  final String timezone;
+  final int? population;
+  final List<String> postcodes;
+  final int countryId;
+  final String country;
 
   @override
   List<Object?> get props => [id];

@@ -15,9 +15,8 @@ final class LocationStateLoading extends LocationState {
 }
 
 final class LocationsStateLoaded extends LocationState {
-  final UserLocationCollection collection;
-
   const LocationsStateLoaded({required this.collection});
+  final UserLocationCollection collection;
 
   @override
   List<Object?> get props => [collection];

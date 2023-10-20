@@ -6,8 +6,8 @@ import 'package:anemoi_weather/src/domain/location/entities/user_location_collec
 
 class UserLocationCollectionModel extends UserLocationCollection {
   UserLocationCollectionModel({
-    super.selectedUuid,
     required super.locations,
+    super.selectedUuid,
   });
 
   UserLocationCollectionModel.empty() : this(locations: []);
@@ -24,9 +24,9 @@ class UserLocationCollectionModel extends UserLocationCollection {
           ? json['selected_uuid'] as String
           : null,
       locations: json.containsKey('locations')
-          ? List<dynamic>.from(jsonDecode(json['locations']))
-              .map((e) => UserLocationModel.fromJson(e))
-              .toList()
+          ? List<dynamic>.from(
+              jsonDecode(json['locations'] as String) as List<dynamic>,
+            ).map((e) => UserLocationModel.fromJson(e as DataMap)).toList()
           : [],
     );
   }

@@ -1,10 +1,24 @@
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class HourlyBarChart extends StatelessWidget {
+  HourlyBarChart({
+    required this.time,
+    required this.values,
+    this.unit = '',
+    this.color = Colors.lightBlue,
+    this.intervalY = 1.0,
+    super.key,
+  }) : spots = List.generate(
+          time.length,
+          (index) => FlSpot(
+            time[index].millisecondsSinceEpoch.toDouble(),
+            values[index],
+          ),
+        );
   final List<DateTime> time;
   final List<double> values;
 
@@ -14,18 +28,6 @@ class HourlyBarChart extends StatelessWidget {
   final double intervalY;
 
   final List<FlSpot> spots;
-
-  HourlyBarChart({
-    required this.time,
-    required this.values,
-    this.unit = '',
-    this.color = Colors.lightBlue,
-    this.intervalY = 1.0,
-    super.key,
-  }) : spots = List.generate(
-            time.length,
-            (index) => FlSpot(
-                time[index].millisecondsSinceEpoch.toDouble(), values[index]));
 
   Widget bottomTitles(double value, TitleMeta meta) {
     final dt = DateTime.fromMillisecondsSinceEpoch(value.toInt(), isUtc: true)
@@ -69,7 +71,6 @@ class HourlyBarChart extends StatelessWidget {
         minY: minY,
         maxY: maxY == minY ? maxY + intervalY : maxY,
         gridData: FlGridData(
-          show: true,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: Theme.of(context).colorScheme.secondaryContainer,
@@ -100,23 +101,15 @@ class HourlyBarChart extends StatelessWidget {
     );
   }
 
-  int _maxY(List<FlSpot> spots) => ((spots
-                      .map((e) => e.y)
-                      .toList()
-                      .reduce((value, element) => math.max(value, element)) /
-                  intervalY)
-              .ceil() *
-          intervalY)
-      .ceil();
+  int _maxY(List<FlSpot> spots) =>
+      ((spots.map((e) => e.y).toList().reduce(math.max) / intervalY).ceil() *
+              intervalY)
+          .ceil();
 
-  int _minY(List<FlSpot> spots) => ((spots
-                      .map((e) => e.y)
-                      .toList()
-                      .reduce((value, element) => math.min(value, element)) /
-                  intervalY)
-              .floor() *
-          intervalY)
-      .floor();
+  int _minY(List<FlSpot> spots) =>
+      ((spots.map((e) => e.y).toList().reduce(math.min) / intervalY).floor() *
+              intervalY)
+          .floor();
 
   BarChartGroupData _makeGroupData(
     int x,

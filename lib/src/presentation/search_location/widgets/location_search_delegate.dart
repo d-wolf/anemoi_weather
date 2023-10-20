@@ -5,11 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef SearchSelectionCallback = void Function(GeocodingSearchResult result);
 
-class LocationSearchDelegate extends SearchDelegate {
+class LocationSearchDelegate extends SearchDelegate<dynamic> {
+  LocationSearchDelegate({required this.bloc, this.searchSelectionCallback});
   final SearchBloc bloc;
   final SearchSelectionCallback? searchSelectionCallback;
-
-  LocationSearchDelegate({this.searchSelectionCallback, required this.bloc});
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -37,7 +36,8 @@ class LocationSearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     final appLocale = Localizations.localeOf(context);
     bloc.add(
-        SearchEventInput(input: query, languageCode: appLocale.languageCode));
+      SearchEventInput(input: query, languageCode: appLocale.languageCode),
+    );
     return _buildList();
   }
 
@@ -45,40 +45,43 @@ class LocationSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     final appLocale = Localizations.localeOf(context);
     bloc.add(
-        SearchEventInput(input: query, languageCode: appLocale.languageCode));
+      SearchEventInput(input: query, languageCode: appLocale.languageCode),
+    );
     return _buildList();
   }
 
   Widget _buildList() {
     return BlocProvider.value(
       value: bloc,
-      child: Builder(builder: (context) {
-        return BlocBuilder<SearchBloc, SearchState>(
-          builder: (context, state) {
-            switch (state) {
-              case SearchStateSearching():
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case SearchStateUpdate(results: final results):
-                return ListView.builder(
-                  itemCount: results.length,
-                  itemBuilder: (context, index) {
-                    final result = results[index];
-                    return ListTile(
-                      title: Text(result.name),
-                      subtitle: Text('${result.country}, ${result.admin1}'),
-                      onTap: () {
-                        searchSelectionCallback?.call(result);
-                        Navigator.of(context).pop();
-                      },
-                    );
-                  },
-                );
-            }
-          },
-        );
-      }),
+      child: Builder(
+        builder: (context) {
+          return BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              switch (state) {
+                case SearchStateSearching():
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case SearchStateUpdate(results: final results):
+                  return ListView.builder(
+                    itemCount: results.length,
+                    itemBuilder: (context, index) {
+                      final result = results[index];
+                      return ListTile(
+                        title: Text(result.name),
+                        subtitle: Text('${result.country}, ${result.admin1}'),
+                        onTap: () {
+                          searchSelectionCallback?.call(result);
+                          Navigator.of(context).pop();
+                        },
+                      );
+                    },
+                  );
+              }
+            },
+          );
+        },
+      ),
     );
   }
 }

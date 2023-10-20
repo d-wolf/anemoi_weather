@@ -49,8 +49,9 @@ class CurrentModel extends Current {
   factory CurrentModel.fromJson(DataMap json) {
     return CurrentModel(
       time: DateTime.fromMillisecondsSinceEpoch(
-          (json[ApiStrings.time] as int) * 1000,
-          isUtc: true),
+        (json[ApiStrings.time] as int) * 1000,
+        isUtc: true,
+      ),
       interval: json[ApiStrings.interval] as int,
       temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
           ? json[CurrentParameters.temperature2M.value] as double

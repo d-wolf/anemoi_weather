@@ -15,43 +15,47 @@ Future<void> main() async {
 
   // final String defaultLocale = Platform.localeName.split('_').first;
 
-  runApp(MyApp(
-    sysColor: accentColor,
-  ));
+  runApp(
+    MyApp(
+      sysColor: accentColor,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  final Color sysColor;
-
   const MyApp({required this.sysColor, super.key});
+  final Color sysColor;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider<LocationCubit>(
-            create: (context) => sl()..loadLocations(),
-          ),
-          BlocProvider<ForecastCubit>(
-            create: (context) => sl(),
-          ),
-          BlocProvider<SettingsCubit>(
-            create: (context) => sl(),
-          ),
-        ],
-        child: BlocBuilder<SettingsCubit, SettingsState>(
-          builder: (context, state) {
-            return MaterialApp(
-              title: 'ANEMOI',
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(
-                    seedColor: sysColor, brightness: state.brightness),
-                useMaterial3: true,
+      providers: [
+        BlocProvider<LocationCubit>(
+          create: (context) => sl()..loadLocations(),
+        ),
+        BlocProvider<ForecastCubit>(
+          create: (context) => sl(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (context) => sl(),
+        ),
+      ],
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'ANEMOI',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: sysColor,
+                brightness: state.brightness,
               ),
-              onGenerateRoute: RouteGenerator.generateRoute,
-              initialRoute: Routes.forecastPage,
-            );
-          },
-        ));
+              useMaterial3: true,
+            ),
+            onGenerateRoute: RouteGenerator.generateRoute,
+            initialRoute: Routes.forecastPage,
+          );
+        },
+      ),
+    );
   }
 }

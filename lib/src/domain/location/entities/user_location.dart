@@ -1,10 +1,4 @@
 class UserLocation {
-  String uuid;
-  double lat;
-  double long;
-  String name;
-  String tag;
-
   UserLocation({
     required this.uuid,
     required this.lat,
@@ -12,4 +6,9 @@ class UserLocation {
     required this.name,
     required this.tag,
   });
+  String uuid;
+  double lat;
+  double long;
+  String name;
+  String tag;
 }

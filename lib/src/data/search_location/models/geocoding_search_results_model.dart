@@ -6,18 +6,18 @@ import 'package:anemoi_weather/src/domain/search_location/entities/geocoding_sea
 
 class GeocodingSearchResultsModel extends GeocodingSearchResults {
   const GeocodingSearchResultsModel({
-    super.results,
     required super.generationtimeMs,
+    super.results,
   });
 
   factory GeocodingSearchResultsModel.fromJson(DataMap json) {
     return GeocodingSearchResultsModel(
       results: json.containsKey(ApiStrings.results)
-          ? List<dynamic>.from(json[ApiStrings.results])
-              .map((e) => GeocodingSearchResultModel.fromJson(e))
+          ? List<dynamic>.from(json[ApiStrings.results] as List<dynamic>)
+              .map((e) => GeocodingSearchResultModel.fromJson(e as DataMap))
               .toList()
           : [],
-      generationtimeMs: json[ApiStrings.generationtimeMs],
+      generationtimeMs: json[ApiStrings.generationtimeMs] as double,
     );
   }
 
@@ -117,7 +117,7 @@ class GeocodingSearchResultModel extends GeocodingSearchResult {
           ? json[ApiStrings.population] as int
           : null,
       postcodes: json.containsKey(ApiStrings.postcodes)
-          ? List<String>.from(json[ApiStrings.postcodes])
+          ? List<String>.from(json[ApiStrings.postcodes] as List)
           : [],
     );
   }

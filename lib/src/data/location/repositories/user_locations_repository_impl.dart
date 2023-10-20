@@ -8,9 +8,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
 class UserLocationsRepositoryImpl implements UserLocationsRepository {
-  final UserLocationsLocalDataSource _localDataSource;
-
   UserLocationsRepositoryImpl(this._localDataSource);
+  final UserLocationsLocalDataSource _localDataSource;
 
   @override
   ResultFuture<UserLocationCollection> add(UserLocation value) async {

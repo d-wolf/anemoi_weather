@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LocationPage extends StatefulWidget {
-  final ForecastCubit forecastCubit;
   const LocationPage({required this.forecastCubit, super.key});
+  final ForecastCubit forecastCubit;
 
   @override
   State<LocationPage> createState() => _LocationPageState();
@@ -21,7 +21,7 @@ class _LocationPageState extends State<LocationPage> {
     return BlocBuilder<LocationCubit, LocationState>(
       builder: (context, state) {
         switch (state) {
-          case LocationsStateLoaded loaded:
+          case final LocationsStateLoaded loaded:
             return Scaffold(
               drawer: const AppDrawer(
                 route: Routes.locationPage,
@@ -31,51 +31,52 @@ class _LocationPageState extends State<LocationPage> {
                 title: const Text('Locations'),
                 actions: [
                   IconButton(
-                      onPressed: () {
-                        showSearch(
-                          context: context,
-                          delegate: LocationSearchDelegate(
-                              searchSelectionCallback: (result) {
-                                context
-                                    .read<LocationCubit>()
-                                    .addLocation(result);
-                              },
-                              bloc: context.read<SearchBloc>()),
-                        );
-                      },
-                      icon: const Icon(Icons.search))
+                    onPressed: () {
+                      showSearch(
+                        context: context,
+                        delegate: LocationSearchDelegate(
+                          searchSelectionCallback: (result) {
+                            context.read<LocationCubit>().addLocation(result);
+                          },
+                          bloc: context.read<SearchBloc>(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.search),
+                  ),
                 ],
               ),
               body: ListView.builder(
-                  itemCount: loaded.collection.locations.length,
-                  itemBuilder: (context, index) {
-                    final location = loaded.collection.locations[index];
-                    return Dismissible(
-                      key: Key(location.uuid),
-                      background: Container(
-                          color: Theme.of(context).colorScheme.errorContainer),
-                      onDismissed: (direction) {
-                        context.read<LocationCubit>().deleteLocation(location);
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('${location.name} dismissed')));
+                itemCount: loaded.collection.locations.length,
+                itemBuilder: (context, index) {
+                  final location = loaded.collection.locations[index];
+                  return Dismissible(
+                    key: Key(location.uuid),
+                    background: Container(
+                      color: Theme.of(context).colorScheme.errorContainer,
+                    ),
+                    onDismissed: (direction) {
+                      context.read<LocationCubit>().deleteLocation(location);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${location.name} dismissed'),
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                      selected: location.uuid == loaded.collection.selectedUuid,
+                      trailing: location.uuid == loaded.collection.selectedUuid
+                          ? const Icon(Icons.check)
+                          : const SizedBox(),
+                      title: Text(location.name),
+                      subtitle: Text(location.tag),
+                      onTap: () {
+                        context.read<LocationCubit>().selectLocation(location);
                       },
-                      child: ListTile(
-                        selected:
-                            location.uuid == loaded.collection.selectedUuid,
-                        trailing:
-                            location.uuid == loaded.collection.selectedUuid
-                                ? const Icon(Icons.check)
-                                : const SizedBox(),
-                        title: Text(location.name),
-                        subtitle: Text(location.tag),
-                        onTap: () {
-                          context
-                              .read<LocationCubit>()
-                              .selectLocation(location);
-                        },
-                      ),
-                    );
-                  }),
+                    ),
+                  );
+                },
+              ),
             );
           case LocationStateError():
             return Scaffold(

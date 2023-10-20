@@ -35,22 +35,22 @@ class ForecastModel extends Forecast {
       timezoneAbbreviation: json[ApiStrings.timezoneAbbreviation] as String,
       elevation: json[ApiStrings.elevation] as double,
       currentUnits: json.containsKey(ApiStrings.currentUnits)
-          ? CurrentUnitsModel.fromJson(json[ApiStrings.currentUnits])
+          ? CurrentUnitsModel.fromJson(json[ApiStrings.currentUnits] as DataMap)
           : null,
       current: json.containsKey(ApiStrings.current)
-          ? CurrentModel.fromJson(json[ApiStrings.current])
+          ? CurrentModel.fromJson(json[ApiStrings.current] as DataMap)
           : null,
       hourlyUnits: json.containsKey(ApiStrings.hourlyUnits)
-          ? HourlyUnitsModel.fromJson(json[ApiStrings.hourlyUnits])
+          ? HourlyUnitsModel.fromJson(json[ApiStrings.hourlyUnits] as DataMap)
           : null,
       hourly: json.containsKey(ApiStrings.hourly)
-          ? HourlyModel.fromJson(json[ApiStrings.hourly])
+          ? HourlyModel.fromJson(json[ApiStrings.hourly] as DataMap)
           : null,
       dailyUnits: json.containsKey(ApiStrings.dailyUnits)
-          ? DailyUnitsModel.fromJson(json[ApiStrings.dailyUnits])
+          ? DailyUnitsModel.fromJson(json[ApiStrings.dailyUnits] as DataMap)
           : null,
       daily: json.containsKey(ApiStrings.daily)
-          ? DailyModel.fromJson(json[ApiStrings.daily])
+          ? DailyModel.fromJson(json[ApiStrings.daily] as DataMap)
           : null,
     );
   }

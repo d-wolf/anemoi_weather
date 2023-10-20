@@ -32,7 +32,7 @@ class GeocodingRemoteDataSourceImpl implements GeocodingRemoteDataSource {
 
     final response =
         await http.get(Uri.https(baseUrl, endpointSearch, queryParams));
-    DataMap map = jsonDecode(response.body);
+    final map = jsonDecode(response.body) as DataMap;
     return GeocodingSearchResultsModel.fromJson(map);
   }
 }

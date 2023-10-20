@@ -13,11 +13,6 @@ import 'package:uuid/uuid.dart';
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
-  final AddLocation _addLocation;
-  final DeleteLocation _deleteLocation;
-  final GetAllLocations _getAllLocations;
-  final SelectLocation _selectLocation;
-
   LocationCubit({
     required AddLocation addLocation,
     required DeleteLocation deleteLocation,
@@ -28,6 +23,10 @@ class LocationCubit extends Cubit<LocationState> {
         _getAllLocations = getAllLocations,
         _selectLocation = selectLocation,
         super(const LocationStateLoading());
+  final AddLocation _addLocation;
+  final DeleteLocation _deleteLocation;
+  final GetAllLocations _getAllLocations;
+  final SelectLocation _selectLocation;
 
   Future<void> loadLocations() async {
     final result = await _getAllLocations();
@@ -37,13 +36,15 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   Future<void> addLocation(GeocodingSearchResult value) async {
-    final result = await _addLocation(UserLocation(
-      uuid: const Uuid().v4(),
-      lat: value.latitude,
-      long: value.longitude,
-      name: value.name,
-      tag: '${value.country}, ${value.admin1}',
-    ));
+    final result = await _addLocation(
+      UserLocation(
+        uuid: const Uuid().v4(),
+        lat: value.latitude,
+        long: value.longitude,
+        name: value.name,
+        tag: '${value.country}, ${value.admin1}',
+      ),
+    );
 
     result.fold((l) => emit(const LocationStateError()), (r) {
       emit(LocationsStateLoaded(collection: r));

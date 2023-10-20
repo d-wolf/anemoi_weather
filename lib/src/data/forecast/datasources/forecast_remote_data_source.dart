@@ -1,3 +1,5 @@
+// ignore_for_file: one_member_abstracts
+
 import 'dart:convert';
 
 import 'package:anemoi_weather/src/core/utils/typedef.dart';
@@ -9,11 +11,14 @@ import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ForecastRemoteDataSource {
-  Future<Forecast> getForecast(double lat, double long,
-      {TimeZone tz = TimeZone.auto,
-      List<CurrentParameters> current = const [],
-      List<HourlyParameters> hourly = const [],
-      List<DailyParameters> daily = const []});
+  Future<Forecast> getForecast(
+    double lat,
+    double long, {
+    TimeZone tz = TimeZone.auto,
+    List<CurrentParameters> current = const [],
+    List<HourlyParameters> hourly = const [],
+    List<DailyParameters> daily = const [],
+  });
 }
 
 class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
@@ -21,11 +26,14 @@ class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
   final String endpoint = 'v1/forecast';
 
   @override
-  Future<Forecast> getForecast(double lat, double long,
-      {TimeZone tz = TimeZone.auto,
-      List<CurrentParameters> current = const [],
-      List<HourlyParameters> hourly = const [],
-      List<DailyParameters> daily = const []}) async {
+  Future<Forecast> getForecast(
+    double lat,
+    double long, {
+    TimeZone tz = TimeZone.auto,
+    List<CurrentParameters> current = const [],
+    List<HourlyParameters> hourly = const [],
+    List<DailyParameters> daily = const [],
+  }) async {
     final queryParams = <String, dynamic>{
       ApiStrings.timeformat: 'unixtime',
       ApiStrings.timezone: tz.value,
@@ -34,20 +42,20 @@ class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
     };
 
     if (current.isNotEmpty) {
-      queryParams[ApiStrings.current] = current.map((e) => e.value.toString());
+      queryParams[ApiStrings.current] = current.map((e) => e.value);
     }
 
     if (hourly.isNotEmpty) {
-      queryParams[ApiStrings.hourly] = hourly.map((e) => e.value.toString());
+      queryParams[ApiStrings.hourly] = hourly.map((e) => e.value);
     }
 
     if (daily.isNotEmpty) {
-      queryParams[ApiStrings.daily] = daily.map((e) => e.value.toString());
+      queryParams[ApiStrings.daily] = daily.map((e) => e.value);
     }
 
     final url = Uri.https(baseUrl, endpoint, queryParams);
     final response = await http.get(url);
-    DataMap map = jsonDecode(response.body);
+    final map = jsonDecode(response.body) as DataMap;
     final forecast = ForecastModel.fromJson(map);
     return forecast;
   }

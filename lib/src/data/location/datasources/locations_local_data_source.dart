@@ -16,19 +16,20 @@ abstract class UserLocationsLocalDataSource {
 }
 
 class LocationsLocalDataSourceImpl implements UserLocationsLocalDataSource {
+  LocationsLocalDataSourceImpl(this._prefs);
   static const key = 'locations_key';
 
   final SharedPreferences _prefs;
 
-  LocationsLocalDataSourceImpl(this._prefs);
-
   @override
   Future<UserLocationCollection> setSelected(UserLocation value) async {
     final strList = _prefs.getString(key)!;
-    DataMap jsonList = jsonDecode(strList);
+    final jsonList = jsonDecode(strList) as DataMap;
     final oldCollection = UserLocationCollectionModel.fromJson(jsonList);
     final newCollection = UserLocationCollectionModel(
-        selectedUuid: value.uuid, locations: oldCollection.locations);
+      selectedUuid: value.uuid,
+      locations: oldCollection.locations,
+    );
     final encoded = jsonEncode(newCollection.toJson());
     await _prefs.setString(key, encoded);
     return newCollection;
@@ -54,14 +55,14 @@ class LocationsLocalDataSourceImpl implements UserLocationsLocalDataSource {
     }
 
     final strList = _prefs.getString(key)!;
-    DataMap jsonList = jsonDecode(strList);
+    final jsonList = jsonDecode(strList) as DataMap;
     return UserLocationCollectionModel.fromJson(jsonList);
   }
 
   @override
   Future<UserLocationCollection> delete(UserLocation value) async {
     final strList = _prefs.getString(key)!;
-    DataMap jsonList = jsonDecode(strList);
+    final jsonList = jsonDecode(strList) as DataMap;
     final oldCollection = UserLocationCollectionModel.fromJson(jsonList);
     final locations = List<UserLocation>.from(oldCollection.locations);
     var selectedUuid = oldCollection.selectedUuid;

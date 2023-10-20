@@ -26,36 +26,61 @@ Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.remove('locations_key');
 
-  sl.registerFactory(() => SettingsCubit());
-  // TODO: settings repo/store
+  _initSettings();
+  _initLocation();
+  _initForecast();
+  _initLocationSearch();
 
-  sl.registerFactory(() => ForecastCubit(fetchForecast: sl()));
-  sl.registerLazySingleton(() => FetchForecast(sl()));
-  sl.registerLazySingleton<ForecastRepository>(
-      () => ForecastRepositoryImpl(sl()));
-  sl.registerLazySingleton<ForecastRemoteDataSource>(
-      () => ForecastRemoteDataSourceImpl());
-
-  sl.registerFactory(() => SearchBloc(searchLocation: sl()));
-  sl.registerLazySingleton(() => SearchLocation(sl()));
-  sl.registerLazySingleton<GeocodingSearchRepository>(
-      () => GeocodingSearchRepositoryImpl(sl()));
-  sl.registerLazySingleton<GeocodingRemoteDataSource>(
-      () => GeocodingRemoteDataSourceImpl());
-
-  sl.registerFactory(() => LocationCubit(
-      addLocation: sl(),
-      deleteLocation: sl(),
-      getAllLocations: sl(),
-      selectLocation: sl()));
-
-  sl.registerLazySingleton(() => AddLocation(sl()));
-  sl.registerLazySingleton(() => DeleteLocation(sl()));
-  sl.registerLazySingleton(() => GetAllLocations(sl()));
-  sl.registerLazySingleton(() => SelectLocation(sl()));
-  sl.registerLazySingleton<UserLocationsRepository>(
-      () => UserLocationsRepositoryImpl(sl()));
-  sl.registerLazySingleton<UserLocationsLocalDataSource>(
-      () => LocationsLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<SharedPreferences>(() => prefs);
+}
+
+void _initSettings() {
+  sl.registerFactory(SettingsCubit.new);
+  // TODO(username): message, https://URL-to-issue.
+}
+
+void _initLocation() {
+  sl
+    ..registerFactory(
+      () => LocationCubit(
+        addLocation: sl(),
+        deleteLocation: sl(),
+        getAllLocations: sl(),
+        selectLocation: sl(),
+      ),
+    )
+    ..registerLazySingleton(() => AddLocation(sl()))
+    ..registerLazySingleton(() => DeleteLocation(sl()))
+    ..registerLazySingleton(() => GetAllLocations(sl()))
+    ..registerLazySingleton(() => SelectLocation(sl()))
+    ..registerLazySingleton<UserLocationsRepository>(
+      () => UserLocationsRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<UserLocationsLocalDataSource>(
+      () => LocationsLocalDataSourceImpl(sl()),
+    );
+}
+
+void _initForecast() {
+  sl
+    ..registerFactory(() => ForecastCubit(fetchForecast: sl()))
+    ..registerLazySingleton(() => FetchForecast(sl()))
+    ..registerLazySingleton<ForecastRepository>(
+      () => ForecastRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<ForecastRemoteDataSource>(
+      ForecastRemoteDataSourceImpl.new,
+    );
+}
+
+void _initLocationSearch() {
+  sl
+    ..registerFactory(() => SearchBloc(searchLocation: sl()))
+    ..registerLazySingleton(() => SearchLocation(sl()))
+    ..registerLazySingleton<GeocodingSearchRepository>(
+      () => GeocodingSearchRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<GeocodingRemoteDataSource>(
+      GeocodingRemoteDataSourceImpl.new,
+    );
 }

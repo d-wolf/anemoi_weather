@@ -9,22 +9,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'forecast_state.dart';
 
 class ForecastCubit extends Cubit<ForecastState> {
-  final FetchForecast _fetchForecast;
-
   ForecastCubit({required FetchForecast fetchForecast})
       : _fetchForecast = fetchForecast,
         super(const ForecastStateLoading());
+  final FetchForecast _fetchForecast;
 
   Future<void> load(UserLocationCollection collection) async {
     if (collection.isNotEmpty) {
       emit(const ForecastStateLoading());
       final result = await _fetchForecast(collection.selected);
       result.fold(
-          (l) => emit(const ForecastStateError()),
-          (r) => emit(ForecastStateLoaded(
-              lastUpdated: DateTime.timestamp(),
-              userLocation: collection.selected,
-              forecast: r)));
+        (l) => emit(const ForecastStateError()),
+        (r) => emit(
+          ForecastStateLoaded(
+            lastUpdated: DateTime.timestamp(),
+            userLocation: collection.selected,
+            forecast: r,
+          ),
+        ),
+      );
     } else {
       emit(const ForecastStateNoLocation());
     }
@@ -38,12 +41,15 @@ class ForecastCubit extends Cubit<ForecastState> {
         emit(const ForecastStateLoading());
         final result = await _fetchForecast(userLocation);
         result.fold(
-            (l) => emit(const ForecastStateError()),
-            (r) => emit(ForecastStateLoaded(
-                lastUpdated: DateTime.timestamp(),
-                userLocation: userLocation,
-                forecast: r)));
-        break;
+          (l) => emit(const ForecastStateError()),
+          (r) => emit(
+            ForecastStateLoaded(
+              lastUpdated: DateTime.timestamp(),
+              userLocation: userLocation,
+              forecast: r,
+            ),
+          ),
+        );
       case ForecastStateNoLocation():
         break;
       case ForecastStateError():

@@ -8,13 +8,12 @@ sealed class SearchEvent extends Equatable {
 }
 
 class SearchEventInput extends SearchEvent {
-  final String languageCode;
-  final String input;
-
   const SearchEventInput({
     required this.input,
     required this.languageCode,
   });
+  final String languageCode;
+  final String input;
 
   @override
   List<Object?> get props => [input];

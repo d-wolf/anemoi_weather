@@ -6,20 +6,6 @@ import 'package:anemoi_weather/src/domain/forecast/entities/hourly.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/hourly_units.dart';
 
 class Forecast {
-  final double latitude;
-  final double longitude;
-  final double generationtimeMs;
-  final int utcOffsetSeconds;
-  final String timezone;
-  final String timezoneAbbreviation;
-  final double elevation;
-  final CurrentUnits? currentUnits;
-  final Current? current;
-  final HourlyUnits? hourlyUnits;
-  final Hourly? hourly;
-  final DailyUnits? dailyUnits;
-  final Daily? daily;
-
   Forecast({
     required this.latitude,
     required this.longitude,
@@ -35,4 +21,17 @@ class Forecast {
     this.dailyUnits,
     this.daily,
   });
+  final double latitude;
+  final double longitude;
+  final double generationtimeMs;
+  final int utcOffsetSeconds;
+  final String timezone;
+  final String timezoneAbbreviation;
+  final double elevation;
+  final CurrentUnits? currentUnits;
+  final Current? current;
+  final HourlyUnits? hourlyUnits;
+  final Hourly? hourly;
+  final DailyUnits? dailyUnits;
+  final Daily? daily;
 }

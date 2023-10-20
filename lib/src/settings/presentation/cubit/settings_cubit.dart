@@ -9,9 +9,12 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> init() async {}
   Future<void> switchBrightness() async {
-    emit(SettingsState(
+    emit(
+      SettingsState(
         brightness: state.brightness == Brightness.dark
             ? Brightness.light
-            : Brightness.dark));
+            : Brightness.dark,
+      ),
+    );
   }
 }

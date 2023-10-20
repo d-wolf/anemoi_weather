@@ -6,9 +6,8 @@ import 'package:anemoi_weather/src/domain/location/repositories/user_locations_r
 
 class SelectLocation
     extends UsecaseWithParams<UserLocationCollection, UserLocation> {
-  final UserLocationsRepository _repo;
-
   SelectLocation(this._repo);
+  final UserLocationsRepository _repo;
 
   @override
   ResultFuture<UserLocationCollection> call(UserLocation params) async {

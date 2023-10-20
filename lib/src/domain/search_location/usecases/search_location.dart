@@ -6,9 +6,8 @@ import 'package:equatable/equatable.dart';
 
 class SearchLocation
     extends UsecaseWithParams<GeocodingSearchResults, SearchLocationParams> {
-  final GeocodingSearchRepository _repo;
-
   SearchLocation(this._repo);
+  final GeocodingSearchRepository _repo;
 
   @override
   ResultFuture<GeocodingSearchResults> call(SearchLocationParams params) async {
@@ -17,15 +16,14 @@ class SearchLocation
 }
 
 class SearchLocationParams extends Equatable {
-  final String name;
-  final int count;
-  final String languageCode;
-
   const SearchLocationParams({
     required this.name,
     required this.count,
     required this.languageCode,
   });
+  final String name;
+  final int count;
+  final String languageCode;
 
   @override
   List<Object?> get props => [];

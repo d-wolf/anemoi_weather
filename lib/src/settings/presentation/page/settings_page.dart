@@ -28,7 +28,7 @@ class SettingsPage extends StatelessWidget {
                 onChanged: (vlaue) {
                   context.read<SettingsCubit>().switchBrightness();
                 },
-              )
+              ),
             ],
           ),
         );

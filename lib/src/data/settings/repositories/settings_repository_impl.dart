@@ -20,19 +20,12 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  ResultFuture<void> saveSettings(Settings settings) {
-    // TODO: implement saveSettings
-    throw UnimplementedError();
+  ResultFuture<void> saveSettings(Settings settings) async {
+    try {
+      await _localDataSource.saveSettings(settings);
+      return right(null);
+    } catch (e) {
+      return left(StorageFailure(message: e.toString()));
+    }
   }
-
-  // @override
-  // ResultFuture<UserLocation?> getSelected() {
-  //   try {
-  //     final result = _localDataSource.getSelected();
-  //     return Future.value(right(result));
-  //   } catch (e) {
-  //     debugPrint(e.toString());
-  //     return Future.value(left(StorageFailure(message: e.toString())));
-  //   }
-  // }
 }

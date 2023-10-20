@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:anemoi_weather/src/core/utils/typedef.dart';
-import 'package:anemoi_weather/src/data/location/models/user_location_collection_model.dart';
-import 'package:anemoi_weather/src/data/location/models/user_location_model.dart';
-import 'package:anemoi_weather/src/domain/location/entities/user_location.dart';
-import 'package:anemoi_weather/src/domain/location/entities/user_location_collection.dart';
+import 'package:anemoi_weather/src/data/manage_locations/models/user_location_collection_model.dart';
+import 'package:anemoi_weather/src/data/manage_locations/models/user_location_model.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location_collection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserLocationsLocalDataSource {

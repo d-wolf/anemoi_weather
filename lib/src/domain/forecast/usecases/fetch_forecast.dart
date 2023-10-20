@@ -3,7 +3,7 @@ import 'package:anemoi_weather/src/core/utils/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 import 'package:anemoi_weather/src/domain/forecast/enums/enums.dart';
 import 'package:anemoi_weather/src/domain/forecast/repositories/forecast_repository.dart';
-import 'package:anemoi_weather/src/domain/location/entities/user_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
 
 class FetchForecast extends UsecaseWithParams<Forecast, UserLocation> {
   FetchForecast(this._repo);

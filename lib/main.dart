@@ -1,8 +1,8 @@
 import 'package:anemoi_weather/src/core/services/injection_container.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:anemoi_weather/src/presentation/forecast/cubit/forecast_cubit.dart';
-import 'package:anemoi_weather/src/presentation/location/cubit/location_cubit.dart';
-import 'package:anemoi_weather/src/settings/presentation/cubit/settings_cubit.dart';
+import 'package:anemoi_weather/src/presentation/manage_location/cubit/location_cubit.dart';
+import 'package:anemoi_weather/src/presentation/settings/presentation/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:system_theme/system_theme.dart';

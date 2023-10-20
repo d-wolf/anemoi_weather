@@ -3,7 +3,7 @@ import 'package:anemoi_weather/src/core/res/app_colors.dart';
 import 'package:anemoi_weather/src/core/res/app_style.dart';
 import 'package:anemoi_weather/src/core/res/constants.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
-import 'package:anemoi_weather/src/domain/location/entities/user_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
 import 'package:anemoi_weather/src/presentation/forecast/widgets/hourly_bar_chart.dart';
 import 'package:anemoi_weather/src/presentation/forecast/widgets/hourly_line_chart.dart';
 import 'package:flutter/material.dart';

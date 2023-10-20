@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/src/domain/location/entities/user_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
 
 class UserLocationCollection {
   UserLocationCollection({

@@ -1,9 +1,9 @@
-import 'package:anemoi_weather/src/domain/location/entities/user_location.dart';
-import 'package:anemoi_weather/src/domain/location/entities/user_location_collection.dart';
-import 'package:anemoi_weather/src/domain/location/usecases/add_location.dart';
-import 'package:anemoi_weather/src/domain/location/usecases/delete_location.dart';
-import 'package:anemoi_weather/src/domain/location/usecases/get_all_locations.dart';
-import 'package:anemoi_weather/src/domain/location/usecases/select_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location_collection.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/usecases/add_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/usecases/delete_location.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/usecases/get_all_locations.dart';
+import 'package:anemoi_weather/src/domain/manage_locations/usecases/select_location.dart';
 import 'package:anemoi_weather/src/domain/search_location/entities/geocoding_search_results.dart';
 
 import 'package:equatable/equatable.dart';

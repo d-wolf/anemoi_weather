@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
   final String route;
-  const AppDrawer({required this.route, super.key});
+  final Map<String, Object?>? argsMap;
+
+  // final Object? arguments;
+
+  const AppDrawer({required this.route, this.argsMap, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,10 @@ class AppDrawer extends StatelessWidget {
               onTap: route == Routes.forecastPage
                   ? null
                   : () {
-                      Navigator.of(context).pushNamed(Routes.forecastPage);
+                      Navigator.of(context).pushNamed(Routes.forecastPage,
+                          arguments: argsMap != null
+                              ? argsMap![Routes.forecastPage]
+                              : null);
                     },
             ),
             const DrawerItemDivider(),
@@ -31,7 +38,10 @@ class AppDrawer extends StatelessWidget {
               onTap: route == Routes.locationPage
                   ? null
                   : () {
-                      Navigator.of(context).pushNamed(Routes.locationPage);
+                      Navigator.of(context).pushNamed(Routes.locationPage,
+                          arguments: argsMap != null
+                              ? argsMap![Routes.locationPage]
+                              : null);
                     },
             ),
             const DrawerItemDivider(),
@@ -42,7 +52,10 @@ class AppDrawer extends StatelessWidget {
               onTap: route == Routes.settingsPage
                   ? null
                   : () {
-                      Navigator.of(context).pushNamed(Routes.settingsPage);
+                      Navigator.of(context).pushNamed(Routes.settingsPage,
+                          arguments: argsMap != null
+                              ? argsMap![Routes.settingsPage]
+                              : null);
                     },
             ),
             const Expanded(child: SizedBox()),
@@ -53,7 +66,10 @@ class AppDrawer extends StatelessWidget {
               onTap: route == Routes.aboutPage
                   ? null
                   : () {
-                      Navigator.of(context).pushNamed(Routes.locationPage);
+                      Navigator.of(context).pushNamed(Routes.aboutPage,
+                          arguments: argsMap != null
+                              ? argsMap![Routes.aboutPage]
+                              : null);
                     },
             ),
           ],

@@ -1,5 +1,7 @@
 import 'package:anemoi_weather/src/core/services/injection_container.dart';
+import 'package:anemoi_weather/src/forecast/presentation/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/forecast/presentation/page/forecast_page.dart';
+import 'package:anemoi_weather/src/location/presentation/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/location/presentation/page/location_page.dart';
 import 'package:anemoi_weather/src/search_location/presentation/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/settings/presentation/page/settings_page.dart';
@@ -20,14 +22,29 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.forecastPage:
         return MaterialPageRoute(
-          builder: (_) => const ForecastPage(),
+          builder: (_) => BlocProvider<ForecastCubit>(
+            create: (_) => sl()..loadForecast(),
+            child: const ForecastPage(),
+          ),
           settings: settings,
         );
       case Routes.locationPage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<SearchBloc>(
-            create: (_) => sl(),
-            child: const LocationPage(),
+          builder: (_) => BlocProvider<LocationCubit>(
+            create: (_) => sl()..loadLocations(),
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider<LocationCubit>(
+                  create: (_) => sl()..loadLocations(),
+                ),
+                BlocProvider<SearchBloc>(
+                  create: (_) => sl(),
+                ),
+              ],
+              child: LocationPage(
+                forecastCubit: settings.arguments! as ForecastCubit,
+              ),
+            ),
           ),
           settings: settings,
         );

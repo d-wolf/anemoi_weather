@@ -29,6 +29,13 @@ class ForecastStateLoaded extends ForecastState {
   List<Object?> get props => [forecast, userLocation];
 }
 
+class ForecastStateNoLocation extends ForecastState {
+  const ForecastStateNoLocation();
+
+  @override
+  List<Object?> get props => [];
+}
+
 class ForecastStateError extends ForecastState {
   const ForecastStateError();
 

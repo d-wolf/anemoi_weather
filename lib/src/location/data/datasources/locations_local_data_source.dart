@@ -12,6 +12,7 @@ abstract class UserLocationsLocalDataSource {
   Future<UserLocationCollection> add(UserLocation value);
   UserLocationCollection getAll();
   Future<UserLocationCollection> delete(UserLocation value);
+  UserLocation? getSelected();
 }
 
 class LocationsLocalDataSourceImpl implements UserLocationsLocalDataSource {
@@ -78,5 +79,11 @@ class LocationsLocalDataSourceImpl implements UserLocationsLocalDataSource {
     final encoded = jsonEncode(collection.toJson());
     await _prefs.setString(key, encoded);
     return collection;
+  }
+
+  @override
+  UserLocation? getSelected() {
+    final all = getAll();
+    return all.isEmpty ? null : all.selected;
   }
 }

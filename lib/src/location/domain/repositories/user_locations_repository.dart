@@ -7,4 +7,5 @@ abstract class UserLocationsRepository {
   ResultFuture<UserLocationCollection> getAll();
   ResultFuture<UserLocationCollection> delete(UserLocation value);
   ResultFuture<UserLocationCollection> setSelected(UserLocation value);
+  ResultFuture<UserLocation?> getSelected();
 }

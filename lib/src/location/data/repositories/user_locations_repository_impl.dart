@@ -55,4 +55,15 @@ class UserLocationsRepositoryImpl implements UserLocationsRepository {
       return left(StorageFailure(message: e.toString()));
     }
   }
+
+  @override
+  ResultFuture<UserLocation?> getSelected() {
+    try {
+      final result = _localDataSource.getSelected();
+      return Future.value(right(result));
+    } catch (e) {
+      debugPrint(e.toString());
+      return Future.value(left(StorageFailure(message: e.toString())));
+    }
+  }
 }

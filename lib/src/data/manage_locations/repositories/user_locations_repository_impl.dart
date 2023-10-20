@@ -1,8 +1,8 @@
-import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/data/manage_locations/datasources/locations_local_data_source.dart';
+import 'package:anemoi_weather/src/domain/core/errors/failure.dart';
+import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/entities/user_location_collection.dart';
-import 'package:anemoi_weather/src/domain/manage_locations/failures/failure.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/repositories/user_locations_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';

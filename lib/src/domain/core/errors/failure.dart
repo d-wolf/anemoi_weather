@@ -7,3 +7,7 @@ class Failure extends Equatable {
   @override
   List<Object?> get props => [message];
 }
+
+class StorageFailure extends Failure {
+  const StorageFailure({required super.message});
+}

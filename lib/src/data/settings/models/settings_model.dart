@@ -7,6 +7,8 @@ class SettingsModel extends Settings {
     required super.brightness,
   });
 
+  SettingsModel.empty() : this(brightness: Brightness.dark);
+
   SettingsModel.fromDomain(Settings settings)
       : this(brightness: settings.brightness);
 

@@ -7,30 +7,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:system_theme/system_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
-  await SystemTheme.accentColor.load();
-  final accentColor = SystemTheme.accentColor.accent;
 
   runApp(
-    MyApp(
-      sysColor: accentColor,
-    ),
+    const MainApp(),
   );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({required this.sysColor, super.key});
-  final Color sysColor;
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MainApp> createState() => _MainAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -74,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                 supportedLocales: AppLocalizations.supportedLocales,
                 theme: ThemeData(
                   colorScheme: ColorScheme.fromSeed(
-                    seedColor: widget.sysColor,
+                    seedColor: Colors.purple,
                     brightness: update.brightness,
                   ),
                   useMaterial3: true,

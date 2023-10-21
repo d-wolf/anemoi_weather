@@ -1,9 +1,6 @@
 name: CI
 
-on:
-  push:
-    tags:
-    - 'v*.*.*'
+on: [push]
 
 env:
   JAVA_VERSION: '17'

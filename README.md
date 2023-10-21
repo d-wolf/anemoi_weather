@@ -11,6 +11,7 @@ Simple weather app written with Flutter using the [open-meteo](open-meteo.com/) 
 * [ ] Geolocation
 * [ ] Set new weather icons
 * [ ] Tests + CI
+* [ ] UI adaption for desktop
 
 ## Sources
 * https://api.open-meteo.com/

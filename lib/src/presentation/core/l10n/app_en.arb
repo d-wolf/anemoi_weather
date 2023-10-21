@@ -24,10 +24,20 @@
   "@locationsNoLocation": {
     "description": "Hint text when user hasn't set any location."
   },
+  "locationsItemDismissed": "{param} dismissed",
+  "@locationsItemDismissed": {
+    "description": "When a location gets deleted by the user."
+  },
   "settingsTitle": "Settings",
   "@settingsTitle": {
     "description": "The title of the settings page & drawer item."
   },
+  "settingsBrightnessLabel": "Brightness",
+  "@settingsBrightnessLabel": {
+    "description": "Label for setting light or dark theme."
+  },
+  "settingsBrightnessOptionLight": "light",
+  "settingsBrightnessOptionDark": "dark",
   "aboutTitle": "About",
   "@aboutTitle": {
     "description": "The title of the about page & drawer item."

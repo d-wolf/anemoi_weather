@@ -3,6 +3,7 @@ import 'package:anemoi_weather/src/presentation/core/widgets/app_drawer.dart';
 import 'package:anemoi_weather/src/presentation/settings/presentation/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -25,13 +26,30 @@ class SettingsPage extends StatelessWidget {
               ),
               appBar: AppBar(
                 backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                title: const Text('Settings'),
+                title: Text(AppLocalizations.of(context)!.settingsTitle),
               ),
               body: ListView(
                 children: [
                   SwitchListTile(
-                    title: const Text('Brightness'),
-                    subtitle: Text('${state.brightness}'),
+                    title: Text(
+                      AppLocalizations.of(context)!.settingsBrightnessLabel,
+                    ),
+                    subtitle: Builder(
+                      builder: (context) {
+                        switch (state.brightness) {
+                          case Brightness.dark:
+                            return Text(
+                              AppLocalizations.of(context)!
+                                  .settingsBrightnessOptionDark,
+                            );
+                          case Brightness.light:
+                            return Text(
+                              AppLocalizations.of(context)!
+                                  .settingsBrightnessOptionLight,
+                            );
+                        }
+                      },
+                    ),
                     value: state.brightness.index == 0,
                     onChanged: (vlaue) {
                       context.read<SettingsCubit>().switchBrightness();

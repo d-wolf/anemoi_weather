@@ -9,6 +9,10 @@
     "forecastWindspeedLabel": "Windgeschwindigkeit",
     "locationsTitle": "Standorte",
     "locationsNoLocationSelected": "Kein Standort ausgewählt.",
+    "locationsItemDismissed": "{param} entfernt",
     "settingsTitle": "Einstellungen",
+    "settingsBrightnessLabel": "Helligkeit",
+    "settingsBrightnessOptionLight": "hell",
+    "settingsBrightnessOptionDark": "dunkel",
     "aboutTitle": "Über"
 }

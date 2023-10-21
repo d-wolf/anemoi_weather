@@ -26,7 +26,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         SearchLocationParams(
           name: event.input,
           count: 10,
-          languageCode: 'en',
+          languageCode: event.languageCode,
         ),
       );
       result.fold((l) {

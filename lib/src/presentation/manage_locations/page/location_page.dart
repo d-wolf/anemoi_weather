@@ -5,6 +5,7 @@ import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc
 import 'package:anemoi_weather/src/presentation/search_location/widgets/location_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
@@ -26,7 +27,7 @@ class _LocationPageState extends State<LocationPage> {
               ),
               appBar: AppBar(
                 backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                title: const Text('Locations'),
+                title: Text(AppLocalizations.of(context)!.locationsTitle),
                 actions: [
                   IconButton(
                     onPressed: () {
@@ -55,9 +56,13 @@ class _LocationPageState extends State<LocationPage> {
                     ),
                     onDismissed: (direction) {
                       context.read<LocationCubit>().deleteLocation(location);
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('${location.name} dismissed'),
+                          content: Text(
+                            AppLocalizations.of(context)!
+                                .locationsItemDismissed(location.name),
+                          ),
                         ),
                       );
                     },

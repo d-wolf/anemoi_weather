@@ -18,35 +18,30 @@ class RouteGenerator {
   const RouteGenerator._();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    WidgetBuilder builder;
+
     switch (settings.name) {
       case Routes.forecastPage:
-        return MaterialPageRoute(
-          builder: (_) => const ForecastPage(),
-          settings: settings,
-        );
+        builder = (_) => const ForecastPage();
       case Routes.locationPage:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<SearchBloc>(
-            create: (context) => sl(),
-            child: const LocationPage(),
-          ),
-          settings: settings,
-        );
+        builder = (_) => BlocProvider<SearchBloc>(
+              create: (context) => sl(),
+              child: const LocationPage(),
+            );
       case Routes.settingsPage:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<SearchBloc>(
-            create: (_) => sl(),
-            child: const SettingsPage(),
-          ),
-          settings: settings,
-        );
+        builder = (_) => BlocProvider<SearchBloc>(
+              create: (_) => sl(),
+              child: const SettingsPage(),
+            );
       default:
-        return MaterialPageRoute(
-          builder: (context) => Text(
-            '${AppLocalizations.of(context)!.unecpectedErrorText} $settings',
-          ),
-          settings: settings,
-        );
+        builder = (context) => Text(
+              '${AppLocalizations.of(context)!.unecpectedErrorText} $settings',
+            );
     }
+
+    return MaterialPageRoute(
+      builder: builder,
+      settings: settings,
+    );
   }
 }

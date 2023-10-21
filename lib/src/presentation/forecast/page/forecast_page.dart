@@ -41,11 +41,8 @@ class _ForecastPageState extends State<ForecastPage> {
                 switch (forecastState) {
                   case ForecastStateError():
                     return Scaffold(
-                      drawer: AppDrawer(
+                      drawer: const AppDrawer(
                         route: Routes.forecastPage,
-                        argsMap: {
-                          Routes.locationPage: context.read<ForecastCubit>(),
-                        },
                       ),
                       appBar: AppBar(
                         backgroundColor:
@@ -103,11 +100,8 @@ class _ForecastPageState extends State<ForecastPage> {
                     );
                   case ForecastStateNoLocation():
                     return Scaffold(
-                      drawer: AppDrawer(
+                      drawer: const AppDrawer(
                         route: Routes.forecastPage,
-                        argsMap: {
-                          Routes.locationPage: context.read<ForecastCubit>(),
-                        },
                       ),
                       appBar: AppBar(
                         actions: [

@@ -25,7 +25,7 @@ class RouteGenerator {
         builder = (_) => const ForecastPage();
       case Routes.locationPage:
         builder = (_) => BlocProvider<SearchBloc>(
-              create: (context) => sl(),
+              create: (_) => sl(),
               child: const LocationPage(),
             );
       case Routes.settingsPage:

@@ -29,8 +29,8 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
-  await prefs.remove('locations_key');
-  await prefs.remove('settings_key');
+  // await prefs.remove('locations_key');
+  // await prefs.remove('settings_key');
 
   _initSettings();
   _initLocation();

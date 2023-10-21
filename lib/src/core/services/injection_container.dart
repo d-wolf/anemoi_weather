@@ -19,7 +19,7 @@ import 'package:anemoi_weather/src/domain/settings/repositories/settings_reposit
 import 'package:anemoi_weather/src/domain/settings/usecases/load_settings.dart';
 import 'package:anemoi_weather/src/domain/settings/usecases/save_settings.dart';
 import 'package:anemoi_weather/src/presentation/forecast/cubit/forecast_cubit.dart';
-import 'package:anemoi_weather/src/presentation/manage_location/cubit/location_cubit.dart';
+import 'package:anemoi_weather/src/presentation/manage_locations/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/presentation/settings/presentation/cubit/settings_cubit.dart';
 import 'package:get_it/get_it.dart';

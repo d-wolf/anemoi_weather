@@ -1,0 +1,26 @@
+{
+  "appTitle": "ANEMOI",
+  "@helloWorld": {
+    "description": "The title of the app."
+  },
+  "forecastTitle": "Forecast",
+  "@forecastTitle": {
+    "description": "The title of the forecast page & drawer item."
+  },
+  "locationsTitle": "Locations",
+  "@locationsTitle": {
+    "description": "The title of the locations page & drawer item."
+  },
+  "locationsNoLocationSelected": "No location selected.",
+  "@locationsNoLocation": {
+    "description": "Hint text when user hasn't set any location."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "The title of the settings page & drawer item."
+  },
+  "aboutTitle": "About",
+  "@aboutTitle": {
+    "description": "The title of the about page & drawer item."
+  }
+}

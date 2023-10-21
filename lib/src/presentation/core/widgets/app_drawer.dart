@@ -2,6 +2,7 @@ import 'package:anemoi_weather/icons/weather_icons.dart';
 import 'package:anemoi_weather/src/core/res/app_style.dart';
 import 'package:anemoi_weather/src/core/services/router_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({required this.route, this.argsMap, super.key});
@@ -17,7 +18,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               selected: route == Routes.forecastPage,
               leading: const Icon(Weather.wi_day_sunny),
-              title: const Text('Forecast'),
+              title: Text(AppLocalizations.of(context)!.forecastTitle),
               onTap: route == Routes.forecastPage
                   ? null
                   : () {
@@ -33,7 +34,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               selected: route == Routes.locationPage,
               leading: const Icon(Icons.location_pin),
-              title: const Text('Locations'),
+              title: Text(AppLocalizations.of(context)!.locationsTitle),
               onTap: route == Routes.locationPage
                   ? null
                   : () {
@@ -49,7 +50,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               selected: route == Routes.settingsPage,
               leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
+              title: Text(AppLocalizations.of(context)!.settingsTitle),
               onTap: route == Routes.settingsPage
                   ? null
                   : () {
@@ -65,7 +66,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               selected: route == Routes.aboutPage,
               leading: const Icon(Icons.info),
-              title: const Text('About'),
+              title: Text(AppLocalizations.of(context)!.aboutTitle),
               onTap: route == Routes.aboutPage
                   ? null
                   : () {

@@ -3,13 +3,13 @@
 A new Flutter project.
 
 ## Getting Started
+* `git clone https://github.com/d-wolf/anemoi_weather.git`
 * to generate the language files run `flutter gen-l10n`
 
-## Missing Features
+## Missing Features/Bugs
 * [ ] Geolocation
 * [ ] Icons
 * [ ] Tests + CI
-* [ ] json, parse all double values explicit to double
 
 ## Sources
 * https://api.open-meteo.com/

@@ -56,71 +56,71 @@ class DailyUnitsModel extends DailyUnits {
 
   factory DailyUnitsModel.fromJson(DataMap json) {
     return DailyUnitsModel(
-      time: json[ApiStrings.time] as String,
+      time: json[ApiStrings.time].toString(),
       temperature2MMax: json.containsKey(DailyParameters.temperature2MMax.value)
-          ? json[DailyParameters.temperature2MMax.value] as String
+          ? json[DailyParameters.temperature2MMax.value].toString()
           : null,
       temperature2MMin: json.containsKey(DailyParameters.temperature2MMin.value)
-          ? json[DailyParameters.temperature2MMin.value] as String
+          ? json[DailyParameters.temperature2MMin.value].toString()
           : null,
       apparentTemperatureMax:
           json.containsKey(DailyParameters.apparentTemperatureMax.value)
-              ? json[DailyParameters.apparentTemperatureMax.value] as String
+              ? json[DailyParameters.apparentTemperatureMax.value].toString()
               : null,
       apparentTemperatureMin:
           json.containsKey(DailyParameters.apparentTemperatureMin.value)
-              ? json[DailyParameters.apparentTemperatureMin.value] as String
+              ? json[DailyParameters.apparentTemperatureMin.value].toString()
               : null,
       sunrise: json.containsKey(DailyParameters.sunrise.value)
-          ? json[DailyParameters.sunrise.value] as String
+          ? json[DailyParameters.sunrise.value].toString()
           : null,
       sunset: json.containsKey(DailyParameters.sunset.value)
-          ? json[DailyParameters.sunset.value] as String
+          ? json[DailyParameters.sunset.value].toString()
           : null,
       uvIndexMax: json.containsKey(DailyParameters.uvIndexMax.value)
-          ? json[DailyParameters.uvIndexMax.value] as String
+          ? json[DailyParameters.uvIndexMax.value].toString()
           : null,
       uvIndexClearSkyMax:
           json.containsKey(DailyParameters.uvIndexClearSkyMax.value)
-              ? json[DailyParameters.uvIndexClearSkyMax.value] as String
+              ? json[DailyParameters.uvIndexClearSkyMax.value].toString()
               : null,
       precipitationSum: json.containsKey(DailyParameters.precipitationSum.value)
-          ? json[DailyParameters.precipitationSum.value] as String
+          ? json[DailyParameters.precipitationSum.value].toString()
           : null,
       rainSum: json.containsKey(DailyParameters.rainSum.value)
-          ? json[DailyParameters.rainSum.value] as String
+          ? json[DailyParameters.rainSum.value].toString()
           : null,
       showersSum: json.containsKey(DailyParameters.showersSum.value)
-          ? json[DailyParameters.showersSum.value] as String
+          ? json[DailyParameters.showersSum.value].toString()
           : null,
       snowfallSum: json.containsKey(DailyParameters.snowfallSum.value)
-          ? json[DailyParameters.snowfallSum.value] as String
+          ? json[DailyParameters.snowfallSum.value].toString()
           : null,
       precipitationHours:
           json.containsKey(DailyParameters.precipitationHours.value)
-              ? json[DailyParameters.precipitationHours.value] as String
+              ? json[DailyParameters.precipitationHours.value].toString()
               : null,
       precipitationProbabilityMax: json
               .containsKey(DailyParameters.precipitationProbabilityMax.value)
-          ? json[DailyParameters.precipitationProbabilityMax.value] as String
+          ? json[DailyParameters.precipitationProbabilityMax.value].toString()
           : null,
       windspeed10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
-          ? json[DailyParameters.windgusts10MMax.value] as String
+          ? json[DailyParameters.windgusts10MMax.value].toString()
           : null,
       windgusts10MMax: json.containsKey(DailyParameters.windgusts10MMax.value)
-          ? json[DailyParameters.windgusts10MMax.value] as String
+          ? json[DailyParameters.windgusts10MMax.value].toString()
           : null,
       winddirection10MDominant:
           json.containsKey(DailyParameters.winddirection10MDominant.value)
-              ? json[DailyParameters.winddirection10MDominant.value] as String
+              ? json[DailyParameters.winddirection10MDominant.value].toString()
               : null,
       shortwaveRadiationSum:
           json.containsKey(DailyParameters.shortwaveRadiationSum.value)
-              ? json[DailyParameters.shortwaveRadiationSum.value] as String
+              ? json[DailyParameters.shortwaveRadiationSum.value].toString()
               : null,
       et0FaoEvapotranspiration:
           json.containsKey(DailyParameters.et0FaoEvapotranspiration.value)
-              ? json[DailyParameters.et0FaoEvapotranspiration.value] as String
+              ? json[DailyParameters.et0FaoEvapotranspiration.value].toString()
               : null,
     );
   }

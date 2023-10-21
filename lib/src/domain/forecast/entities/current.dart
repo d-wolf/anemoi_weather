@@ -25,7 +25,7 @@ class Current {
   final double? apparentTemperature;
   final bool? isDay;
   final double? precipitation;
-  final int? rain;
+  final double? rain;
   final int? showers;
   final int? snowfall;
   final int? weathercode;

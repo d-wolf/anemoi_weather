@@ -9,7 +9,7 @@ import 'package:anemoi_weather/src/domain/core/types/typedef.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/forecast.dart';
 
 class ForecastModel extends Forecast {
-  ForecastModel({
+  const ForecastModel({
     required super.latitude,
     required super.longitude,
     required super.generationtimeMs,
@@ -27,12 +27,13 @@ class ForecastModel extends Forecast {
 
   factory ForecastModel.fromJson(DataMap json) {
     return ForecastModel(
-      latitude: json[ApiStrings.latitude] as double,
-      longitude: json[ApiStrings.longitude] as double,
-      generationtimeMs: json[ApiStrings.generationtimeMs] as double,
-      utcOffsetSeconds: json[ApiStrings.utcOffsetSeconds] as int,
-      timezone: json[ApiStrings.timezone] as String,
-      timezoneAbbreviation: json[ApiStrings.timezoneAbbreviation] as String,
+      latitude: double.parse(json[ApiStrings.latitude].toString()),
+      longitude: double.parse(json[ApiStrings.longitude].toString()),
+      generationtimeMs:
+          double.parse(json[ApiStrings.generationtimeMs].toString()),
+      utcOffsetSeconds: int.parse(json[ApiStrings.utcOffsetSeconds].toString()),
+      timezone: json[ApiStrings.timezone].toString(),
+      timezoneAbbreviation: json[ApiStrings.timezoneAbbreviation].toString(),
       elevation: double.parse(json[ApiStrings.elevation].toString()),
       currentUnits: json.containsKey(ApiStrings.currentUnits)
           ? CurrentUnitsModel.fromJson(json[ApiStrings.currentUnits] as DataMap)

@@ -48,55 +48,55 @@ class CurrentUnitsModel extends CurrentUnits {
 
   factory CurrentUnitsModel.fromJson(DataMap json) {
     return CurrentUnitsModel(
-      time: json[ApiStrings.time] as String,
-      interval: json[ApiStrings.interval] as String,
+      time: json[ApiStrings.time].toString(),
+      interval: json[ApiStrings.interval].toString(),
       temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
-          ? json[CurrentParameters.temperature2M.value] as String
+          ? json[CurrentParameters.temperature2M.value].toString()
           : null,
       relativehumidity2M:
           json.containsKey(CurrentParameters.relativehumidity2M.value)
-              ? json[CurrentParameters.relativehumidity2M.value] as String
+              ? json[CurrentParameters.relativehumidity2M.value].toString()
               : null,
       apparentTemperature:
           json.containsKey(CurrentParameters.apparentTemperature.value)
-              ? json[CurrentParameters.apparentTemperature.value] as String
+              ? json[CurrentParameters.apparentTemperature.value].toString()
               : null,
       isDay: json.containsKey(CurrentParameters.isDay.value)
-          ? json[CurrentParameters.isDay.value] as String
+          ? json[CurrentParameters.isDay.value].toString()
           : null,
       precipitation: json.containsKey(CurrentParameters.precipitation.value)
-          ? json[CurrentParameters.precipitation.value] as String
+          ? json[CurrentParameters.precipitation.value].toString()
           : null,
       rain: json.containsKey(CurrentParameters.rain.value)
-          ? json[CurrentParameters.rain.value] as String
+          ? json[CurrentParameters.rain.value].toString()
           : null,
       showers: json.containsKey(CurrentParameters.showers.value)
-          ? json[CurrentParameters.showers.value] as String
+          ? json[CurrentParameters.showers.value].toString()
           : null,
       snowfall: json.containsKey(CurrentParameters.snowfall.value)
-          ? json[CurrentParameters.snowfall.value] as String
+          ? json[CurrentParameters.snowfall.value].toString()
           : null,
       weathercode: json.containsKey(CurrentParameters.weathercode.value)
-          ? json[CurrentParameters.weathercode.value] as String
+          ? json[CurrentParameters.weathercode.value].toString()
           : null,
       cloudcover: json.containsKey(CurrentParameters.cloudcover.value)
-          ? json[CurrentParameters.cloudcover.value] as String
+          ? json[CurrentParameters.cloudcover.value].toString()
           : null,
       pressureMsl: json.containsKey(CurrentParameters.pressureMsl.value)
-          ? json[CurrentParameters.pressureMsl.value] as String
+          ? json[CurrentParameters.pressureMsl.value].toString()
           : null,
       surfacePressure: json.containsKey(CurrentParameters.surfacePressure.value)
-          ? json[CurrentParameters.surfacePressure.value] as String
+          ? json[CurrentParameters.surfacePressure.value].toString()
           : null,
       windspeed10M: json.containsKey(CurrentParameters.windspeed10M.value)
-          ? json[CurrentParameters.windspeed10M.value] as String
+          ? json[CurrentParameters.windspeed10M.value].toString()
           : null,
       winddirection10M:
           json.containsKey(CurrentParameters.winddirection10M.value)
-              ? json[CurrentParameters.winddirection10M.value] as String
+              ? json[CurrentParameters.winddirection10M.value].toString()
               : null,
       windgusts10M: json.containsKey(CurrentParameters.windgusts10M.value)
-          ? json[CurrentParameters.windgusts10M.value] as String
+          ? json[CurrentParameters.windgusts10M.value].toString()
           : null,
     );
   }

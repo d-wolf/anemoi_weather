@@ -17,7 +17,8 @@ class GeocodingSearchResultsModel extends GeocodingSearchResults {
               .map((e) => GeocodingSearchResultModel.fromJson(e as DataMap))
               .toList()
           : [],
-      generationtimeMs: json[ApiStrings.generationtimeMs] as double,
+      generationtimeMs:
+          double.parse(json[ApiStrings.generationtimeMs].toString()),
     );
   }
 
@@ -79,42 +80,42 @@ class GeocodingSearchResultModel extends GeocodingSearchResult {
 
   factory GeocodingSearchResultModel.fromJson(DataMap json) {
     return GeocodingSearchResultModel(
-      id: json[ApiStrings.id] as int,
-      name: json[ApiStrings.name] as String,
-      latitude: json[ApiStrings.latitude] as double,
-      longitude: json[ApiStrings.longitude] as double,
-      elevation: json[ApiStrings.elevation] as double,
-      featureCode: json[ApiStrings.featureCode] as String,
-      timezone: json[ApiStrings.timezone] as String,
-      countryCode: json[ApiStrings.countryCode] as String,
-      countryId: json[ApiStrings.countryId] as int,
-      country: json[ApiStrings.country] as String,
+      id: int.parse(json[ApiStrings.id].toString()),
+      name: json[ApiStrings.name].toString(),
+      latitude: double.parse(json[ApiStrings.latitude].toString()),
+      longitude: double.parse(json[ApiStrings.longitude].toString()),
+      elevation: double.parse(json[ApiStrings.elevation].toString()),
+      featureCode: json[ApiStrings.featureCode].toString(),
+      timezone: json[ApiStrings.timezone].toString(),
+      countryCode: json[ApiStrings.countryCode].toString(),
+      countryId: int.parse(json[ApiStrings.countryId].toString()),
+      country: json[ApiStrings.country].toString(),
       admin1Id: json.containsKey(ApiStrings.admin1Id)
-          ? json[ApiStrings.admin1Id] as int
+          ? int.parse(json[ApiStrings.admin1Id].toString())
           : null,
       admin1: json.containsKey(ApiStrings.admin1)
-          ? json[ApiStrings.admin1] as String
+          ? json[ApiStrings.admin1].toString()
           : null,
       admin2Id: json.containsKey(ApiStrings.admin2Id)
-          ? json[ApiStrings.admin2Id] as int
+          ? int.parse(json[ApiStrings.admin2Id].toString())
           : null,
       admin2: json.containsKey(ApiStrings.admin2)
-          ? json[ApiStrings.admin2] as String
+          ? json[ApiStrings.admin2].toString()
           : null,
       admin3Id: json.containsKey(ApiStrings.admin3Id)
-          ? json[ApiStrings.admin3Id] as int
+          ? int.parse(json[ApiStrings.admin3Id].toString())
           : null,
       admin3: json.containsKey(ApiStrings.admin3)
-          ? json[ApiStrings.admin3] as String
+          ? json[ApiStrings.admin3].toString()
           : null,
       admin4Id: json.containsKey(ApiStrings.admin4Id)
-          ? json[ApiStrings.admin4Id] as int
+          ? int.parse(json[ApiStrings.admin4Id].toString())
           : null,
       admin4: json.containsKey(ApiStrings.admin4)
-          ? json[ApiStrings.admin4] as String
+          ? json[ApiStrings.admin4].toString()
           : null,
       population: json.containsKey(ApiStrings.population)
-          ? json[ApiStrings.population] as int
+          ? int.parse(json[ApiStrings.population].toString())
           : null,
       postcodes: json.containsKey(ApiStrings.postcodes)
           ? (json[ApiStrings.postcodes] as List).cast<String>()

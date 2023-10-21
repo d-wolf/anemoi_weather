@@ -12,8 +12,9 @@ class SettingsModel extends Settings {
   SettingsModel.fromDomain(Settings settings)
       : this(brightness: settings.brightness);
 
-  factory SettingsModel.fromJson(DataMap json) =>
-      SettingsModel(brightness: Brightness.values[(json['brightness'] as int)]);
+  factory SettingsModel.fromJson(DataMap json) => SettingsModel(
+        brightness: Brightness.values[int.parse(json['brightness'].toString())],
+      );
 
   DataMap toJson() => <String, dynamic>{'brightness': brightness.index};
 }

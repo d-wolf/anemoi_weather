@@ -100,151 +100,151 @@ class HourlyUnitsModel extends HourlyUnits {
 
   factory HourlyUnitsModel.fromJson(DataMap json) {
     return HourlyUnitsModel(
-      time: json[ApiStrings.time] as String,
+      time: json[ApiStrings.time].toString(),
       temperature2M: json.containsKey(HourlyParameters.temperature2M.value)
-          ? json[HourlyParameters.temperature2M.value] as String
+          ? json[HourlyParameters.temperature2M.value].toString()
           : null,
       relativehumidity2M:
           json.containsKey(HourlyParameters.relativehumidity2M.value)
-              ? json[HourlyParameters.relativehumidity2M.value] as String
+              ? json[HourlyParameters.relativehumidity2M.value].toString()
               : null,
       dewpoint2M: json.containsKey(HourlyParameters.dewpoint2M.value)
-          ? json[HourlyParameters.dewpoint2M.value] as String
+          ? json[HourlyParameters.dewpoint2M.value].toString()
           : null,
       apparentTemperature:
           json.containsKey(HourlyParameters.apparentTemperature.value)
-              ? json[HourlyParameters.apparentTemperature.value] as String
+              ? json[HourlyParameters.apparentTemperature.value].toString()
               : null,
       precipitationProbability:
           json.containsKey(HourlyParameters.precipitationProbability.value)
-              ? json[HourlyParameters.precipitationProbability.value] as String
+              ? json[HourlyParameters.precipitationProbability.value].toString()
               : null,
       precipitation: json.containsKey(HourlyParameters.precipitation.value)
-          ? json[HourlyParameters.precipitation.value] as String
+          ? json[HourlyParameters.precipitation.value].toString()
           : null,
       rain: json.containsKey(HourlyParameters.rain.value)
-          ? json[HourlyParameters.rain.value] as String
+          ? json[HourlyParameters.rain.value].toString()
           : null,
       showers: json.containsKey(HourlyParameters.showers.value)
-          ? json[HourlyParameters.showers.value] as String
+          ? json[HourlyParameters.showers.value].toString()
           : null,
       snowfall: json.containsKey(HourlyParameters.snowfall.value)
-          ? json[HourlyParameters.snowfall.value] as String
+          ? json[HourlyParameters.snowfall.value].toString()
           : null,
       snowDepth: json.containsKey(HourlyParameters.snowDepth.value)
-          ? json[HourlyParameters.snowDepth.value] as String
+          ? json[HourlyParameters.snowDepth.value].toString()
           : null,
       weathercode: json.containsKey(HourlyParameters.weathercode.value)
-          ? json[HourlyParameters.weathercode.value] as String
+          ? json[HourlyParameters.weathercode.value].toString()
           : null,
       pressureMsl: json.containsKey(HourlyParameters.pressureMsl.value)
-          ? json[HourlyParameters.pressureMsl.value] as String
+          ? json[HourlyParameters.pressureMsl.value].toString()
           : null,
       surfacePressure: json.containsKey(HourlyParameters.surfacePressure.value)
-          ? json[HourlyParameters.surfacePressure.value] as String
+          ? json[HourlyParameters.surfacePressure.value].toString()
           : null,
       cloudcover: json.containsKey(HourlyParameters.cloudcover.value)
-          ? json[HourlyParameters.cloudcover.value] as String
+          ? json[HourlyParameters.cloudcover.value].toString()
           : null,
       cloudcoverLow: json.containsKey(HourlyParameters.cloudcoverLow.value)
-          ? json[HourlyParameters.cloudcoverLow.value] as String
+          ? json[HourlyParameters.cloudcoverLow.value].toString()
           : null,
       cloudcoverMid: json.containsKey(HourlyParameters.cloudcoverMid.value)
-          ? json[HourlyParameters.cloudcoverMid.value] as String
+          ? json[HourlyParameters.cloudcoverMid.value].toString()
           : null,
       cloudcoverHigh: json.containsKey(HourlyParameters.cloudcoverHigh.value)
-          ? json[HourlyParameters.cloudcoverHigh.value] as String
+          ? json[HourlyParameters.cloudcoverHigh.value].toString()
           : null,
       visibility: json.containsKey(HourlyParameters.visibility.value)
-          ? json[HourlyParameters.visibility.value] as String
+          ? json[HourlyParameters.visibility.value].toString()
           : null,
       evapotranspiration:
           json.containsKey(HourlyParameters.evapotranspiration.value)
-              ? json[HourlyParameters.evapotranspiration.value] as String
+              ? json[HourlyParameters.evapotranspiration.value].toString()
               : null,
       et0FaoEvapotranspiration:
           json.containsKey(HourlyParameters.et0FaoEvapotranspiration.value)
-              ? json[HourlyParameters.et0FaoEvapotranspiration.value] as String
+              ? json[HourlyParameters.et0FaoEvapotranspiration.value].toString()
               : null,
       vaporPressureDeficit:
           json.containsKey(HourlyParameters.vaporPressureDeficit.value)
-              ? json[HourlyParameters.vaporPressureDeficit.value] as String
+              ? json[HourlyParameters.vaporPressureDeficit.value].toString()
               : null,
       windspeed10M: json.containsKey(HourlyParameters.windspeed10M.value)
-          ? json[HourlyParameters.windspeed10M.value] as String
+          ? json[HourlyParameters.windspeed10M.value].toString()
           : null,
       windspeed80M: json.containsKey(HourlyParameters.windspeed80M.value)
-          ? json[HourlyParameters.windspeed80M.value] as String
+          ? json[HourlyParameters.windspeed80M.value].toString()
           : null,
       windspeed120M: json.containsKey(HourlyParameters.windspeed120M.value)
-          ? json[HourlyParameters.windspeed120M.value] as String
+          ? json[HourlyParameters.windspeed120M.value].toString()
           : null,
       windspeed180M: json.containsKey(HourlyParameters.windspeed180M.value)
-          ? json[HourlyParameters.windspeed180M.value] as String
+          ? json[HourlyParameters.windspeed180M.value].toString()
           : null,
       winddirection10M:
           json.containsKey(HourlyParameters.winddirection10M.value)
-              ? json[HourlyParameters.winddirection10M.value] as String
+              ? json[HourlyParameters.winddirection10M.value].toString()
               : null,
       winddirection80M:
           json.containsKey(HourlyParameters.winddirection80M.value)
-              ? json[HourlyParameters.winddirection80M.value] as String
+              ? json[HourlyParameters.winddirection80M.value].toString()
               : null,
       winddirection120M:
           json.containsKey(HourlyParameters.winddirection120M.value)
-              ? json[HourlyParameters.winddirection120M.value] as String
+              ? json[HourlyParameters.winddirection120M.value].toString()
               : null,
       winddirection180M:
           json.containsKey(HourlyParameters.winddirection180M.value)
-              ? json[HourlyParameters.winddirection180M.value] as String
+              ? json[HourlyParameters.winddirection180M.value].toString()
               : null,
       windgusts10M: json.containsKey(HourlyParameters.windgusts10M.value)
-          ? json[HourlyParameters.windgusts10M.value] as String
+          ? json[HourlyParameters.windgusts10M.value].toString()
           : null,
       temperature80M: json.containsKey(HourlyParameters.temperature80M.value)
-          ? json[HourlyParameters.temperature80M.value] as String
+          ? json[HourlyParameters.temperature80M.value].toString()
           : null,
       temperature120M: json.containsKey(HourlyParameters.temperature120M.value)
-          ? json[HourlyParameters.temperature120M.value] as String
+          ? json[HourlyParameters.temperature120M.value].toString()
           : null,
       temperature180M: json.containsKey(HourlyParameters.temperature180M.value)
-          ? json[HourlyParameters.temperature180M.value] as String
+          ? json[HourlyParameters.temperature180M.value].toString()
           : null,
       soilTemperature0Cm:
           json.containsKey(HourlyParameters.soilTemperature0Cm.value)
-              ? json[HourlyParameters.soilTemperature0Cm.value] as String
+              ? json[HourlyParameters.soilTemperature0Cm.value].toString()
               : null,
       soilTemperature6Cm:
           json.containsKey(HourlyParameters.soilTemperature6Cm.value)
-              ? json[HourlyParameters.soilTemperature6Cm.value] as String
+              ? json[HourlyParameters.soilTemperature6Cm.value].toString()
               : null,
       soilTemperature18Cm:
           json.containsKey(HourlyParameters.soilTemperature18Cm.value)
-              ? json[HourlyParameters.soilTemperature18Cm.value] as String
+              ? json[HourlyParameters.soilTemperature18Cm.value].toString()
               : null,
       soilTemperature54Cm:
           json.containsKey(HourlyParameters.soilTemperature54Cm.value)
-              ? json[HourlyParameters.soilTemperature54Cm.value] as String
+              ? json[HourlyParameters.soilTemperature54Cm.value].toString()
               : null,
       soilMoisture0To1Cm:
           json.containsKey(HourlyParameters.soilMoisture0To1Cm.value)
-              ? json[HourlyParameters.soilMoisture0To1Cm.value] as String
+              ? json[HourlyParameters.soilMoisture0To1Cm.value].toString()
               : null,
       soilMoisture1To3Cm:
           json.containsKey(HourlyParameters.soilMoisture1To3Cm.value)
-              ? json[HourlyParameters.soilMoisture1To3Cm.value] as String
+              ? json[HourlyParameters.soilMoisture1To3Cm.value].toString()
               : null,
       soilMoisture3To9Cm:
           json.containsKey(HourlyParameters.soilMoisture3To9Cm.value)
-              ? json[HourlyParameters.soilMoisture3To9Cm.value] as String
+              ? json[HourlyParameters.soilMoisture3To9Cm.value].toString()
               : null,
       soilMoisture9To27Cm:
           json.containsKey(HourlyParameters.soilMoisture9To27Cm.value)
-              ? json[HourlyParameters.soilMoisture9To27Cm.value] as String
+              ? json[HourlyParameters.soilMoisture9To27Cm.value].toString()
               : null,
       soilMoisture27To81Cm:
           json.containsKey(HourlyParameters.soilMoisture27To81Cm.value)
-              ? json[HourlyParameters.soilMoisture27To81Cm.value] as String
+              ? json[HourlyParameters.soilMoisture27To81Cm.value].toString()
               : null,
     );
   }

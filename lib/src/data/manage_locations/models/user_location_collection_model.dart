@@ -21,10 +21,10 @@ class UserLocationCollectionModel extends UserLocationCollection {
   factory UserLocationCollectionModel.fromJson(DataMap json) {
     return UserLocationCollectionModel(
       selectedUuid: json.containsKey('selected_uuid')
-          ? json['selected_uuid'] as String
+          ? json['selected_uuid'].toString()
           : null,
       locations: json.containsKey('locations')
-          ? (jsonDecode(json['locations'] as String) as List)
+          ? (jsonDecode(json['locations'].toString()) as List)
               .map((e) => UserLocationModel.fromJson(e as DataMap))
               .toList()
           : [],

@@ -20,11 +20,11 @@ class UserLocationModel extends UserLocation {
         );
 
   factory UserLocationModel.fromJson(DataMap json) => UserLocationModel(
-        uuid: json['uuid'] as String,
-        lat: json['lat'] as double,
-        long: json['long'] as double,
-        name: json['name'] as String,
-        tag: json['tag'] as String,
+        uuid: json['uuid'].toString(),
+        lat: double.parse(json['lat'].toString()),
+        long: double.parse(json['long'].toString()),
+        name: json['name'].toString(),
+        tag: json['tag'].toString(),
       );
 
   DataMap toJson() => <String, dynamic>{

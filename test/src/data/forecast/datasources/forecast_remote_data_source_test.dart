@@ -6,26 +6,24 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../../../utils/fixture_reader.dart';
 
-// A Mock Cat class
 class MockClient extends Mock implements http.Client {}
 
 void main() {
-  const fixturesBasePath = 'test/src/data/forecast/fixtures/';
+  final fixtureReader =
+      FixtureReader(basePath: 'test/src/data/forecast/fixtures');
   late final MockClient mockClient;
   late final ForecastRemoteDataSource forecastRemoteDataSource;
 
   setUpAll(() {
     mockClient = MockClient();
     forecastRemoteDataSource = ForecastRemoteDataSourceImpl(mockClient);
-
     registerFallbackValue(Uri());
   });
 
   test(
       '[ForecastRemoteDataSourceImpl.getForecast]'
-      ' should return base json', () async {
-    // Arrange + Stub
-    final json = FixtureReader.read('$fixturesBasePath/base.json');
+      ' returns forecast', () async {
+    final json = fixtureReader.read('forecast_basic.json');
     when(() => mockClient.get(any()))
         .thenAnswer((_) async => http.Response(json, 201));
 
@@ -33,7 +31,7 @@ void main() {
 
     expect(
       await methodCall(0, 0),
-      ForecastModel(
+      const ForecastModel(
         latitude: 52.52,
         longitude: 13.419998,
         generationtimeMs: 0.0019073486328125,
@@ -42,6 +40,25 @@ void main() {
         timezoneAbbreviation: 'GMT',
         elevation: 38,
       ),
+    );
+
+    verify(
+      () => mockClient.get(any()),
+    ).called(1);
+    verifyNoMoreInteractions(mockClient);
+  });
+
+  test(
+      '[ForecastRemoteDataSourceImpl.getForecast]'
+      ' throws [Exception]', () async {
+    when(() => mockClient.get(any()))
+        .thenAnswer((_) async => http.Response('{}', 500));
+
+    final methodCall = forecastRemoteDataSource.getForecast;
+
+    expect(
+      methodCall(0, 0),
+      throwsA(isA<Exception>()),
     );
 
     verify(

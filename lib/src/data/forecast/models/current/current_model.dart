@@ -49,57 +49,63 @@ class CurrentModel extends Current {
   factory CurrentModel.fromJson(DataMap json) {
     return CurrentModel(
       time: DateTime.fromMillisecondsSinceEpoch(
-        (json[ApiStrings.time] as int) * 1000,
+        (int.parse(json[ApiStrings.time].toString())) * 1000,
         isUtc: true,
       ),
-      interval: json[ApiStrings.interval] as int,
+      interval: int.parse(json[ApiStrings.interval].toString()),
       temperature2M: json.containsKey(CurrentParameters.temperature2M.value)
-          ? json[CurrentParameters.temperature2M.value] as double
+          ? double.parse(json[CurrentParameters.temperature2M.value].toString())
           : null,
       relativehumidity2M:
           json.containsKey(CurrentParameters.relativehumidity2M.value)
-              ? json[CurrentParameters.relativehumidity2M.value] as int
+              ? int.parse(
+                  json[CurrentParameters.relativehumidity2M.value].toString(),
+                )
               : null,
       apparentTemperature:
           json.containsKey(CurrentParameters.apparentTemperature.value)
-              ? json[CurrentParameters.apparentTemperature.value] as double
+              ? double.parse(
+                  json[CurrentParameters.apparentTemperature.value].toString(),
+                )
               : null,
       isDay: json.containsKey(CurrentParameters.isDay.value)
-          ? (json[CurrentParameters.isDay.value] as int) == 1
+          ? (int.parse(json[CurrentParameters.isDay.value].toString())) == 1
           : null,
       precipitation: json.containsKey(CurrentParameters.precipitation.value)
-          ? json[CurrentParameters.precipitation.value] as double
+          ? double.parse(json[CurrentParameters.precipitation.value].toString())
           : null,
       rain: json.containsKey(CurrentParameters.rain.value)
-          ? json[CurrentParameters.rain.value] as int
+          ? double.parse(json[CurrentParameters.rain.value].toString())
           : null,
       showers: json.containsKey(CurrentParameters.showers.value)
-          ? json[CurrentParameters.showers.value] as int
+          ? int.parse(json[CurrentParameters.showers.value].toString())
           : null,
       snowfall: json.containsKey(CurrentParameters.snowfall.value)
-          ? json[CurrentParameters.snowfall.value] as int
+          ? int.parse(json[CurrentParameters.snowfall.value].toString())
           : null,
       weathercode: json.containsKey(CurrentParameters.weathercode.value)
-          ? json[CurrentParameters.weathercode.value] as int
+          ? int.parse(json[CurrentParameters.weathercode.value].toString())
           : null,
       cloudcover: json.containsKey(CurrentParameters.cloudcover.value)
-          ? json[CurrentParameters.cloudcover.value] as int
+          ? int.parse(json[CurrentParameters.cloudcover.value].toString())
           : null,
       pressureMsl: json.containsKey(CurrentParameters.pressureMsl.value)
-          ? json[CurrentParameters.pressureMsl.value] as double
+          ? double.parse(json[CurrentParameters.pressureMsl.value].toString())
           : null,
       surfacePressure: json.containsKey(CurrentParameters.surfacePressure.value)
-          ? json[CurrentParameters.surfacePressure.value] as double
+          ? double.parse(
+              json[CurrentParameters.surfacePressure.value].toString(),
+            )
           : null,
       windspeed10M: json.containsKey(CurrentParameters.windspeed10M.value)
-          ? json[CurrentParameters.windspeed10M.value] as double
+          ? double.parse(json[CurrentParameters.windspeed10M.value].toString())
           : null,
-      winddirection10M:
-          json.containsKey(CurrentParameters.winddirection10M.value)
-              ? json[CurrentParameters.winddirection10M.value] as int
-              : null,
+      winddirection10M: json
+              .containsKey(CurrentParameters.winddirection10M.value)
+          ? int.parse(json[CurrentParameters.winddirection10M.value].toString())
+          : null,
       windgusts10M: json.containsKey(CurrentParameters.windgusts10M.value)
-          ? json[CurrentParameters.windgusts10M.value] as int
+          ? int.parse(json[CurrentParameters.windgusts10M.value].toString())
           : null,
     );
   }

@@ -3,9 +3,8 @@
 A new Flutter project.
 
 ## Getting Started
+* to generate the language files run `flutter gen-l10n`
 
-* gen json `dart run build_runner build --delete-conflicting-outputs`
-* gen lang files `flutter gen-l10n`
 ## Sources
-* https://api.open-meteo.com/v1/forecast
+* https://api.open-meteo.com/
 * https://erikflowers.github.io/weather-icons/

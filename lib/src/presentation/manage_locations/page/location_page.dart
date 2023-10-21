@@ -84,7 +84,9 @@ class _LocationPageState extends State<LocationPage> {
           case LocationStateError():
             return Scaffold(
               appBar: AppBar(),
-              body: const Center(child: Text('ERROR')),
+              body: Center(
+                child: Text(AppLocalizations.of(context)!.unecpectedErrorText),
+              ),
             );
           case LocationStateLoading():
             return Scaffold(

@@ -5,6 +5,7 @@ import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc
 import 'package:anemoi_weather/src/presentation/settings/presentation/page/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Routes {
   static const String forecastPage = 'forecast_page';
@@ -41,7 +42,9 @@ class RouteGenerator {
         );
       default:
         return MaterialPageRoute(
-          builder: (_) => Text('ERROR: $settings'),
+          builder: (context) => Text(
+            '${AppLocalizations.of(context)!.unecpectedErrorText} $settings',
+          ),
           settings: settings,
         );
     }

@@ -55,9 +55,10 @@ class _MyAppState extends State<MyApp> {
                 ),
               );
             case SettingsStateError():
-              return const Material(
+              return Material(
                 child: Center(
-                  child: Text('ERROR'),
+                  child:
+                      Text(AppLocalizations.of(context)!.unecpectedErrorText),
                 ),
               );
             case final SettingsStateUpdate update:

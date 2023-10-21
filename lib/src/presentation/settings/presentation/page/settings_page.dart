@@ -59,9 +59,9 @@ class SettingsPage extends StatelessWidget {
               ),
             );
           case SettingsStateError():
-            return const Scaffold(
+            return Scaffold(
               body: Center(
-                child: Text('ERROR'),
+                child: Text(AppLocalizations.of(context)!.unecpectedErrorText),
               ),
             );
         }

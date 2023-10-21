@@ -14,5 +14,6 @@
     "settingsBrightnessLabel": "Helligkeit",
     "settingsBrightnessOptionLight": "hell",
     "settingsBrightnessOptionDark": "dunkel",
-    "aboutTitle": "Über"
+    "aboutTitle": "Über",
+    "unecpectedErrorText": "An unexpected error occurred. Please contact the developer."
 }

@@ -9,6 +9,7 @@ A new Flutter project.
 * [ ] Geolocation
 * [ ] Icons
 * [ ] Tests + CI
+* [ ] json, parse all double values explicit to double
 
 ## Sources
 * https://api.open-meteo.com/

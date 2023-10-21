@@ -22,8 +22,11 @@ abstract class ForecastRemoteDataSource {
 }
 
 class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
+  ForecastRemoteDataSourceImpl(this._client);
   final String baseUrl = 'api.open-meteo.com';
   final String endpoint = 'v1/forecast';
+
+  final http.Client _client;
 
   @override
   Future<Forecast> getForecast(
@@ -54,7 +57,7 @@ class ForecastRemoteDataSourceImpl implements ForecastRemoteDataSource {
     }
 
     final url = Uri.https(baseUrl, endpoint, queryParams);
-    final response = await http.get(url);
+    final response = await _client.get(url);
     final map = jsonDecode(response.body) as DataMap;
     final forecast = ForecastModel.fromJson(map);
     return forecast;

@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/icons/weather_icons.dart';
+import 'package:anemoi_weather/src/presentation/core/icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 
 class AppWeatherCodes {

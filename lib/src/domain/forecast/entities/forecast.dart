@@ -4,9 +4,10 @@ import 'package:anemoi_weather/src/domain/forecast/entities/daily.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/daily_units.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/hourly.dart';
 import 'package:anemoi_weather/src/domain/forecast/entities/hourly_units.dart';
+import 'package:equatable/equatable.dart';
 
-class Forecast {
-  Forecast({
+class Forecast extends Equatable {
+  const Forecast({
     required this.latitude,
     required this.longitude,
     required this.generationtimeMs,
@@ -34,4 +35,21 @@ class Forecast {
   final Hourly? hourly;
   final DailyUnits? dailyUnits;
   final Daily? daily;
+
+  @override
+  List<Object?> get props => [
+        latitude,
+        longitude,
+        generationtimeMs,
+        utcOffsetSeconds,
+        timezone,
+        timezoneAbbreviation,
+        elevation,
+        currentUnits,
+        current,
+        hourlyUnits,
+        hourly,
+        dailyUnits,
+        daily,
+      ];
 }

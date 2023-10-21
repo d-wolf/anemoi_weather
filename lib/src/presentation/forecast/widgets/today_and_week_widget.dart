@@ -1,4 +1,4 @@
-import 'package:anemoi_weather/icons/weather_icons.dart';
+import 'package:anemoi_weather/src/presentation/core/icons/weather_icons.dart';
 import 'package:anemoi_weather/src/core/res/app_colors.dart';
 import 'package:anemoi_weather/src/core/res/app_style.dart';
 import 'package:anemoi_weather/src/core/res/app_weather_codes.dart';

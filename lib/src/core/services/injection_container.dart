@@ -29,6 +29,7 @@ import 'package:anemoi_weather/src/presentation/manage_locations/cubit/location_
 import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
 import 'package:anemoi_weather/src/presentation/settings/presentation/cubit/settings_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -103,8 +104,9 @@ void _initForecast() {
       () => ForecastRepositoryImpl(sl()),
     )
     ..registerLazySingleton<ForecastRemoteDataSource>(
-      ForecastRemoteDataSourceImpl.new,
-    );
+      () => ForecastRemoteDataSourceImpl(sl()),
+    )
+    ..registerLazySingleton(http.Client.new);
 }
 
 void _initLocationSearch() {

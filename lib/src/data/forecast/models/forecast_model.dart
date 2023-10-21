@@ -33,7 +33,7 @@ class ForecastModel extends Forecast {
       utcOffsetSeconds: json[ApiStrings.utcOffsetSeconds] as int,
       timezone: json[ApiStrings.timezone] as String,
       timezoneAbbreviation: json[ApiStrings.timezoneAbbreviation] as String,
-      elevation: json[ApiStrings.elevation] as double,
+      elevation: double.parse(json[ApiStrings.elevation].toString()),
       currentUnits: json.containsKey(ApiStrings.currentUnits)
           ? CurrentUnitsModel.fromJson(json[ApiStrings.currentUnits] as DataMap)
           : null,

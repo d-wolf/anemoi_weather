@@ -1,6 +1,12 @@
 {
     "appTitle": "ANEMOI",
     "forecastTitle": "Vorhersage",
+    "forecastLastUpdated": "Zuletzt aktualisiert:",
+    "forecastTemperatureLabel": "Temperature",
+    "forecastPrecipitationLabel": "Niederschlag",
+    "forecastPrecipitationProbabilityLabel": "Niederschlag Wahrscheinlichkeit",
+    "forecastRelativeHumidityLabel": "Relative Luftfeuchtigkeit",
+    "forecastWindspeedLabel": "Windgeschwindigkeit",
     "locationsTitle": "Standorte",
     "locationsNoLocationSelected": "Kein Standort ausgewählt.",
     "settingsTitle": "Einstellungen",

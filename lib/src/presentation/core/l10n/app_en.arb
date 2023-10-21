@@ -7,6 +7,15 @@
   "@forecastTitle": {
     "description": "The title of the forecast page & drawer item."
   },
+  "forecastLastUpdated": "Last updated:",
+  "@forecastLastUpdated": {
+    "description": "Label for last updated DateTime."
+  },
+  "forecastTemperatureLabel": "Temperature",
+  "forecastPrecipitationLabel": "Precipitation",
+  "forecastPrecipitationProbabilityLabel": "Precipitation Probability",
+  "forecastRelativeHumidityLabel": "Relative Humidity",
+  "forecastWindspeedLabel": "Windspeed",
   "locationsTitle": "Locations",
   "@locationsTitle": {
     "description": "The title of the locations page & drawer item."

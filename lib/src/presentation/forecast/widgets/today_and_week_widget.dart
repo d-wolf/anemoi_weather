@@ -7,6 +7,7 @@ import 'package:anemoi_weather/src/domain/manage_locations/entities/user_locatio
 import 'package:anemoi_weather/src/presentation/forecast/widgets/hourly_bar_chart.dart';
 import 'package:anemoi_weather/src/presentation/forecast/widgets/hourly_line_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 class TodayAndWeekWidget extends StatefulWidget {
@@ -45,7 +46,7 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                   '${widget.userLocation.name}, ${widget.userLocation.tag}',
                 ),
                 subtitle: Text(
-                  'Last Updated: '
+                  '${AppLocalizations.of(context)!.forecastTitle} '
                   '${DateFormat.Hms().format(widget.lastUpdated.toLocal())}',
                 ),
               ),
@@ -70,7 +71,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                         children: [
                           ListTile(
                             leading: const Icon(Weather.wi_thermometer),
-                            title: const Text('Current Temperature'),
+                            title: Text(
+                              AppLocalizations.of(context)!
+                                  .forecastTemperatureLabel,
+                            ),
                             subtitle: Text(
                               '${widget.forecast.current!.temperature2M} '
                               '${widget.forecast.currentUnits!.temperature2M}',
@@ -78,7 +82,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_rain_mix),
-                            title: const Text('Precipitation'),
+                            title: Text(
+                              AppLocalizations.of(context)!
+                                  .forecastPrecipitationLabel,
+                            ),
                             subtitle: Text(
                               '${widget.forecast.current!.precipitation} '
                               '${widget.forecast.currentUnits!.precipitation}',
@@ -86,7 +93,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_humidity),
-                            title: const Text('Rrelative Humidity'),
+                            title: Text(
+                              AppLocalizations.of(context)!
+                                  .forecastRelativeHumidityLabel,
+                            ),
                             subtitle: Builder(
                               builder: (context) {
                                 final t1 =
@@ -99,7 +109,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
                           ),
                           ListTile(
                             leading: const Icon(Weather.wi_windy),
-                            title: const Text('Windspeed'),
+                            title: Text(
+                              AppLocalizations.of(context)!
+                                  .forecastWindspeedLabel,
+                            ),
                             subtitle: Builder(
                               builder: (context) {
                                 final t1 =
@@ -202,9 +215,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Temperature'),
-                subtitle:
-                    Text('in ${widget.forecast.hourlyUnits!.temperature2M!}'),
+                title: Text(
+                  AppLocalizations.of(context)!.forecastTemperatureLabel,
+                ),
+                subtitle: Text(widget.forecast.hourlyUnits!.temperature2M!),
               ),
               SizedBox(
                 height: cardHeight,
@@ -232,12 +246,15 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Precepitation Probability'),
+                title: Text(
+                  AppLocalizations.of(context)!
+                      .forecastPrecipitationProbabilityLabel,
+                ),
                 subtitle: Builder(
                   builder: (context) {
                     final t1 =
                         widget.forecast.hourlyUnits!.precipitationProbability!;
-                    return Text('in $t1');
+                    return Text(t1);
                   },
                 ),
               ),
@@ -270,9 +287,10 @@ class _TodayAndWeekWidgetState extends State<TodayAndWeekWidget> {
           child: Column(
             children: [
               ListTile(
-                title: const Text('Precepitation'),
-                subtitle:
-                    Text('in ${widget.forecast.hourlyUnits!.precipitation!}'),
+                title: Text(
+                  AppLocalizations.of(context)!.forecastPrecipitationLabel,
+                ),
+                subtitle: Text(widget.forecast.hourlyUnits!.precipitation!),
               ),
               SizedBox(
                 height: cardHeight,

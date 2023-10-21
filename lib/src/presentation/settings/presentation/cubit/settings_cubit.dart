@@ -8,9 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(
-      {required SaveSettings saveSettings, required LoadSettings loadSettings})
-      : _saveSettings = saveSettings,
+  SettingsCubit({
+    required SaveSettings saveSettings,
+    required LoadSettings loadSettings,
+  })  : _saveSettings = saveSettings,
         _loadSettings = loadSettings,
         super(const SettingsStateLoading());
   final LoadSettings _loadSettings;

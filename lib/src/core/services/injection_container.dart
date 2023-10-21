@@ -1,3 +1,5 @@
+import 'package:anemoi_weather/src/data/about/datasources/about_data_source.dart';
+import 'package:anemoi_weather/src/data/about/respositories/about_respository_impl.dart';
 import 'package:anemoi_weather/src/data/forecast/datasources/forecast_remote_data_source.dart';
 import 'package:anemoi_weather/src/data/forecast/repositories/forecast_repository_impl.dart';
 import 'package:anemoi_weather/src/data/manage_locations/datasources/locations_local_data_source.dart';
@@ -6,6 +8,9 @@ import 'package:anemoi_weather/src/data/search_location/datasources/geocoding_re
 import 'package:anemoi_weather/src/data/search_location/repositories/geocoding_search_repository_impl.dart';
 import 'package:anemoi_weather/src/data/settings/datasources/settings_local_data_source.dart';
 import 'package:anemoi_weather/src/data/settings/repositories/settings_repository_impl.dart';
+import 'package:anemoi_weather/src/domain/about/repositories/about_respository.dart';
+import 'package:anemoi_weather/src/domain/about/usecases/get_text.dart';
+import 'package:anemoi_weather/src/domain/about/usecases/get_version.dart';
 import 'package:anemoi_weather/src/domain/forecast/repositories/forecast_repository.dart';
 import 'package:anemoi_weather/src/domain/forecast/usecases/fetch_forecast.dart';
 import 'package:anemoi_weather/src/domain/manage_locations/repositories/user_locations_repository.dart';
@@ -18,6 +23,7 @@ import 'package:anemoi_weather/src/domain/search_location/usecases/search_locati
 import 'package:anemoi_weather/src/domain/settings/repositories/settings_repository.dart';
 import 'package:anemoi_weather/src/domain/settings/usecases/load_settings.dart';
 import 'package:anemoi_weather/src/domain/settings/usecases/save_settings.dart';
+import 'package:anemoi_weather/src/presentation/about/cubit/about_cubit.dart';
 import 'package:anemoi_weather/src/presentation/forecast/cubit/forecast_cubit.dart';
 import 'package:anemoi_weather/src/presentation/manage_locations/cubit/location_cubit.dart';
 import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
@@ -32,12 +38,24 @@ Future<void> init() async {
   // await prefs.remove('locations_key');
   // await prefs.remove('settings_key');
 
+  _initAbout();
   _initSettings();
   _initLocation();
   _initForecast();
   _initLocationSearch();
 
   sl.registerLazySingleton<SharedPreferences>(() => prefs);
+}
+
+void _initAbout() {
+  sl
+    ..registerFactory(
+      () => AboutCubit(getText: sl(), getVersion: sl()),
+    )
+    ..registerLazySingleton(() => GetText(sl()))
+    ..registerLazySingleton(() => GetVersion(sl()))
+    ..registerLazySingleton<AboutRepository>(() => AboutRepositoryImpl(sl()))
+    ..registerLazySingleton<AboutDataSource>(AboutDataSourceImpl.new);
 }
 
 void _initSettings() {

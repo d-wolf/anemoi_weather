@@ -28,7 +28,7 @@ class LocationCubit extends Cubit<LocationState> {
   final GetAllLocations _getAllLocations;
   final SelectLocation _selectLocation;
 
-  Future<void> loadLocations() async {
+  Future<void> load() async {
     final result = await _getAllLocations();
     result.fold((l) => emit(const LocationStateError()), (r) {
       emit(LocationsStateLoaded(collection: r));

@@ -42,6 +42,7 @@
   "@aboutTitle": {
     "description": "The title of the about page & drawer item."
   },
+  "aboutVersionLabel": "Version",
   "unecpectedErrorText": "An unexpected error occurred. Please contact the developer.",
   "@unecpectedErrorText": {
     "description": "Is shown to the user when an unexpected error has occurred."

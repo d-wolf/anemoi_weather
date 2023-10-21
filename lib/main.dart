@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LocationCubit>(
-          create: (context) => sl()..loadLocations(),
+          create: (context) => sl()..load(),
         ),
         BlocProvider<ForecastCubit>(
           create: (context) => sl(),

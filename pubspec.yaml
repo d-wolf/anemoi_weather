@@ -15,11 +15,13 @@ dependencies:
   flutter_bloc: ^8.1.3
   flutter_localizations:
     sdk: flutter
+  flutter_markdown: ^0.6.18
   geolocator: ^10.1.0
   get_it: ^7.6.4
   http: ^1.1.0
   intl: ^0.18.1
   json_annotation: ^4.8.1
+  package_info_plus: ^4.2.0
   permission_handler: ^11.0.1
   shared_preferences: ^2.2.2
   system_theme: ^2.3.1
@@ -36,6 +38,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - LICENSE.md
 
   fonts:
     - family: Weather

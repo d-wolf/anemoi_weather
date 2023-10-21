@@ -1,4 +1,6 @@
 import 'package:anemoi_weather/src/core/services/injection_container.dart';
+import 'package:anemoi_weather/src/presentation/about/cubit/about_cubit.dart';
+import 'package:anemoi_weather/src/presentation/about/page/about_page.dart';
 import 'package:anemoi_weather/src/presentation/forecast/page/forecast_page.dart';
 import 'package:anemoi_weather/src/presentation/manage_locations/page/location_page.dart';
 import 'package:anemoi_weather/src/presentation/search_location/bloc/search_bloc.dart';
@@ -29,9 +31,11 @@ class RouteGenerator {
               child: const LocationPage(),
             );
       case Routes.settingsPage:
-        builder = (_) => BlocProvider<SearchBloc>(
-              create: (_) => sl(),
-              child: const SettingsPage(),
+        builder = (_) => const SettingsPage();
+      case Routes.aboutPage:
+        builder = (_) => BlocProvider<AboutCubit>(
+              create: (_) => sl()..load(),
+              child: const AboutPage(),
             );
       default:
         builder = (context) => Text(

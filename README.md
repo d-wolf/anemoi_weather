@@ -1,14 +1,15 @@
 # anemoi_weather
 
-A new Flutter project.
+Simple weather app written with Flutter using the [open-meteo](open-meteo.com/) api.
 
 ## Getting Started
 * `git clone https://github.com/d-wolf/anemoi_weather.git`
-* to generate the language files run `flutter gen-l10n`
+* optional: to generate the language files manually run `flutter gen-l10n`
+* `flutter run`
 
 ## Missing Features/Bugs
 * [ ] Geolocation
-* [ ] Icons
+* [ ] Set new weather icons
 * [ ] Tests + CI
 
 ## Sources
